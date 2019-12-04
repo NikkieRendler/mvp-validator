@@ -1,0 +1,23 @@
+@import '../../../styles.scss';
+
+.main-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.main-content {
+    width: 70vw;
+    padding-top: 100px;
+}
+
+.description {
+    line-height: 35px;
+    font-size: $main-text;
+}
+
+.main-image {
+    height: 70vh;
+    background-image: url('../../../assets/images/test_image.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+}

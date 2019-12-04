@@ -1,0 +1,81 @@
+<nz-layout nz-row nzType="flex" nzAlign="middle">
+    <span nz-col nzSpan="24" nz-text class="project-setup-stage-title"><strong>{{stageTitle}}</strong></span>
+    <span nz-col nzSpan="6" nz-text class="project-setup-stage-descr">
+        {{stageDescr}}
+    </span>
+    <ng-container *ngIf="stageCounter === 0">
+        <div nz-col nzSpan="6">
+            <input style="padding: 25px" nz-input placeholder="Project title" nzSize="large"
+                class="project-setup-stage-input" [(ngModel)]="projectTitle" />
+        </div>
+        <div nz-row>
+            <nz-card nz-col nzSpan="11" [nzTitle]="tipTitle" class="project-setup-stage-tips">
+                <ng-template #tipTitle>
+                    <i nz-icon nzType="tags" nzTheme="outline"></i>
+                    Short tips
+                </ng-template>
+                <div></div>
+                <span nz-text nzType="secondary">- Let it be short to middle length</span> <br>
+                <span nz-text nzType="secondary">- Make it easy to pronounce</span> <br>
+                <span nz-text nzType="secondary">- Make it easy to come up with a good icon</span> <br>
+                <span nz-text nzType="secondary">- Try foreign words, compound words, real words,
+                    misspellings, names</span> <br>
+                <span nz-text nzType="secondary">- Don't rush, take your time. We'll wait for your best
+                    choise</span>
+            </nz-card>
+
+            <div nz-col nzSpan="2"></div>
+            <nz-card nz-col nzSpan="11" [nzTitle]="resourcesTitle" class="project-setup-stage-tips">
+                <ng-template #resourcesTitle>
+                    <i nz-icon nzType="link" nzTheme="outline"></i> Handy resources
+                </ng-template>
+                <a href="https://namelix.com/"><span nz-text>https://namelix.com</span></a><br>
+                <a href="https://businessnamegenerator.com/"><span nz-text>https://businessnamegenerator.com</span></a>
+                <br>
+                <a href="https://www.shopify.com/tools/business-name-generator#ToolContent">
+                    <span nz-text>https://www.shopify.com</span>
+                </a>
+            </nz-card>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="stageCounter === 1">
+        <div nz-col nzSpan="6">
+            <textarea rows="2" style="padding: 25px" nz-input placeholder="Features that no competitor have" nzSize="large"
+                class="project-setup-stage-input" [(ngModel)]="projectFeatureOne">
+                </textarea>
+            <textarea rows="2" style="padding: 25px" nz-input placeholder="Solutions that you deliver better that your competitors" nzSize="large"
+                class="project-setup-stage-input" [(ngModel)]="projectFeatureTwo">
+                </textarea>
+            <textarea rows="2" style="padding: 25px" nz-input placeholder="Concepts and ideas you pursue with your team " nzSize="large"
+                class="project-setup-stage-input" [(ngModel)]="projectFeatureThree">
+                </textarea>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="stageCounter === 2">
+           <div nz-row>
+            <nz-card style="width: 300px" nz-col nzSpan="4" nzTitle="Chill" class="project-setup-stage-tips">
+                <div class="project-setup-stage-theme theme-1"></div>
+            </nz-card>
+            <nz-card style="width: 300px" nz-col nzSpan="4" nzTitle="Thrilling" class="project-setup-stage-tips">
+                <div class="project-setup-stage-theme theme-2"></div>
+            </nz-card>
+            <nz-card style="width: 300px" nz-col nzSpan="4" nzTitle="Magical" class="project-setup-stage-tips">
+                <div class="project-setup-stage-theme theme-3"></div>
+            </nz-card>
+            <nz-card style="width: 300px" nz-col nzSpan="4" nzTitle="Futuristic" class="project-setup-stage-tips">
+                <div class="project-setup-stage-theme theme-4"></div>
+            </nz-card>
+           </div>
+    </ng-container>
+
+    <div nz-col nzSpan="24" class="project-setup-stage-nav-button-section">
+        <div nz-row nzType="flex" nzJustify="space-around">
+            <button nz-button nzType="primary" (click)="prevStage()"><i nz-icon nzType="left"
+                    nzTheme="outline"></i>Prev.</button>
+            <button nz-button nzType="primary" (click)="nextStage()">Next <i nz-icon nzType="right"
+                    nzTheme="outline"></i></button>
+        </div>
+    </div>
+</nz-layout>

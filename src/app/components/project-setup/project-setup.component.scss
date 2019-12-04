@@ -1,0 +1,51 @@
+@import '../../../styles.scss';
+
+.project-setup-stage-title {
+    font-size: $title-text;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.project-setup-stage-descr {
+    font-size: $main-text;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.project-setup-stage-input {
+    font-size: $main-text;
+    margin-top: 20px;
+}
+
+.project-setup-stage-tips {
+    line-height: 35px;
+    font-size: $main-text;
+    margin-top: 20px;
+}
+
+.project-setup-stage-nav-button-section {
+    position: absolute;
+    bottom: 5%;
+}
+
+.project-setup-stage-theme {
+    width: 250px; 
+    height: 300px;
+}
+
+.theme-1 {
+    background-image: linear-gradient(0.4turn, #17008c, #1c81b0, #bdeaff)
+}
+
+.theme-2 {
+    background-image: linear-gradient(0.4turn, #af3e2f, #dbc251, #fffdb5)
+}
+
+.theme-3 {
+    background-image: linear-gradient(0.4turn, #5e004a, #7d388c, #dfd0f5)
+}
+
+.theme-4 {
+    background-image: linear-gradient(0.4turn, #543b14, #ffddad, #fff9f0)
+}
+
