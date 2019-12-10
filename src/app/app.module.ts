@@ -9,10 +9,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { LandingComponent } from 'projects/customer-app/src/app/components/landing/landing.component';
 import { ProjectSetupComponent } from './components/project-setup/project-setup.component';
 import { MainComponent } from './components/main/main.component';
 import { ProjectSetupService } from './services/project-setup.service';
+import { CustomerAppNameComponent } from 'projects/customer-app/src/app/components/customer-app-name/customer-app-name.component';
+import { MatButtonModule } from '@angular/material/button';
+import { ColorPickerModule } from 'ngx-color-picker';
+import { CustomerAppTitleComponent } from 'projects/customer-app/src/app/components/customer-app-title/customer-app-title.component';
+import { CustomerAppComponent } from 'projects/customer-app/src/app/components/customer-app/customer-app.component';
+
 
 registerLocaleData(en);
 
@@ -20,8 +25,10 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     ProjectSetupComponent,
-    LandingComponent,
-    MainComponent
+    MainComponent,
+    CustomerAppNameComponent,
+    CustomerAppTitleComponent,
+    CustomerAppComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +36,9 @@ registerLocaleData(en);
     NgZorroAntdModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    ColorPickerModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, ProjectSetupService],
   bootstrap: [AppComponent]

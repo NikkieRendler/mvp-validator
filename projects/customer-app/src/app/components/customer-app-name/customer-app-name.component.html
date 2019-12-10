@@ -1,0 +1,10 @@
+<div *ngIf="currentRoute !== '/customer-app'; else customerAppName" nz-text class="project-name"
+    [ngStyle]="{'border-color': selectedTheme, 'color': selectedTheme}">
+    <input class="title-input" [value]="selectedName" (keyup)="saveInputValue($event)" />
+</div>
+
+<ng-template #customerAppName>
+    <div class="project-name" [ngStyle]="{'border-color': selectedTheme}">
+        <span nz-text [ngStyle]="{'color': selectedTheme}">{{selectedName}}</span>
+    </div>
+</ng-template>

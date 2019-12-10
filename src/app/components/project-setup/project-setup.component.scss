@@ -1,9 +1,34 @@
 @import '../../../styles.scss';
 
+.project-setup-stage-wrapper {
+    margin-top: 50px;
+}
+
+.flat-design-note {
+    background-image: url('../../../assets/images/flat_design.png');
+    background-size: contain;
+    width: 200px;
+    height: 150px;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 10px;
+}
+
+.material-design-note {
+    background-image: url('../../../assets/images/material_design.png');
+    background-size: contain;
+    width: 200px;
+    height: 150px;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 10px;
+}
+
 .project-setup-stage-title {
     font-size: $title-text;
     text-align: center;
-    padding-top: 20px;
+}
+
+.heading {
+    font-size: $heading-text;
 }
 
 .project-setup-stage-descr {
@@ -18,34 +43,51 @@
 }
 
 .project-setup-stage-tips {
-    line-height: 35px;
+    line-height: 30px;
     font-size: $main-text;
-    margin-top: 20px;
+}
+
+.left-displace {
+    margin-left: -9px;
 }
 
 .project-setup-stage-nav-button-section {
-    position: absolute;
-    bottom: 5%;
+    width: 70vw;
+    margin: 20px auto;
 }
 
 .project-setup-stage-theme {
-    width: 250px; 
-    height: 300px;
+    height: 90px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.theme-1 {
-    background-image: linear-gradient(0.4turn, #17008c, #1c81b0, #bdeaff)
+.project-setup-stage-theme-title {
+    padding-top: 25%; 
+    color: whitesmoke
 }
 
-.theme-2 {
-    background-image: linear-gradient(0.4turn, #af3e2f, #dbc251, #fffdb5)
+.project-setup-stage-custom-theme-non-selected {
+    height: 15vh;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.theme-3 {
-    background-image: linear-gradient(0.4turn, #5e004a, #7d388c, #dfd0f5)
+.project-setup-stage-theme:hover {
+    box-shadow: 0px 0px 5px #52c41a;
+    cursor: pointer;
 }
 
-.theme-4 {
-    background-image: linear-gradient(0.4turn, #543b14, #ffddad, #fff9f0)
+.selected-button {
+    background-color: rgba(82,196,26, .6); 
+}
+
+.selected-icon {
+    font-size: 20px;
+    color: rgba(82,196,26, .6) !important;
 }
 

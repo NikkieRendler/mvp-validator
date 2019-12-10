@@ -1,81 +1,288 @@
-<nz-layout nz-row nzType="flex" nzAlign="middle">
-    <span nz-col nzSpan="24" nz-text class="project-setup-stage-title"><strong>{{stageTitle}}</strong></span>
-    <span nz-col nzSpan="6" nz-text class="project-setup-stage-descr">
-        {{stageDescr}}
-    </span>
-    <ng-container *ngIf="stageCounter === 0">
-        <div nz-col nzSpan="6">
-            <input style="padding: 25px" nz-input placeholder="Project title" nzSize="large"
-                class="project-setup-stage-input" [(ngModel)]="projectTitle" />
-        </div>
-        <div nz-row>
-            <nz-card nz-col nzSpan="11" [nzTitle]="tipTitle" class="project-setup-stage-tips">
-                <ng-template #tipTitle>
-                    <i nz-icon nzType="tags" nzTheme="outline"></i>
-                    Short tips
-                </ng-template>
-                <div></div>
-                <span nz-text nzType="secondary">- Let it be short to middle length</span> <br>
-                <span nz-text nzType="secondary">- Make it easy to pronounce</span> <br>
-                <span nz-text nzType="secondary">- Make it easy to come up with a good icon</span> <br>
-                <span nz-text nzType="secondary">- Try foreign words, compound words, real words,
-                    misspellings, names</span> <br>
-                <span nz-text nzType="secondary">- Don't rush, take your time. We'll wait for your best
-                    choise</span>
-            </nz-card>
+<nz-header nz-row nzType="flex" nzJustify="center">
+    <h2 nz-title class="app-name">Validia</h2>
+</nz-header>
+<nz-layout [@templateChange] style="width: 70vw; margin: 0px auto;">
+    <div nz-row class="project-setup-stage-wrapper">
 
-            <div nz-col nzSpan="2"></div>
-            <nz-card nz-col nzSpan="11" [nzTitle]="resourcesTitle" class="project-setup-stage-tips">
-                <ng-template #resourcesTitle>
-                    <i nz-icon nzType="link" nzTheme="outline"></i> Handy resources
-                </ng-template>
-                <a href="https://namelix.com/"><span nz-text>https://namelix.com</span></a><br>
-                <a href="https://businessnamegenerator.com/"><span nz-text>https://businessnamegenerator.com</span></a>
+        <!-- Action side -->
+        <div nz-col nzSpan="14">
+            <div nz-row nzType="flex" nzAlign="middle" style="height: 70vh; text-align: center;">
+                <div>
+                    <div>
+                        <span nz-text class="project-setup-stage-title">
+                            <strong>{{stageTitle}}</strong>
+                        </span>
+                    </div>
+
+                    <div nz-col nzSpan="24">
+                        <span nz-text class="project-setup-stage-descr">
+                            {{stageDescr}}
+                        </span>
+                    </div>
+
+                    <!-- Color stage -->
+                    <ng-container *ngIf="currentRoute === '/theme'">
+                        <div nz-col nzSpan="24">
+                            <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
+                                <div class="project-setup-stage-theme"
+                                    [ngStyle]="{'background-color': firstColorScheme}"
+                                    (click)="selectTheme(firstColorScheme)">
+                                    <span nz-text class="project-setup-stage-theme-title">
+                                        Geek Blue
+                                    </span>
+                                    <div style="min-height: 30px;">
+                                        <i *ngIf="selectedTheme === firstColorScheme" class="selected-icon" nz-icon
+                                            [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                                            [nzTwotoneColor]="'#52c41a'"></i>
+                                    </div>
+                                </div>
+                            </nz-card>
+
+                            <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
+                                <div class="project-setup-stage-theme"
+                                    [ngStyle]="{'background-color': secondColorScheme}"
+                                    (click)="selectTheme(secondColorScheme)">
+                                    <span nz-text class="project-setup-stage-theme-title">Yellow</span>
+                                    <i *ngIf="selectedTheme === secondColorScheme" class="selected-icon" nz-icon
+                                        [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                                        [nzTwotoneColor]="'#52c41a'"></i>
+                                </div>
+                            </nz-card>
+
+                            <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
+                                <div class="project-setup-stage-theme"
+                                    [ngStyle]="{'background-color': thirdColorScheme}"
+                                    (click)="selectTheme(thirdColorScheme)">
+                                    <span nz-text class="project-setup-stage-theme-title">Lime</span>
+                                    <i *ngIf="selectedTheme === thirdColorScheme" class="selected-icon" nz-icon
+                                        [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                                        [nzTwotoneColor]="'#52c41a'"></i>
+                                </div>
+                            </nz-card>
+
+                            <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
+                                <div *ngIf="!customColorScheme; else customColorPicked"
+                                    class="project-setup-stage-theme">
+                                </div>
+                                <ng-template #customColorPicked>
+                                    <div class="project-setup-stage-theme"
+                                        [ngStyle]="{'background-color': customColorScheme}"
+                                        (click)="selectTheme(customColorScheme)">
+                                        <span nz-text class="project-setup-stage-theme-title">Your color</span>
+                                        <i *ngIf="selectedTheme === 'customColorScheme'" class="selected-icon" nz-icon
+                                            [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                                            [nzTwotoneColor]="'#52c41a'"></i>
+                                    </div>
+
+                                </ng-template>
+                                <div nz-col nzSpan="24" style="height: 0;">
+                                    <div style="height: 0;">
+                                        <input style="height: 0; width: 0; visibility: hidden;" #colorPickerInput
+                                            [(colorPicker)]="customColorScheme" [cpPosition]="'bottom'" />
+                                    </div>
+                                    <i style="cursor: pointer;" (click)="colorPickerInput.click()" nz-icon
+                                        nzType="bg-colors" nzTheme="outline"></i>
+                                </div>
+                            </nz-card>
+
+
+                        </div>
+                    </ng-container>
+
+                    <!-- Design stage -->
+                    <ng-container *ngIf="currentRoute === '/design'">
+                        <div nz-col nzSpan="24">
+                            <nz-card style="margin-top: 50px;">
+                                <div nz-row nzType="flex" nzJustify="space-around">
+                                    <div style="height: 60px;">
+                                        <button [ngClass]="{'selected-button': selectedDesign === 'flat'}"
+                                            (click)="selectDesign('flat');" nz-button nzSize="large" nzType="default"
+                                            style="width: 150px;">
+                                            <span nz-text>Flat design</span>
+                                        </button>
+                                        <br>
+                                        <i class="selected-icon" *ngIf="selectedDesign === 'flat'" nz-icon
+                                            nzType="check-circle" nzTheme="outline"></i>
+                                    </div>
+
+                                    <div style="height: 60px;">
+                                        <button [disableRipple]="true"
+                                            [ngClass]="{'selected-button': selectedDesign === 'material'}"
+                                            (click)="selectDesign('material');" mat-raised-button style="width: 150px;">
+                                            <span nz-text>Material design</span>
+                                        </button>
+                                        <br>
+                                        <i class="selected-icon" *ngIf="selectedDesign === 'material'" nz-icon
+                                            nzType="check-circle" nzTheme="outline"></i>
+                                        <!-- <i *ngIf="selectedDesign === 'material'"
+                                            class="material-icons selected-icon">
+                                            check_circle_outline
+                                        </i> -->
+                                    </div>
+
+                                </div>
+
+                            </nz-card>
+                        </div>
+                    </ng-container>
+
+                    <!-- Name stage -->
+                    <ng-container *ngIf="currentRoute === '/name'">
+                        <div style="padding-top: 50px;">
+                            <app-customer-app-name></app-customer-app-name>
+                        </div>
+                    </ng-container>
+                </div>
+
+                <!-- Title stage -->
+                <ng-container *ngIf="currentRoute === '/title'">
+
+                </ng-container>
+
+                <!-- Strong sides stage -->
+                <ng-container *ngIf="currentRoute === '/strong-sides'">
+                    <div nz-col nzSpan="24">
+                        <textarea rows="2" style="padding: 25px" nz-input placeholder="Features that no competitor have"
+                            nzSize="large" class="project-setup-stage-input" [(ngModel)]="projectFeatureOne">
+                        </textarea>
+                        <textarea rows="2" style="padding: 25px" nz-input
+                            placeholder="Solutions that you deliver better that your competitors" nzSize="large"
+                            class="project-setup-stage-input" [(ngModel)]="projectFeatureTwo">
+                        </textarea>
+                        <textarea rows="2" style="padding: 25px" nz-input
+                            placeholder="Concepts and ideas you pursue with your team " nzSize="large"
+                            class="project-setup-stage-input" [(ngModel)]="projectFeatureThree">
+                        </textarea>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+
+
+
+        <!-- Divider -->
+        <div nz-col nzSpan="2" style="height: 70vh; text-align: center;">
+            <nz-divider nzType="vertical" style="height: 100%; background-color: rgba(0, 0, 0, 0.3);"></nz-divider>
+        </div>
+
+
+
+        <!-- Notes side -->
+        <div nz-col nzSpan="8">
+            <!-- Design stage -->
+            <ng-container *ngIf="currentRoute === '/design'">
+                <div class="project-setup-stage-tips">
+                    <span nz-text class="heading">
+                        <i nz-icon nzType="info-circle" style="padding: 0 5px 0 0;" nzTheme="outline"></i>
+                        <strong>Flat design</strong>
+                    </span>
+                    <br>
+                    <span nz-text nzType="secondary" style="margin-right: -20px;">
+                        <span class="left-displace">-</span> Minimalist design language emphasizing minimum use of
+                        stylistic elements that give the illusion of three dimensions.
+                        <br>
+                        <span class="left-displace">-</span> Focused on use of simple elements, typography and flat
+                        colors.
+                        <br>
+                        Used by <b>Apple, Microsoft, Ebay, Netflix</b>
+                        <br>
+                    </span>
+                    <br>
+                    <span nz-text class="heading">
+                        <i nz-icon nzType="info-circle" style="padding: 0 5px 0 0;" nzTheme="outline"></i>
+                        <strong>Material design</strong>
+                    </span>
+                    <br>
+                    <span nz-text nzType="secondary">
+                        <span class="left-displace">-</span> Uses grid-based layouts, responsive animations and
+                        transitions, padding, and
+                        depth effects such as lighting and shadows.
+                        <br>
+                        <span class="left-displace">-</span> Has physical surfaces and edges.
+                        <br>
+                        Used by <b>Google, Reddit, Tumblr, Dropbox, Behance</b>
+                    </span>
+                </div>
+            </ng-container>
+
+            <!-- Color stage -->
+            <ng-container *ngIf="currentRoute === '/theme'">
+                <div class="project-setup-stage-tips">
+                    <span nz-text class="heading">
+                        <i nz-icon nzType="info-circle" style="padding: 0 5px 0 0;" nzTheme="outline"></i>
+                        <strong>Meaning of color</strong>
+                    </span>
+                    <br>
+                    <span nz-text nzType="secondary" style="margin-right: -20px;">
+                        <span class="left-displace">-</span> Use color judiciously for communication. The power of color
+                        to call attention to important information is heightened when used sparingly. For example, a red
+                        triangle that warns people of a critical problem becomes less effective when red is used
+                        elsewhere in an app for noncritical reasons.
+                    </span>
+                    <br>
+                    <br>
+                    <span nz-text class="heading">
+                        <i nz-icon nzType="info-circle" style="padding: 0 5px 0 0;" nzTheme="outline"></i>
+                        <strong>General conventions</strong>
+                    </span>
+                    <br>
+                    <span nz-text nzType="secondary" style="margin-right: -20px;">
+                        <span class="left-displace">-</span> In general, choose a limited color palette that coordinates
+                        with your app logo. Subtle use of color is a great way to communicate your brand.
+                        <br>
+                        <span class="left-displce">-</span> Avoid using the same color for interactive and
+                        noninteractive elements. If interactive and noninteractive elements have the same color, it’s
+                        hard for people to know where to tap.
+                    </span>
+                </div>
+            </ng-container>
+
+            <!-- Name stage -->
+            <ng-container *ngIf="currentRoute === '/name'">
+                <div class="project-setup-stage-tips">
+                    <span nz-text class="heading">
+                        <i nz-icon nzType="info-circle" style="padding: 0 5px 0 0;" nzTheme="outline"></i>
+                        <strong>Short tips about good product naming</strong>
+                    </span>
+                    <div></div>
+                    <span nz-text nzType="secondary">- Let it be short to middle length</span> <br>
+                    <span nz-text nzType="secondary">- Make it easy to pronounce</span> <br>
+                    <span nz-text nzType="secondary">- Make it easy to come up with a good icon</span> <br>
+                    <span nz-text nzType="secondary">- Try foreign words, compound words, real words,
+                        misspellings, names</span> <br>
+                    <span nz-text nzType="secondary">- Don't rush, take your time. We'll wait for your best
+                        choise</span>
+                </div>
                 <br>
-                <a href="https://www.shopify.com/tools/business-name-generator#ToolContent">
-                    <span nz-text>https://www.shopify.com</span>
-                </a>
-            </nz-card>
-        </div>
-    </ng-container>
+                <div nz-col nzSpan="20" class="project-setup-stage-tips">
+                    <span nz-text class="heading">
+                        <i nz-icon nzType="info-circle" style="padding: 0 5px 0 0;" nzTheme="outline"></i>
+                        <strong>If you are out of ideas you can use name generators</strong>
+                    </span>
+                    <br>
+                    <a href="https://namelix.com/"><span nz-text nzType="secondary">https://namelix.com</span></a><br>
+                    <a href="https://businessnamegenerator.com/"><span nz-text
+                            nzType="secondary">https://businessnamegenerator.com</span></a>
+                    <br>
+                    <a href="https://www.shopify.com/tools/business-name-generator#ToolContent">
+                        <span nz-text nzType="secondary">https://www.shopify.com</span>
+                    </a>
+                </div>
+            </ng-container>
 
-    <ng-container *ngIf="stageCounter === 1">
-        <div nz-col nzSpan="6">
-            <textarea rows="2" style="padding: 25px" nz-input placeholder="Features that no competitor have" nzSize="large"
-                class="project-setup-stage-input" [(ngModel)]="projectFeatureOne">
-                </textarea>
-            <textarea rows="2" style="padding: 25px" nz-input placeholder="Solutions that you deliver better that your competitors" nzSize="large"
-                class="project-setup-stage-input" [(ngModel)]="projectFeatureTwo">
-                </textarea>
-            <textarea rows="2" style="padding: 25px" nz-input placeholder="Concepts and ideas you pursue with your team " nzSize="large"
-                class="project-setup-stage-input" [(ngModel)]="projectFeatureThree">
-                </textarea>
-        </div>
-    </ng-container>
+            <ng-container *ngIf="currentRoute === '/strong-sides'">
 
-    <ng-container *ngIf="stageCounter === 2">
-           <div nz-row>
-            <nz-card style="width: 300px" nz-col nzSpan="4" nzTitle="Chill" class="project-setup-stage-tips">
-                <div class="project-setup-stage-theme theme-1"></div>
-            </nz-card>
-            <nz-card style="width: 300px" nz-col nzSpan="4" nzTitle="Thrilling" class="project-setup-stage-tips">
-                <div class="project-setup-stage-theme theme-2"></div>
-            </nz-card>
-            <nz-card style="width: 300px" nz-col nzSpan="4" nzTitle="Magical" class="project-setup-stage-tips">
-                <div class="project-setup-stage-theme theme-3"></div>
-            </nz-card>
-            <nz-card style="width: 300px" nz-col nzSpan="4" nzTitle="Futuristic" class="project-setup-stage-tips">
-                <div class="project-setup-stage-theme theme-4"></div>
-            </nz-card>
-           </div>
-    </ng-container>
+            </ng-container>
 
-    <div nz-col nzSpan="24" class="project-setup-stage-nav-button-section">
-        <div nz-row nzType="flex" nzJustify="space-around">
-            <button nz-button nzType="primary" (click)="prevStage()"><i nz-icon nzType="left"
-                    nzTheme="outline"></i>Prev.</button>
-            <button nz-button nzType="primary" (click)="nextStage()">Next <i nz-icon nzType="right"
-                    nzTheme="outline"></i></button>
+
         </div>
+    </div>
+
+    <!-- Buttons -->
+    <div nz-row nzType="flex" nzJustify="space-between" class="project-setup-stage-nav-button-section">
+        <button nz-button nzType="primary" (click)="prevStage()"><i nz-icon nzType="left"
+                nzTheme="outline"></i>Prev.</button>
+        <button nz-button nzType="primary" (click)="nextStage()">Next <i nz-icon nzType="right"
+                nzTheme="outline"></i></button>
     </div>
 </nz-layout>
