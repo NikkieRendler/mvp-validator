@@ -16,6 +16,7 @@
     "@angular/common": "~8.2.13",
     "@angular/compiler": "~8.2.13",
     "@angular/core": "~8.2.13",
+    "@angular/flex-layout": "^8.0.0-beta.27",
     "@angular/forms": "~8.2.13",
     "@angular/material": "^8.2.3",
     "@angular/platform-browser": "~8.2.13",
@@ -25,6 +26,7 @@
     "ng-zorro-antd": "^8.5.2",
     "ngx-color-picker": "^8.2.0",
     "rxjs": "^6.4.0",
+    "trianglify": "^2.0.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

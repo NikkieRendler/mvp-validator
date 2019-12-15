@@ -1,0 +1,12 @@
+<div>
+    <div *ngIf="currentRoute !== '/customer-app'; else customerAppDescription" nz-text class="project-desctiption">
+        <textarea nz-input (keyup.enter)="nextStage()" class="desctiption-input" [value]="selectedDescription"
+            (keyup)="saveInputValue($event)"></textarea>
+    </div>
+
+    <ng-template #customerAppDescription>
+        <div class="project-desctiption" style="margin-bottom: 15px;">
+            <span nz-text>{{selectedDescription}}</span>
+        </div>
+    </ng-template>
+</div>

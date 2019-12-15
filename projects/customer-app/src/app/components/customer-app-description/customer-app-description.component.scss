@@ -1,0 +1,15 @@
+@import "../../../styles.scss";
+
+.project-desctiption {
+  font-size: $main-text;
+}
+
+*:focus {
+  outline: none;
+}
+
+.desctiption-input {
+  font-size: $main-text;
+  width: 500px;
+  height: auto;
+}

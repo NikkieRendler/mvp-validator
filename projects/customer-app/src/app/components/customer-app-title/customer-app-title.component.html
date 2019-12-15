@@ -1,1 +1,12 @@
-Title
+<div>
+    <div *ngIf="currentRoute !== '/customer-app'; else customerAppTitle" nz-text class="project-title">
+        <input nz-input (keyup.enter)="nextStage()" class="title-input" [value]="selectedTitle"
+            (keyup)="saveInputValue($event)" />
+    </div>
+
+    <ng-template #customerAppTitle>
+        <div class="project-title">
+            <span nz-text>{{selectedTitle}}</span>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,40 @@
+@import "../../../styles.scss";
+
+#customerWrapper {
+  padding: 5vh 10vw;
+  height: 100vh;
+}
+
+.form-card {
+  width: 500px;
+  text-align: center;
+}
+
+.form-title {
+  font-size: $heading-text;
+}
+
+.main-text {
+  font-size: $main-text;
+}
+
+.form-input-flat {
+  margin: 10px 0;
+  font-size: $main-text;
+}
+
+.form-input-material {
+  font-size: $main-text;
+}
+
+.flat-access-button {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 15px !important;
+  font-size: 22px;
+}
+
+.feedback-icon {
+  margin: 0px 5px;
+  font-size: 35px;
+}

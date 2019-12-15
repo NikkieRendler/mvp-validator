@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
@@ -17,6 +17,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { ColorPickerModule } from 'ngx-color-picker';
 import { CustomerAppTitleComponent } from 'projects/customer-app/src/app/components/customer-app-title/customer-app-title.component';
 import { CustomerAppComponent } from 'projects/customer-app/src/app/components/customer-app/customer-app.component';
+import { CustomerAppFeaturesComponent } from 'projects/customer-app/src/app/components/customer-app-features/customer-app-features.component';
+import { CustomerAppDescriptionComponent } from 'projects/customer-app/src/app/components/customer-app-description/customer-app-description.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
 
 
 registerLocaleData(en);
@@ -28,6 +32,8 @@ registerLocaleData(en);
     MainComponent,
     CustomerAppNameComponent,
     CustomerAppTitleComponent,
+    CustomerAppFeaturesComponent,
+    CustomerAppDescriptionComponent,
     CustomerAppComponent
   ],
   imports: [
@@ -35,10 +41,13 @@ registerLocaleData(en);
     AppRoutingModule,
     NgZorroAntdModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    ColorPickerModule
+    MatCardModule,
+    ColorPickerModule,
+    MatInputModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }, ProjectSetupService],
   bootstrap: [AppComponent]

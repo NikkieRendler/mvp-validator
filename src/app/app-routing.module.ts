@@ -29,11 +29,15 @@ const routes: Routes = [
   },
   {
     component: ProjectSetupComponent,
-    path: 'strong-sides'
+    path: 'features'
   },
   {
     component: ProjectSetupComponent,
     path: 'theme'
+  },
+  {
+    component: ProjectSetupComponent,
+    path: 'description'
   },
   {
     component: CustomerAppComponent,

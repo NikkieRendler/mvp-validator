@@ -19,10 +19,19 @@ export interface StrongSides {
 })
 export class ProjectSetupService {
 
-  customerProjectDesign: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  customerProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  // TESTING
+  customerProjectDesign: BehaviorSubject<string> = new BehaviorSubject<string>('material');
+  customerProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>('#1d39c4');
+  customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>('Project name');
+  customerProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>('We are the legion you despise');
+  customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(['Until the world cames crushing down', 'So let us stand out battleground', 'Everything that I need']);
+  customerProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>("Sake expires from child to child in a silver screen portation. It's californication. Dream of californication");
 
-
+  // customerProjectDesign: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  // customerProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  // customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  // customerProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+  // customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  // customerProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>(null);
   constructor() { }
 }

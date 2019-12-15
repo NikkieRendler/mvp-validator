@@ -1,25 +1,23 @@
-@import '../../../styles.scss';
+@import "../../../styles.scss";
 
 .project-name {
-    border: 3px solid;
-    max-width: 300px;
-    text-align: center;
-    margin: 0px auto;
-    padding: 10px;
-    font-weight: bold;
-    font-size: $heading-text;
+  max-width: 350px;
+  min-width: 200px;
+  font-weight: bold;
+  font-size: $heading-text;
+  border: 3px rgba(0, 0, 0, 0.65) solid;
+  padding: 10px;
+  border-radius: 2px;
 }
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 .title-input {
-    border: none; 
-    background-color: #f0f2f5; 
-    text-align: center;
-    font-weight: bold;
-    font-size: $heading-text;
-    width: 100%;
-    
+  text-align: center;
+  font-weight: bold;
+  font-size: $heading-text;
+  width: 100%;
+  height: auto;
 }

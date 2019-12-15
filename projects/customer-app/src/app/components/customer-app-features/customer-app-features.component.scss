@@ -1,0 +1,10 @@
+@import "../../../styles.scss";
+
+*:focus {
+  outline: none;
+}
+
+.feature-input {
+  font-size: $main-text;
+  width: 350px;
+}

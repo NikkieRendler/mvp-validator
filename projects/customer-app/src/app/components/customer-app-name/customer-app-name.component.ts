@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectSetupService } from 'src/app/services/project-setup.service';
 import { Router } from '@angular/router';
+import { STAGES } from 'src/app/components/project-setup/project-setup.component';
 
 @Component({
   selector: 'app-customer-app-name',
@@ -25,13 +26,17 @@ export class CustomerAppNameComponent implements OnInit {
       this.selectedTheme = res;
     });
     this.service.customerProjectName.subscribe(res => {
-    console.log("TCL: CustomerAppNameComponent -> ngOnInit -> res", res)
       this.selectedName = res;
     })
   }
 
   saveInputValue(event) {
     this.service.customerProjectName.next(event.target.value);
+  }
+
+  nextStage() {
+    const stage = STAGES.indexOf(this.router.url);
+    this.router.navigateByUrl(STAGES[stage + 1]);
   }
 
 }
