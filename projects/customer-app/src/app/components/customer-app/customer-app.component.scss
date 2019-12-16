@@ -2,7 +2,7 @@
 
 #customerWrapper {
   padding: 5vh 10vw;
-  height: 100vh;
+  height: 550px;
 }
 
 .form-card {
@@ -35,6 +35,21 @@
 }
 
 .feedback-icon {
+  background-size: cover;
   margin: 0px 5px;
-  font-size: 35px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
+}
+
+.happy-icon {
+  background-image: url("../../../assets/images/happy_face.png");
+}
+
+.neutral-icon {
+  background-image: url("../../../assets/images/neutral_face.png");
+}
+
+.sad-icon {
+  background-image: url("../../../assets/images/sad_face.png");
 }

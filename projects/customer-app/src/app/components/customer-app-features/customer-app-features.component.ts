@@ -44,7 +44,7 @@ export class CustomerAppFeaturesComponent implements OnInit {
       this.service.customerProjectFeatures.subscribe(res => {
         res.map(i => {
           this.addFeature();
-        })
+        });
       });
     }
 
@@ -76,8 +76,14 @@ export class CustomerAppFeaturesComponent implements OnInit {
   }
 
   nextStage() {
-    const stage = STAGES.indexOf(this.router.url);
-    this.router.navigateByUrl(STAGES[stage + 1]);
+    if (!this.checkValidity()) {
+      const stage = STAGES.indexOf(this.router.url);
+      this.router.navigateByUrl(STAGES[stage + 1]);
+    }
+  }
+
+  checkValidity() {
+    return this.featuresArray.value.some(value => value.length === 0 ? true : false)
   }
 
 }

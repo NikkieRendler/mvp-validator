@@ -1,5 +1,5 @@
 <div id="customerWrapper" #customerWrapper fxLayout fxLayoutAlign="start center">
-    <div style="margin-bottom: 120px;">
+    <div style="margin-bottom: 140px;">
         <div nz-row>
             <div nz-col nzSpan="6">
                 <app-customer-app-name></app-customer-app-name>
@@ -20,30 +20,21 @@
                     <div>
                         <app-customer-app-features></app-customer-app-features>
                     </div>
-                    <div>
+                    <div style="position: absolute; top: 345px;">
                         <span class="main-text">
                             Tell us what you think!
                         </span>
                         <br>
                         <div style="display: flex;">
-                            <div class="feedback-icon">
-                                😄
-                            </div>
-                            <div class="feedback-icon">
-                                🙂
-                            </div>
-                            <div class="feedback-icon">
-                                😐
-                            </div>
-                            <div class="feedback-icon">
-                                ☹️
-                            </div>
+                            <div class="feedback-icon happy-icon"></div>
+                            <div class="feedback-icon neutral-icon"></div>
+                            <div class="feedback-icon sad-icon"></div>
                         </div>
                     </div>
                 </div>
             </div>
             <div nz-col nzSpan="10" nzOffset="2" fxLayout="column" fxLayoutAlign="center center">
-                <nz-card *ngIf="selectedDesign === 'flat'; else materialForm" class="form-card">
+                <nz-card class="form-card">
                     <nz-card-meta [nzTitle]="formTitle" nzDescription="We'll notify you about the progress">
                     </nz-card-meta>
                     <div nz-row>
@@ -65,9 +56,7 @@
                             <ng-template #commentPrefix>
                                 <i [ngStyle]="{'color': selectedTheme}" nz-icon nzType="message" nzTheme="outline"></i>
                             </ng-template>
-                            <button
-                                (click)="selectedDesign === 'flat' ? selectedDesign = 'material' : selectedDesign = 'flat'"
-                                [ngStyle]="{'background-color': selectedTheme}" class="flat-access-button"
+                            <button [ngStyle]="{'background-color': selectedTheme}" class="flat-access-button"
                                 nzSize="large" nz-button>
                                 <span style="color: whitesmoke" nz-text>Get early access</span>
                             </button>
@@ -78,7 +67,7 @@
                     <span style="margin-bottom: 20px;" nz-text class="form-title">Be one of the first to jump in!</span>
                 </ng-template>
 
-                <ng-template #materialForm>
+                <!-- <ng-template #materialForm>
                     <mat-card class="form-card">
                         <mat-card-header style="display: flex; flex-direction: column;">
                             <mat-card-title class="form-title">Be one of the first to jump in!</mat-card-title>
@@ -111,17 +100,15 @@
                                                 placeholder="Your comment (optional)"></textarea>
                                         </mat-form-field>
 
-                                        <button
-                                            (click)="selectedDesign === 'flat' ? selectedDesign = 'material' : selectedDesign = 'flat'"
-                                            [ngStyle]="{'background-color': selectedTheme}" style="color: whitesmoke;"
-                                            class="flat-access-button" mat-raised-button>Get
+                                        <button [ngStyle]="{'background-color': selectedTheme}"
+                                            style="color: whitesmoke;" class="flat-access-button" mat-raised-button>Get
                                             early access</button>
                                     </form>
                                 </div>
                             </div>
                         </mat-card-content>
                     </mat-card>
-                </ng-template>
+                </ng-template> -->
             </div>
         </div>
     </div>

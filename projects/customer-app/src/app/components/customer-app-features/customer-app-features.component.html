@@ -11,15 +11,9 @@
             </button>
 
         </div>
-        <button *ngIf="showAddButton()" nz-button (click)="addFeature()">Add feature</button>
+        <button *ngIf="showAddButton()" nz-button (click)="addFeature(); saveFeaturesValue()">Add feature</button>
     </div>
 </div>
-
-<!-- <ng-template #materialCheck>
-    <i [ngStyle]="{'color': selectedTheme}" style="margin-right: 5px;" class="material-icons">
-        check_circle
-    </i>
-</ng-template> -->
 
 <ng-template #customerAppFeatures>
     <div *ngFor="let control of featuresArray.controls; let i = index" fxLayout style="margin-bottom: 5px;">

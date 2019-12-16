@@ -62,9 +62,9 @@ export class ProjectSetupComponent implements OnInit {
   selectedFeatures: string[];
   projectTitle: string;
 
-  firstColorScheme = '#1890ff';
-  secondColorScheme = '#faad14';
-  thirdColorScheme = '#780650';
+  firstColorScheme = 'hsla(209, 100%, 55%, 1)';
+  secondColorScheme = 'hsla(40, 96%, 53%, 1)';
+  thirdColorScheme = 'hsla(321, 90%, 25%, 1)';
   customColorScheme: string;
 
   ngOnInit() {

@@ -1,5 +1,16 @@
-$title-text: 46px;
+$title-text: 40px;
 $heading-text: 26px;
-$main-text: 22px;
+$main-text-bigger: 22px;
+$main-text: 18px;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.app-name {
+    color: whitesmoke;
+    margin: 0;
+    line-height: unset;
+}
+
+.ant-typography {
+    color: rgba(0, 0, 0, .9);
+}

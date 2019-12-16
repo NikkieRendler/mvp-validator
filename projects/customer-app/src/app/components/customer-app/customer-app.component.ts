@@ -21,10 +21,12 @@ export class CustomerAppComponent implements OnInit {
 
   ngOnInit() {
     const trianglify = new Trianglify();
-    var pattern = Trianglify({
+
+    const pattern = Trianglify({
       height: window.innerHeight,
       width: window.innerWidth,
-      color_function: this.colorFunc,
+      x_colors: this.getColorsFromSelection(),
+      y_colors: this.getColorsFromSelection(),
       cell_size: 40
     });
 
@@ -39,12 +41,13 @@ export class CustomerAppComponent implements OnInit {
     });
   }
 
-  colorFunc (x, y) {
-    console.log("TCL: CustomerAppComponent -> colorFunc -> y", y)
-    console.log("TCL: CustomerAppComponent -> colorFunc -> x", x)
-    console.log("TCL: CustomerAppComponent -> colorFunc -> +Math.floor(Math.abs(x*y)*100)", +Math.floor(Math.abs(x*y)*100))
-    return 'hsl('+Math.floor(Math.abs(x*y)*100)+',100%,50%)';
-};
+  getColorsFromSelection() {
+    let colorScheme;
+    this.service.customerProjectTheme.subscribe(res =>
+      colorScheme = ['hsl(0, 0%, 100%)', res, res]
+    );
+    return colorScheme;
+  }
 
 
 }

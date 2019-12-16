@@ -1,4 +1,4 @@
-<nz-header nz-row nzType="flex" nzJustify="center">
+<nz-header style="padding: 0 10vw;" nz-row nzType="flex" nzJustify="start">
     <h2 nz-title class="app-name">Validia</h2>
 </nz-header>
 <div [@templateChange] style="width: 80vw; margin: 0px auto;">
@@ -29,7 +29,7 @@
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': firstColorScheme}"
                                 (click)="selectTheme(firstColorScheme)">
                                 <span nz-text class="project-setup-stage-theme-title">
-                                    Geek Blue
+                                    Blue
                                 </span>
                                 <div style="min-height: 30px;">
                                     <i *ngIf="selectedTheme === firstColorScheme" class="selected-icon" nz-icon
@@ -74,7 +74,7 @@
                             <div nz-col nzSpan="24" style="height: 0;">
                                 <div style="height: 0;">
                                     <input style="height: 0; width: 0; visibility: hidden;" #colorPickerInput
-                                        [(colorPicker)]="customColorScheme" [cpPosition]="'bottom'" />
+                                        [(colorPicker)]="customColorScheme" [cpPosition]="'bottom'" [cpOutputFormat]="'hsla'" />
                                 </div>
                                 <i style="cursor: pointer;" (click)="colorPickerInput.click()" nz-icon
                                     nzType="bg-colors" nzTheme="outline"></i>
@@ -86,7 +86,7 @@
                 </ng-container>
 
                 <!-- Design stage -->
-                <ng-container *ngIf="currentRoute === '/design'">
+                <!-- <ng-container *ngIf="currentRoute === '/design'">
                     <div nz-col nzSpan="24">
                         <nz-card>
                             <div nz-row nzType="flex" nzJustify="space-around">
@@ -112,17 +112,14 @@
                                     <br>
                                     <i class="selected-icon" *ngIf="selectedDesign === 'material'" nz-icon
                                         nzType="check-circle" nzTheme="outline"></i>
-                                    <!-- <i *ngIf="selectedDesign === 'material'"
-                                            class="material-icons selected-icon">
-                                            check_circle_outline
-                                        </i> -->
+                                    
                                 </div>
 
                             </div>
 
                         </nz-card>
                     </div>
-                </ng-container>
+                </ng-container> -->
 
                 <!-- Name stage -->
                 <ng-container *ngIf="currentRoute === '/name'">
@@ -166,7 +163,7 @@
         <!-- Notes side -->
         <div nz-col nzSpan="8">
             <!-- Design stage -->
-            <ng-container *ngIf="currentRoute === '/design'">
+            <!-- <ng-container *ngIf="currentRoute === '/design'">
                 <div class="project-setup-stage-tips">
                     <span nz-text class="heading">
                         <i nz-icon nzType="info-circle" style="padding: 0 5px 0 0;" nzTheme="outline"></i>
@@ -199,7 +196,7 @@
                         Used by <b>Google, Reddit, Tumblr, Dropbox, Behance</b>
                     </span>
                 </div>
-            </ng-container>
+            </ng-container> -->
 
             <!-- Color stage -->
             <ng-container *ngIf="currentRoute === '/theme'">
@@ -339,7 +336,7 @@
     <div nz-row nzType="flex" nzJustify="space-between" class="project-setup-stage-nav-button-section">
         <button nz-button nzType="primary" (click)="prevStage()"><i nz-icon nzType="left"
                 nzTheme="outline"></i>Prev.</button>
-        <button [disabled]="checkValidity()"  nz-button nzType="primary" (click)="nextStage()">Next <i nz-icon nzType="right"
-                nzTheme="outline"></i></button>
+        <button [disabled]="checkValidity()" nz-button nzType="primary" (click)="nextStage()">Next <i nz-icon
+                nzType="right" nzTheme="outline"></i></button>
     </div>
 </div>

@@ -1,5 +1,6 @@
 $title-text: 40px;
 $heading-text: 26px;
+$main-text-bigger: 22px;
 $main-text: 18px;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -8,5 +9,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     color: whitesmoke;
     margin: 0;
     line-height: unset;
-    width: 70vw;
 }

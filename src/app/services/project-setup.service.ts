@@ -20,8 +20,8 @@ export interface StrongSides {
 export class ProjectSetupService {
 
   // TESTING
-  customerProjectDesign: BehaviorSubject<string> = new BehaviorSubject<string>('material');
-  customerProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>('#1d39c4');
+  customerProjectDesign: BehaviorSubject<string> = new BehaviorSubject<string>('flat');
+  customerProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>('hsl(321, 90%, 25%)');
   customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>('Project name');
   customerProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>('We are the legion you despise');
   customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(['Until the world cames crushing down', 'So let us stand out battleground', 'Everything that I need']);
