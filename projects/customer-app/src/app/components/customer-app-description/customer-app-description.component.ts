@@ -12,7 +12,7 @@ export class CustomerAppDescriptionComponent implements OnInit {
   selectedDescription: string;
   currentRoute: string;
 
-  constructor(private service: ProjectSetupService, private router: Router) {}
+  constructor(private service: ProjectSetupService, private router: Router) { }
 
   ngOnInit() {
     this.currentRoute = this.router.url;
@@ -22,6 +22,7 @@ export class CustomerAppDescriptionComponent implements OnInit {
   }
 
   saveInputValue(event) {
+    this.selectedDescription = event.target.value;
     this.service.customerProjectDescription.next(event.target.value);
   }
 

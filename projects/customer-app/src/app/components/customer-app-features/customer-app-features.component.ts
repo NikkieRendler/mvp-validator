@@ -53,8 +53,6 @@ export class CustomerAppFeaturesComponent implements OnInit {
     });
   }
 
-
-
   addFeature() {
     this.featuresArray.push(this.fb.control(''));
   }

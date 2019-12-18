@@ -1,12 +1,17 @@
-<div>
-    <div *ngIf="currentRoute !== '/customer-app'; else customerAppDescription" nz-text class="project-desctiption">
-        <textarea nz-input (keyup.enter)="nextStage()" class="desctiption-input" [value]="selectedDescription"
-            (keyup)="saveInputValue($event)"></textarea>
-    </div>
+<form>
+    <nz-form-item *ngIf="currentRoute !== '/customer-app'; else customerAppDescription" nz-text
+        class="project-desctiption">
+        <nz-form-control [nzValidateStatus]="selectedDescription.length === 120 ? 'warning' : null"
+        nzWarningTip="Max. symbols used. Short description - better conversion">
+            <textarea nz-input (keyup.enter)="nextStage()" maxLength="120" class="desctiption-input"
+                [value]="selectedDescription" (keyup)="saveInputValue($event)"></textarea>
+        </nz-form-control>
+
+    </nz-form-item>
 
     <ng-template #customerAppDescription>
         <div class="project-desctiption" style="margin-bottom: 15px;">
             <span nz-text>{{selectedDescription}}</span>
         </div>
     </ng-template>
-</div>
+</form>

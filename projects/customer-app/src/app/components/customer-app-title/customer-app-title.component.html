@@ -1,12 +1,16 @@
-<div>
-    <div *ngIf="currentRoute !== '/customer-app'; else customerAppTitle" nz-text class="project-title">
-        <input nz-input (keyup.enter)="nextStage()" class="title-input" [value]="selectedTitle"
-            (keyup)="saveInputValue($event)" />
-    </div>
+<form>
+    <nz-form-item *ngIf="currentRoute !== '/customer-app'; else customerAppTitle" nz-text class="project-title">
+        <nz-form-control [nzValidateStatus]="selectedTitle.length === 35 ? 'warning' : null"
+        nzWarningTip="Max. symbols used. Title should be short and precise">
+            <input maxlength="35" nz-input (keyup.enter)="nextStage()" class="title-input" [value]="selectedTitle"
+                (keyup)="saveInputValue($event)" />
+        </nz-form-control>
+
+    </nz-form-item>
 
     <ng-template #customerAppTitle>
         <div class="project-title">
             <span nz-text>{{selectedTitle}}</span>
         </div>
     </ng-template>
-</div>
+</form>
