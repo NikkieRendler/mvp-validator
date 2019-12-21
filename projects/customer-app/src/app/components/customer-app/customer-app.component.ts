@@ -31,7 +31,9 @@ export class CustomerAppComponent implements OnInit {
     });
 
     this.customerWrapper.nativeElement.style.background = `url(${pattern.png()})`
-    this.customerWrapper.nativeElement.style.backgroundSize = 'cover';
+    this.customerWrapper.nativeElement.style.backgroundSize = '100% 550px';
+    this.customerWrapper.nativeElement.style.backgroundRepeat = 'no-repeat';
+
 
     this.service.customerProjectTheme.subscribe(res => {
       this.selectedTheme = res;

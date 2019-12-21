@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProjectSetupComponent } from './components/project-setup/project-setup.component';
 import { MainComponent } from './components/main/main.component';
 import { CustomerAppComponent } from 'projects/customer-app/src/app/components/customer-app/customer-app.component';
+import { ProjectPreviewComponent } from './components/project-preview/project-preview.component';
+import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
@@ -40,9 +43,17 @@ const routes: Routes = [
     path: 'description'
   },
   {
-    component: CustomerAppComponent,
+    component: ProjectPreviewComponent,
     path: 'customer-app'
   },
+  {
+    component: CustomerDashboardComponent,
+    path: 'dashboard'
+  },
+  {
+    path: 'login/success/:token',
+    component: LoginComponent
+  }
 ];
 
 @NgModule({

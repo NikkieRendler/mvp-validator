@@ -21,6 +21,9 @@ import { CustomerAppFeaturesComponent } from 'projects/customer-app/src/app/comp
 import { CustomerAppDescriptionComponent } from 'projects/customer-app/src/app/components/customer-app-description/customer-app-description.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
+import { ProjectPreviewComponent } from './components/project-preview/project-preview.component';
+import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 registerLocaleData(en);
@@ -34,7 +37,10 @@ registerLocaleData(en);
     CustomerAppTitleComponent,
     CustomerAppFeaturesComponent,
     CustomerAppDescriptionComponent,
-    CustomerAppComponent
+    CustomerAppComponent,
+    ProjectPreviewComponent,
+    CustomerDashboardComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

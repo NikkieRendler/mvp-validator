@@ -1,0 +1,20 @@
+<app-customer-app></app-customer-app>
+<nz-divider></nz-divider>
+<div style="display: flex; justify-content: center;">
+    <button (click)="showModal()" nz-button>Validate your ptoject</button>
+</div>
+<nz-modal [(nzVisible)]="modalView" [nzTitle]="registrationTemplate" [nzFooter]="null" (nzOnCancel)="handleCancel()"
+    (nzOnOk)="handleOk()">
+    <ng-template #registrationTemplate>
+        <div style="text-align: center;">Registration</div>
+    </ng-template>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <span class="pop-up-title" nz-text>Sign up to manage your projects</span>
+        <a href="https://mvp-validator.herokuapp.com/auth/google/">
+            <button nz-button nzShape="circle" nzSize="large">
+                <i nz-icon nzType="google" nzTheme="outline"></i>
+            </button>
+        </a>
+       
+    </div>
+</nz-modal>
