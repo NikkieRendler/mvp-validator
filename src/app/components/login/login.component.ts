@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     const token = this.route.snapshot.paramMap.get('token');
     localStorage.setItem('token', token);
     if (token) {
-      this.router.navigateByUrl('/dashboard')
+      this.router.navigateByUrl('/dashboard');
     }
   }
 
