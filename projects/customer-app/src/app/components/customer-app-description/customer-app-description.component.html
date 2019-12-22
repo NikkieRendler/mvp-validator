@@ -1,5 +1,5 @@
 <form>
-    <nz-form-item *ngIf="currentRoute !== '/customer-app'; else customerAppDescription" nz-text
+    <nz-form-item *ngIf="currentRoute !== '/project-preview'; else customerAppDescription" nz-text
         class="project-desctiption">
         <nz-form-control [nzValidateStatus]="selectedDescription.length === 120 ? 'warning' : null"
         nzWarningTip="Max. symbols used. Short description - better conversion">

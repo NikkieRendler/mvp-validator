@@ -1,1 +1,39 @@
-<p>customer-dashboard works!</p>
+<nz-header style="padding: 0 10vw;" nz-row nzType="flex" nzJustify="center">
+    <h2 nz-title class="app-name">Validia</h2>
+</nz-header>
+<div class="nav-breadcrumbs">
+    Dashboard
+</div>
+
+<div fxLayout fxLayoutAlign="space-between center" class="secondary-header">
+    <div fxLayout>
+        <i nz-icon nzType="home" nzTheme="outline" class="secondary-header-icon"></i>
+        <div fxLayout="column">
+            <span class="secondary-header-secondary-text">Dashboard features</span>
+            <h2 class="secondary-header-title">Projects</h2>
+        </div>
+    </div>
+</div>
+
+<div fxLayout fxLayoutGap="5px" fxLayoutAlign="start center" class="secondary-navigation">
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
+        [routerLink]="['/project-preview']">
+        <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
+        <span>Project name</span>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
+        [routerLink]="['/project-preview']">
+        <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
+        <span>Project name</span>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
+        [routerLink]="['/project-preview']">
+        <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
+        <span>Project name</span>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
+        [routerLink]="['/theme']">
+        <i nz-icon nzType="folder-add" nzTheme="outline" style="font-size: 64px;"></i>
+        <span>Add project</span>
+    </div>
+</div>

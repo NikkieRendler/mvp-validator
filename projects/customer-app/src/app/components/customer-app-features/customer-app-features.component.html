@@ -1,5 +1,5 @@
 <form nz-form [formGroup]="featuresForm" style="min-height: 210px;">
-    <div fxLayout formArrayName="featuresArray" *ngIf="currentRoute !== '/customer-app'; else customerAppFeatures">
+    <div formArrayName="featuresArray" *ngIf="currentRoute !== '/project-preview'; else customerAppFeatures">
         <nz-form-item *ngFor="let control of featuresArray.controls; let i = index"
             style="margin-bottom: 5px; display: flex;">
             <nz-form-control [nzValidateStatus]="control.value.length === 70 ? 'warning' : null"
@@ -19,7 +19,7 @@
 </form>
 
 <ng-template #customerAppFeatures>
-    <div *ngFor="let control of featuresArray.controls; let i = index" fxLayout style="margin-bottom: 5px;">
+    <div *ngFor="let control of featuresArray.controls; let i = index" style="margin-bottom: 5px;">
         <i nz-icon nzType="check-circle" nzTheme="outline" [ngStyle]="{'color': selectedTheme}"
             style="margin-right: 5px;"></i>
         <span nz-text class="feature-input">{{control.value}}</span>

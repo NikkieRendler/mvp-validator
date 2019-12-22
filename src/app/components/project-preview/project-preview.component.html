@@ -1,20 +1,34 @@
 <app-customer-app></app-customer-app>
 <nz-divider></nz-divider>
-<div style="display: flex; justify-content: center;">
-    <button (click)="showModal()" nz-button>Validate your ptoject</button>
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+    <button style="margin-left: 150px;" [routerLink]="['/dashboard']" nz-button>
+        <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
+    </button>
+    <button (click)="showModal()" nz-button>Buy ($15)</button>
+    <button style="visibility: hidden; margin-left: 150px;" [routerLink]="['/dashboard']" nz-button>
+        <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
+    </button>
 </div>
-<nz-modal [(nzVisible)]="modalView" [nzTitle]="registrationTemplate" [nzFooter]="null" (nzOnCancel)="handleCancel()"
+<nz-modal [(nzVisible)]="modalView" [nzTitle]="registrationTitle" [nzFooter]="null" (nzOnCancel)="handleCancel()"
     (nzOnOk)="handleOk()">
-    <ng-template #registrationTemplate>
-        <div style="text-align: center;">Registration</div>
+    <ng-template #registrationTitle>
+        <div *ngIf="!isUserLogged" style="text-align: center;">Registration</div>
+        <div *ngIf="isUserLogged" style="text-align: center;">Verify purchase</div>
     </ng-template>
-    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <span class="pop-up-title" nz-text>Sign up to manage your projects</span>
-        <a href="https://mvp-validator.herokuapp.com/auth/google/">
-            <button nz-button nzShape="circle" nzSize="large">
-                <i nz-icon nzType="google" nzTheme="outline"></i>
-            </button>
-        </a>
-       
+    <div *ngIf="!isUserLogged; else userLoggedTemlate">
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <span class="pop-up-title" nz-text>Sign up to manage your projects</span>
+            <a href="https://mvp-validator.herokuapp.com/auth/google/">
+                <button nz-button nzShape="circle" nzSize="large">
+                    <i nz-icon nzType="google" nzTheme="outline"></i>
+                </button>
+            </a>
+        </div>
     </div>
+    <ng-template #userLoggedTemlate>
+        <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <span class="pop-up-title" nz-text>Type in your payment data</span>
+        </div>
+    </ng-template>
+
 </nz-modal>

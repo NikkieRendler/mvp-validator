@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ProjectPreviewComponent } from './components/project-preview/project-preview.component';
 import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 registerLocaleData(en);
@@ -43,6 +44,7 @@ registerLocaleData(en);
     LoginComponent
   ],
   imports: [
+    FlexLayoutModule,
     BrowserModule,
     AppRoutingModule,
     NgZorroAntdModule,

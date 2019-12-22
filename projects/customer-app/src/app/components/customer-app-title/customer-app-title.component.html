@@ -1,5 +1,5 @@
 <form>
-    <nz-form-item *ngIf="currentRoute !== '/customer-app'; else customerAppTitle" nz-text class="project-title">
+    <nz-form-item *ngIf="currentRoute !== '/project-preview'; else customerAppTitle" nz-text class="project-title">
         <nz-form-control [nzValidateStatus]="selectedTitle.length === 35 ? 'warning' : null"
         nzWarningTip="Max. symbols used. Title should be short and precise">
             <input maxlength="35" nz-input (keyup.enter)="nextStage()" class="title-input" [value]="selectedTitle"

@@ -16,7 +16,7 @@ export const STAGES = [
   '/title',
   '/features',
   '/description',
-  '/customer-app'
+  '/project-preview'
 ];
 
 @Component({

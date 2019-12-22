@@ -11,8 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'main',
-    pathMatch: 'full'
+    component: MainComponent
   },
   {
     path: 'main',
@@ -43,8 +42,8 @@ const routes: Routes = [
     path: 'description'
   },
   {
-    component: ProjectPreviewComponent,
-    path: 'customer-app'
+    path: 'project-preview',
+    component: ProjectPreviewComponent
   },
   {
     component: CustomerDashboardComponent,

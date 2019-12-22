@@ -1,13 +1,14 @@
 @import "../../../styles.scss";
 
 #customerWrapper {
-  padding: 5vh 10vw;
+  padding: 5vh 10vw 0;
   // height: 550px;
 }
 
 .form-card {
   width: 500px;
   text-align: center;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
 }
 
 .form-title {
