@@ -24,7 +24,6 @@
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
-              "src/favicon.ico",
               "src/assets",
               {
                 "glob": "**/*",
@@ -96,7 +95,6 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
@@ -154,7 +152,6 @@
             "tsConfig": "projects/customer-app/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "projects/customer-app/src/favicon.ico",
               "projects/customer-app/src/assets"
             ],
             "styles": [
@@ -219,7 +216,6 @@
             "tsConfig": "projects/customer-app/tsconfig.spec.json",
             "karmaConfig": "projects/customer-app/karma.conf.js",
             "assets": [
-              "projects/customer-app/src/favicon.ico",
               "projects/customer-app/src/assets"
             ],
             "styles": [
