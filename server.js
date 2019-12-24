@@ -9,12 +9,8 @@ app.use(express.static(__dirname + '/dist/mvp-validator'));
 
 app.get('*', function(req,res) {
     
-res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+res.sendFile(path.join(__dirname+'/dist/mvp-validator/index.html'));
 });
 
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 3000);
-
-if (process.env.NODE_ENV === 'production') {
-	app.use(express.static('client/build'));
-}
