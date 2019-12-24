@@ -1,7 +1,7 @@
 <app-customer-app></app-customer-app>
 <nz-divider></nz-divider>
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-    <button style="margin-left: 150px;" [routerLink]="['/dashboard']" nz-button>
+    <button *ngIf="isUserLogged" style="margin-left: 150px;" [routerLink]="['/dashboard']" nz-button>
         <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
     </button>
     <button (click)="showModal()" nz-button>Buy ($15)</button>
