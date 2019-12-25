@@ -53,14 +53,13 @@ export const STAGES = [
 })
 export class ProjectSetupComponent implements OnInit {
   constructor(private servise: ProjectSetupService, private router: Router) { }
-  customColor: string;
-  currentRoute: string;
-  selectedDesign: string;
-  stageTitle: string;
-  stageDescr: string;
-  selectedTheme: string;
-  selectedFeatures: string[];
-  projectTitle: string;
+  currentRoute: string = null;
+  selectedDesign: string = null;
+  stageTitle: string = null;
+  stageDescr: string = null;
+  selectedTheme: string = null;
+  selectedFeatures: string[] = null;
+  projectTitle: string = null;
 
   firstColorScheme = 'hsla(209, 100%, 55%, 1)';
   secondColorScheme = 'hsla(40, 96%, 53%, 1)';
@@ -126,6 +125,8 @@ export class ProjectSetupComponent implements OnInit {
   getThemeSelection() {
     this.servise.customerProjectTheme.subscribe(res => {
       this.selectedTheme = res;
+      res !== this.firstColorScheme && res !== this.secondColorScheme && res !== this.thirdColorScheme ?
+        this.customColorScheme = res : null
     });
   }
 

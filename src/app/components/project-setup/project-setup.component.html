@@ -28,10 +28,11 @@
                         <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': firstColorScheme}"
                                 (click)="selectTheme(firstColorScheme)">
-                                <span nz-text class="project-setup-stage-theme-title">
+                                <div style="height: 33%;"></div>
+                                <span style="height: 33%;" nz-text class="project-setup-stage-theme-title">
                                     Blue
                                 </span>
-                                <div style="min-height: 30px;">
+                                <div style="height: 33%;">
                                     <i *ngIf="selectedTheme === firstColorScheme" class="selected-icon" nz-icon
                                         [nzType]="'check-circle'" [nzTheme]="'twotone'"
                                         [nzTwotoneColor]="'#52c41a'"></i>
@@ -42,18 +43,28 @@
                         <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': secondColorScheme}"
                                 (click)="selectTheme(secondColorScheme)">
-                                <span nz-text class="project-setup-stage-theme-title">Gold</span>
-                                <i *ngIf="selectedTheme === secondColorScheme" class="selected-icon" nz-icon
-                                    [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                <div style="height: 33%;"></div>
+                                <span style="height: 33%;" nz-text class="project-setup-stage-theme-title">Gold</span>
+                                <div style="height: 33%;">
+                                    <i *ngIf="selectedTheme === secondColorScheme" class="selected-icon" nz-icon
+                                        [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                                        [nzTwotoneColor]="'#52c41a'"></i>
+                                </div>
                             </div>
                         </nz-card>
 
                         <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': thirdColorScheme}"
                                 (click)="selectTheme(thirdColorScheme)">
-                                <span nz-text class="project-setup-stage-theme-title">Magenta</span>
-                                <i *ngIf="selectedTheme === thirdColorScheme" class="selected-icon" nz-icon
-                                    [nzType]="'check-circle'" [nzTheme]="'twotone'" [nzTwotoneColor]="'#52c41a'"></i>
+                                <div style="height: 33%;"></div>
+                                <span style="height: 33%;" nz-text
+                                    class="project-setup-stage-theme-title">Magenta</span>
+                                <div style="height: 33%;">
+                                    <i *ngIf="selectedTheme === thirdColorScheme" class="selected-icon" nz-icon
+                                        [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                                        [nzTwotoneColor]="'#52c41a'"></i>
+                                </div>
+
                             </div>
                         </nz-card>
 
@@ -64,17 +75,22 @@
                                 <div class="project-setup-stage-theme"
                                     [ngStyle]="{'background-color': customColorScheme}"
                                     (click)="selectTheme(customColorScheme)">
-                                    <span nz-text class="project-setup-stage-theme-title">Your color</span>
-                                    <i *ngIf="selectedTheme === 'customColorScheme'" class="selected-icon" nz-icon
-                                        [nzType]="'check-circle'" [nzTheme]="'twotone'"
-                                        [nzTwotoneColor]="'#52c41a'"></i>
-                                </div>
+                                    <div style="height: 33%;"></div>
+                                    <span style="height: 33%;" nz-text class="project-setup-stage-theme-title">Your
+                                        color</span>
+                                    <div style="height: 33%;">
+                                        <i *ngIf="selectedTheme === customColorScheme" class="selected-icon" nz-icon
+                                            [nzType]="'check-circle'" [nzTheme]="'twotone'"
+                                            [nzTwotoneColor]="'#52c41a'"></i>
+                                    </div>
 
+                                </div>
                             </ng-template>
                             <div nz-col nzSpan="24" style="height: 0;">
                                 <div style="height: 0;">
                                     <input style="height: 0; width: 0; visibility: hidden;" #colorPickerInput
-                                        [(colorPicker)]="customColorScheme" [cpPosition]="'bottom'" [cpOutputFormat]="'hsla'" />
+                                        [(colorPicker)]="customColorScheme" [cpPosition]="'bottom'"
+                                        [cpOutputFormat]="'hsla'" />
                                 </div>
                                 <i style="cursor: pointer;" (click)="colorPickerInput.click()" nz-icon
                                     nzType="bg-colors" nzTheme="outline"></i>
@@ -321,6 +337,38 @@
                     <span nz-text nzType="secondary"><span class="left-displace">-</span>
                         Many ideas try to look bigger then they are - that's a mistake. Worthy ideas are not the big
                         ones, but the ones that solve problem efficiently.
+                    </span> <br>
+                    <span nz-text nzType="secondary"><span class="left-displace">-</span>You can simply outline why you
+                        are better then your competitor</span>
+                    <br>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="currentRoute === '/description'">
+                <div class="project-setup-stage-tips">
+                    <span nz-text class="heading">
+                        <i nz-icon nzType="info-circle" style="padding: 0 5px 0 0;" nzTheme="outline"></i>
+                        <strong>Provide info after capturing attention</strong>
+                    </span>
+                    <div></div>
+                    <span nz-text nzType="secondary"><span class="left-displace">-</span>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam a eius perspiciatis
+                        molestias, velit atque dolor, voluptas voluptates corrupti dolorum aliquid possimus, suscipit
+                        tenetur at dolore porro totam quod?
+                    </span> <br>
+                    <span nz-text nzType="secondary"><span class="left-displace">-</span> Make those features look easy
+                        to understand and comprehend with the problem they solve</span>
+                    <br>
+                    <br>
+                    <span nz-text class="heading">
+                        <i nz-icon nzType="info-circle" style="padding: 0 5px 0 0;" nzTheme="outline"></i>
+                        <strong>Tell your audience what you would in real life</strong>
+                    </span>
+                    <div></div>
+                    <span nz-text nzType="secondary"><span class="left-displace">-</span>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quae veritatis voluptas eum
+                        voluptatibus a incidunt, aspernatur ullam earum libero modi, dignissimos consequatur, beatae
+                        debitis. Qui in quaerat est maxime?
                     </span> <br>
                     <span nz-text nzType="secondary"><span class="left-displace">-</span>You can simply outline why you
                         are better then your competitor</span>

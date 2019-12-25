@@ -30,8 +30,8 @@ export class CustomerAppComponent implements OnInit {
       cell_size: 40
     });
 
-    this.customerWrapper.nativeElement.style.background = `url(${pattern.png()})`
-    this.customerWrapper.nativeElement.style.backgroundSize = '100% 550px';
+    this.customerWrapper.nativeElement.style.background = `url(${pattern.png()})`;
+    this.customerWrapper.nativeElement.style.backgroundSize = '100% 70vh';
     this.customerWrapper.nativeElement.style.backgroundRepeat = 'no-repeat';
 
 

@@ -14,4 +14,8 @@ export class AuthService {
   signUp(): Observable<any> {
     return this.http.get('https://mvp-validator.herokuapp.com/auth/google/');
   }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
 }
