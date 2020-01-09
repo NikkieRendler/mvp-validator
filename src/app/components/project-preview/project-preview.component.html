@@ -2,11 +2,14 @@
     <app-customer-app></app-customer-app>
     <nz-divider></nz-divider>
     <div nz-row style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-        <button nz-col nzSpan="8" *ngIf="isUserLogged" [routerLink]="['/dashboard']"
-            nz-button>
-            <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
-        </button>
-        <button nz-col nzSpan="8" (click)="showModal()" nz-button>Buy ($15)</button>
+        <div nz-col nzSpan="8" style="display: flex; justify-content: center;">
+            <button *ngIf="isUserLogged" [routerLink]="['/dashboard']" nz-button>
+                <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
+            </button>
+        </div>
+        <div nz-col nzSpan="8" style="display: flex; justify-content: center;">
+            <button (click)="showModal()" nz-button>Buy ($15)</button>
+        </div>
         <div nz-col nzSpan="8"></div>
     </div>
     <nz-modal [(nzVisible)]="modalView" [nzTitle]="registrationTitle" [nzFooter]="null" (nzOnCancel)="handleCancel()"
