@@ -15,6 +15,10 @@ export class CustomerDashboardComponent implements OnInit {
   constructor(private dashboardService: DashboardService, private projectSetupService: ProjectSetupService, private router: Router) { }
 
   ngOnInit() {
+    this.getDashboard();
+  }
+
+  getDashboard() {
     this.dashboardService.getDashboard().subscribe(res => {
       this.dashboard = res.projects.landingConfigs;
       console.log("TCL: CustomerDashboardComponent -> ngOnInit -> this.dashboar", this.dashboard)
@@ -28,6 +32,13 @@ export class CustomerDashboardComponent implements OnInit {
     this.projectSetupService.customerProjectTheme.next(project.theme);
     this.projectSetupService.customerProjectTitle.next(project.title);
     this.router.navigateByUrl('/project-preview');
+  }
+
+  deleteProject(id) {
+    this.dashboardService.deleteProject(id).subscribe(res => {
+      console.log(res);
+      this.getDashboard();
+    });
   }
 
 }

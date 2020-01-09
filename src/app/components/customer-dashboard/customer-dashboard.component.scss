@@ -35,12 +35,19 @@
     color: #1890ff;
   }
 }
+
+.secondary-navigation-item-wrapper {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: flex-start; 
+  align-items: center; 
+  margin: 5px 5px 40px;
+}
 .secondary-navigation {
   padding: 20px;
   .secondary-navigation-item {
     height: 145px;
     width: 145px;
-    margin: 5px;
     border: 1px #1890ff solid;
     color: #1890ff;
     background-color: #fff;

@@ -45,6 +45,7 @@ export class ProjectPreviewComponent implements OnInit {
 
   createProject() {
     this.dashboardService.createProject(this.dashboardService.composeProjectConfig()).subscribe(res => {
+      console.log("TCL: ProjectPreviewComponent -> createProject -> this.dashboardService.composeProjectConfig()", this.dashboardService.composeProjectConfig())
       console.log(res);
     });
   }

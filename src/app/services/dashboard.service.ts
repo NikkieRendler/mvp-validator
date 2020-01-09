@@ -79,4 +79,10 @@ export class DashboardService {
     })
     return previewAppConfig;
   }
+
+  deleteProject(id): Observable<any> {
+    return this.http.delete(this.serverUrl + 'dashboard/' + id, {
+      headers: new HttpHeaders().append('Content-Type', 'application/json').append(`Authorization`, `Bearer ${this.authSrvice.getToken()}`)
+    })
+  }
 }

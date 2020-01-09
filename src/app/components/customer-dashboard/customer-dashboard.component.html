@@ -16,11 +16,15 @@
 </div>
 
 <div style="display: flex; flex-flow: row wrap;" class="secondary-navigation">
-    <div *ngFor="let project of dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
-        (click)="showProjectPreview(project)">
-        <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
-        <span>{{project.name}}</span>
+    <div class="secondary-navigation-item-wrapper" *ngFor="let project of dashboard">
+        <div fxLayout="column" fxLayoutAlign="center center" class="secondary-navigation-item"
+            (click)="showProjectPreview(project)">
+            <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
+            <span>{{project.name}}</span>
+        </div>
+        <button (click)="deleteProject(project._id)" style="width: 100%; margin-top: 5px;" nz-button nzType="danger">Detele project</button>
     </div>
+
     <!-- <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
         [routerLink]="['/project-preview']">
         <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
@@ -37,9 +41,12 @@
         <span>Project name</span>
     </div>
 -->
-    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
-        [routerLink]="['/theme']">
-        <i nz-icon nzType="folder-add" nzTheme="outline" style="font-size: 64px;"></i>
-        <span>Add project</span>
+    <div class="secondary-navigation-item-wrapper">
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
+            [routerLink]="['/theme']">
+            <i nz-icon nzType="folder-add" nzTheme="outline" style="font-size: 64px;"></i>
+            <span>Add project</span>
+        </div>
     </div>
+
 </div>

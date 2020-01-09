@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
 import { ProjectSetupService } from 'src/app/services/project-setup.service';
 import * as Trianglify from '../../../../../../node_modules/trianglify';
-import { Router } from '@angular/router';
-import { STAGES } from 'src/app/components/project-setup/project-setup.component';
 import { DashboardService, ProjectConfig } from 'src/app/services/dashboard.service';
 
 @Component({
@@ -30,9 +28,6 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.composedProject = this.dashboardService.composeProjectConfig();
-    console.log("TCL: CustomerAppComponent -> ngOnInit -> this.composedProject", this.composedProject)
-    // this.previewProject = this.dashboardService.composePreviewConfig();
-    // console.log("TCL: CustomerAppComponent -> ngOnInit -> this.previewProject ", this.previewProject)
     const trianglify = new Trianglify();
     const pattern = Trianglify({
       height: window.innerHeight,

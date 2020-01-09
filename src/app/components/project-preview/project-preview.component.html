@@ -30,11 +30,10 @@
         </div>
         <ng-template #userLoggedTemlate>
             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <span class="pop-up-title" nz-text>Type in your payment data</span>
+                <button (click)="createProject()" nz-button>
+                    Create project
+                </button>
             </div>
-            <!-- <button (click)="createProject()" nz-button>
-                Create project
-            </button> -->
         </ng-template>
 
     </nz-modal>
