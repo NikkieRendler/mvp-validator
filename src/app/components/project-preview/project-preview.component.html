@@ -1,14 +1,13 @@
-<div style="height: 100vh;">
-    <app-customer-app style="height: 100vh;"></app-customer-app>
+<div>
+    <app-customer-app></app-customer-app>
     <nz-divider></nz-divider>
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-        <div style="width: 300px;">
-            <button *ngIf="isUserLogged" style="margin-left: 150px;" [routerLink]="['/dashboard']" nz-button>
-                <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
-            </button>
-        </div>
-        <button (click)="showModal()" nz-button>Buy ($15)</button>
-        <div style="width: 300px;"></div>
+    <div nz-row style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <button nz-col nzSpan="8" *ngIf="isUserLogged" [routerLink]="['/dashboard']"
+            nz-button>
+            <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
+        </button>
+        <button nz-col nzSpan="8" (click)="showModal()" nz-button>Buy ($15)</button>
+        <div nz-col nzSpan="8"></div>
     </div>
     <nz-modal [(nzVisible)]="modalView" [nzTitle]="registrationTitle" [nzFooter]="null" (nzOnCancel)="handleCancel()"
         (nzOnOk)="handleOk()">
@@ -30,7 +29,10 @@
             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <span class="pop-up-title" nz-text>Type in your payment data</span>
             </div>
+            <!-- <button (click)="createProject()" nz-button>
+                Create project
+            </button> -->
         </ng-template>
-    
+
     </nz-modal>
 </div>

@@ -1,54 +1,74 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
 import { ProjectSetupService } from 'src/app/services/project-setup.service';
 import * as Trianglify from '../../../../../../node_modules/trianglify';
 import { Router } from '@angular/router';
 import { STAGES } from 'src/app/components/project-setup/project-setup.component';
+import { DashboardService, ProjectConfig } from 'src/app/services/dashboard.service';
 
 @Component({
   selector: 'app-customer-app',
   templateUrl: './customer-app.component.html',
   styleUrls: ['./customer-app.component.scss']
 })
-export class CustomerAppComponent implements OnInit {
+export class CustomerAppComponent implements OnInit, OnDestroy {
+
   @ViewChild('customerWrapper', null) customerWrapper: ElementRef;
 
   selectedTheme: string;
   selectedDesign: string;
+  composedProject: ProjectConfig;
+  previewProject: ProjectConfig;
 
-  constructor(private service: ProjectSetupService) {
+  projectToDisplay: ProjectConfig;
+
+  constructor(
+    private projectSetupService: ProjectSetupService,
+    private dashboardService: DashboardService
+  ) {
 
   }
 
   ngOnInit() {
+    this.composedProject = this.dashboardService.composeProjectConfig();
+    console.log("TCL: CustomerAppComponent -> ngOnInit -> this.composedProject", this.composedProject)
+    // this.previewProject = this.dashboardService.composePreviewConfig();
+    // console.log("TCL: CustomerAppComponent -> ngOnInit -> this.previewProject ", this.previewProject)
     const trianglify = new Trianglify();
-
     const pattern = Trianglify({
       height: window.innerHeight,
       width: window.innerWidth,
-      x_colors: this.getColorsFromSelection(),
-      y_colors: this.getColorsFromSelection(),
+      x_colors: this.formatColor(this.composedProject.theme),
+      y_colors: this.formatColor(this.composedProject.theme),
       cell_size: 40
     });
 
     this.customerWrapper.nativeElement.style.background = `url(${pattern.png()})`;
-    this.customerWrapper.nativeElement.style.backgroundSize = '100% 70vh';
+    this.customerWrapper.nativeElement.style.backgroundSize = '100% 600px';
     this.customerWrapper.nativeElement.style.backgroundRepeat = 'no-repeat';
 
 
-    this.service.customerProjectTheme.subscribe(res => {
+    this.projectSetupService.customerProjectTheme.subscribe(res => {
       this.selectedTheme = res;
     });
-    this.service.customerProjectDesign.subscribe(res => {
+    this.projectSetupService.customerProjectDesign.subscribe(res => {
       this.selectedDesign = res;
     });
   }
 
+  ngOnDestroy() {
+    // Clear preview data
+  }
+
   getColorsFromSelection() {
     let colorScheme;
-    this.service.customerProjectTheme.subscribe(res =>
+    this.projectSetupService.customerProjectTheme.subscribe(res =>
       colorScheme = ['hsl(0, 0%, 100%)', res, res]
     );
     return colorScheme;
+  }
+
+  formatColor(color) {
+    return ['hsl(0, 0%, 100%)', color, color]
   }
 
 

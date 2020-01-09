@@ -1,5 +1,5 @@
 <nz-header style="padding: 0 10vw;" nz-row nzType="flex" nzJustify="center">
-    <h2 nz-title class="app-name">Validia</h2>
+    <h2 [routerLink]="['/main']" style="cursor: pointer;" nz-title class="app-name">Validia</h2>
 </nz-header>
 <div class="nav-breadcrumbs">
     Dashboard
@@ -15,8 +15,13 @@
     </div>
 </div>
 
-<div fxLayout fxLayoutGap="5px" fxLayoutAlign="start center" class="secondary-navigation">
-    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
+<div style="display: flex; flex-flow: row wrap;" class="secondary-navigation">
+    <div *ngFor="let project of dashboard" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
+        (click)="showProjectPreview(project)">
+        <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
+        <span>{{project.name}}</span>
+    </div>
+    <!-- <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
         [routerLink]="['/project-preview']">
         <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
         <span>Project name</span>
@@ -31,6 +36,7 @@
         <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
         <span>Project name</span>
     </div>
+-->
     <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
         [routerLink]="['/theme']">
         <i nz-icon nzType="folder-add" nzTheme="outline" style="font-size: 64px;"></i>

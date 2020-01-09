@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProjectSetupService } from 'src/app/services/project-setup.service';
 import { Router } from '@angular/router';
 import { STAGES } from 'src/app/components/project-setup/project-setup.component';
@@ -9,25 +9,18 @@ import { STAGES } from 'src/app/components/project-setup/project-setup.component
   styleUrls: ['./customer-app-name.component.scss']
 })
 export class CustomerAppNameComponent implements OnInit {
+
   currentRoute: string;
-  selectedDesign: string;
-  selectedTheme: string;
-  selectedName: string = '';
+  selectedName: string = ' ';
 
   constructor(private service: ProjectSetupService, private router: Router) { }
 
   ngOnInit() {
-    this.currentRoute = this.router.url;
 
-    this.service.customerProjectDesign.subscribe(res => {
-      this.selectedDesign = res;
-    });
-    this.service.customerProjectTheme.subscribe(res => {
-      this.selectedTheme = res;
-    });
+    this.currentRoute = this.router.url;
     this.service.customerProjectName.subscribe(res => {
       this.selectedName = res;
-    })
+    });
   }
 
   saveInputValue(event) {
