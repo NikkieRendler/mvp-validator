@@ -10,6 +10,7 @@ export interface ProjectConfig {
   title: string;
   features: string[];
   description: string;
+  url?: string;
 }
 
 @Injectable({
@@ -17,27 +18,20 @@ export interface ProjectConfig {
 })
 export class DashboardService {
 
-  previewProjectDesign: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  previewProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  previewProjectName: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  previewProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  previewProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>(null);
-  previewProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
-
   serverUrl = 'https://mvp-validator.herokuapp.com/';
-  header = new HttpHeaders()
+  header = new HttpHeaders();
   constructor(private http: HttpClient, private authSrvice: AuthService, private projectSetupService: ProjectSetupService) { }
 
   createProject(projectConfig: ProjectConfig): Observable<any> {
-    return this.http.post(this.serverUrl + 'dashboard', projectConfig, {
-      headers: new HttpHeaders().append('Content-Type', 'application/json').append(`Authorization`, `Bearer ${this.authSrvice.getToken()}`)
-    });
+    return this.http.post(this.serverUrl + 'dashboard', projectConfig);
   }
 
   getDashboard(): Observable<any> {
-    return this.http.get(this.serverUrl + 'dashboard', {
-      headers: new HttpHeaders().append('Content-Type', 'application/json').append(`Authorization`, `Bearer ${this.authSrvice.getToken()}`)
-    });
+    return this.http.get(this.serverUrl + 'dashboard');
+  }
+
+  getProjectConfig(projectUrl): Observable<any> {
+    return this.http.get(this.serverUrl + `dashboard/project/${projectUrl}`);
   }
 
   composeProjectConfig(): ProjectConfig {
@@ -56,33 +50,11 @@ export class DashboardService {
         features: config[3],
         description: config[4],
       };
-    })
+    });
     return createdAppConfig;
   }
 
-  composePreviewConfig(): ProjectConfig {
-    let previewAppConfig: ProjectConfig;
-    combineLatest(
-      this.previewProjectTheme,
-      this.previewProjectName,
-      this.previewProjectTitle,
-      this.previewProjectFeatures,
-      this.previewProjectDescription,
-    ).subscribe(config => {
-      previewAppConfig = {
-        theme: config[0],
-        name: config[1],
-        title: config[2],
-        features: config[3],
-        description: config[4],
-      };
-    })
-    return previewAppConfig;
-  }
-
   deleteProject(id): Observable<any> {
-    return this.http.delete(this.serverUrl + 'dashboard/' + id, {
-      headers: new HttpHeaders().append('Content-Type', 'application/json').append(`Authorization`, `Bearer ${this.authSrvice.getToken()}`)
-    })
+    return this.http.delete(this.serverUrl + 'dashboard/' + id);
   }
 }

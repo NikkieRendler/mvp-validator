@@ -1,5 +1,5 @@
 <div id="customerWrapper" #customerWrapper>
-    <div style="margin-bottom: 170px;">
+    <div style="margin-bottom: 120px;">
         <div nz-row>
             <div nz-col>
                 <app-customer-app-name></app-customer-app-name>
@@ -19,17 +19,6 @@
                 <div>
                     <app-customer-app-features></app-customer-app-features>
                 </div>
-                <div style="margin-bottom: 20px;">
-                    <span class="main-text">
-                        Tell us what you think!
-                    </span>
-                    <br>
-                    <div style="display: flex;">
-                        <div class="feedback-icon happy-icon"></div>
-                        <div class="feedback-icon neutral-icon"></div>
-                        <div class="feedback-icon sad-icon"></div>
-                    </div>
-                </div>
             </div>
         </div>
         <div nz-col nzLg="3" nzXl="3"></div>
@@ -43,24 +32,23 @@
                             <input class="form-input-flat" nz-input placeholder="Your name">
                         </nz-input-group>
                         <ng-template #userPrefix>
-                            <i [ngStyle]="{'color': previewProject ? formatColor(previewProject.theme) : formatColor(composedProject.theme)}"
-                                nz-icon nzType="user" nzTheme="outline"></i>
+                            <i [ngStyle]="{'color': formatColor(composedProject.theme)}" nz-icon nzType="user"
+                                nzTheme="outline"></i>
                         </ng-template>
                         <nz-input-group [nzPrefix]="emailPrefix">
                             <input class="form-input-flat" nz-input placeholder="Your e-mail">
                         </nz-input-group>
                         <ng-template #emailPrefix>
-                            <i [ngStyle]="{'color': previewProject ? formatColor(previewProject.theme) : formatColor(composedProject.theme)}"
-                                nz-icon nzType="mail" nzTheme="outline"></i>
+                            <i [ngStyle]="{'color': formatColor(composedProject.theme)}" nz-icon nzType="mail"
+                                nzTheme="outline"></i>
                         </ng-template>
                         <textarea rows="4" class="form-input-flat" nz-input
                             placeholder="Your comment (optional)"></textarea>
                         <ng-template #commentPrefix>
-                            <i [ngStyle]="{'color': previewProject ? formatColor(previewProject.theme) : formatColor(composedProject.theme)}"
-                                nz-icon nzType="message" nzTheme="outline"></i>
+                            <i [ngStyle]="{'color': formatColor(composedProject.theme)}" nz-icon nzType="message"
+                                nzTheme="outline"></i>
                         </ng-template>
-                        <button
-                            [ngStyle]="{'background-color': previewProject ? formatColor(previewProject.theme) : formatColor(composedProject.theme)}"
+                        <button [ngStyle]="{'background-color': formatColor(composedProject.theme)}"
                             class="flat-access-button" nzSize="large" nz-button>
                             <span nz-text>Get early access</span>
                         </button>
@@ -68,7 +56,8 @@
                 </div>
             </nz-card>
             <ng-template #formTitle>
-                <span style="margin-bottom: 20px;" nz-text class="form-title" style="white-space: normal;">Be one of the first to jump in!</span>
+                <span style="margin-bottom: 20px;" nz-text class="form-title" style="white-space: normal;">Be one of the
+                    first to jump in!</span>
             </ng-template>
 
             <!-- <ng-template #materialForm>

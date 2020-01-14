@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
 
   }
 
@@ -17,5 +18,10 @@ export class AuthService {
 
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/main');
   }
 }

@@ -26,6 +26,7 @@ export class ProjectPreviewComponent implements OnInit {
   }
 
   showModal(): void {
+    this.saveProjectToLocalStorage();
     this.modalView = true;
   }
 
@@ -37,16 +38,13 @@ export class ProjectPreviewComponent implements OnInit {
     this.modalView = false;
   }
 
-  signUp() {
-    this.authService.signUp().subscribe(res => {
-      console.log(res);
-    })
+  saveProjectToLocalStorage() {
+    localStorage.setItem('project-preview', JSON.stringify(this.dashboardService.composeProjectConfig()));
   }
 
   createProject() {
     this.dashboardService.createProject(this.dashboardService.composeProjectConfig()).subscribe(res => {
-      console.log("TCL: ProjectPreviewComponent -> createProject -> this.dashboardService.composeProjectConfig()", this.dashboardService.composeProjectConfig())
-      console.log(res);
+      this.router.navigateByUrl('/dashboard');
     });
   }
 }

@@ -1,5 +1,5 @@
 <form nz-form [formGroup]="featuresForm" style="min-height: 210px;">
-    <div formArrayName="featuresArray" *ngIf="currentRoute !== '/project-preview'; else customerAppFeatures">
+    <div formArrayName="featuresArray" *ngIf="currentRoute === '/features'; else customerAppFeatures">
         <nz-form-item *ngFor="let control of featuresArray.controls; let i = index"
             style="margin-bottom: 5px; display: flex;">
             <nz-form-control [nzValidateStatus]="control.value.length === 70 ? 'warning' : null"

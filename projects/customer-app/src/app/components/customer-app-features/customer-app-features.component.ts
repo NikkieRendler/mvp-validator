@@ -32,9 +32,6 @@ export class CustomerAppFeaturesComponent implements OnInit {
     this.service.customerProjectTheme.subscribe(res => {
       this.selectedTheme = res;
     });
-    this.service.customerProjectDesign.subscribe(res => {
-      this.selectedDesign = res;
-    });
 
     if (this.currentRoute === '/features') {
       for (let i = 0; i < 3; i++) {

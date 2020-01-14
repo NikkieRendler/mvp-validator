@@ -21,17 +21,12 @@ export class CustomerDashboardComponent implements OnInit {
   getDashboard() {
     this.dashboardService.getDashboard().subscribe(res => {
       this.dashboard = res.projects.landingConfigs;
-      console.log("TCL: CustomerDashboardComponent -> ngOnInit -> this.dashboar", this.dashboard)
-    })
+    });
   }
 
   showProjectPreview(project: ProjectConfig) {
-    this.projectSetupService.customerProjectDescription.next(project.description);
-    this.projectSetupService.customerProjectFeatures.next(project.features);
-    this.projectSetupService.customerProjectName.next(project.name);
-    this.projectSetupService.customerProjectTheme.next(project.theme);
-    this.projectSetupService.customerProjectTitle.next(project.title);
-    this.router.navigateByUrl('/project-preview');
+    this.clearProjectConfig();
+    this.router.navigateByUrl(`/dashboard/project/${project.url}`);
   }
 
   deleteProject(id) {
@@ -39,6 +34,19 @@ export class CustomerDashboardComponent implements OnInit {
       console.log(res);
       this.getDashboard();
     });
+  }
+
+  startCreationFlow() {
+    this.clearProjectConfig();
+    this.router.navigateByUrl('/theme');
+  }
+
+  clearProjectConfig() {
+    this.projectSetupService.customerProjectDescription.next('');
+    this.projectSetupService.customerProjectFeatures.next([]);
+    this.projectSetupService.customerProjectName.next('');
+    this.projectSetupService.customerProjectTheme.next('');
+    this.projectSetupService.customerProjectTitle.next('');
   }
 
 }

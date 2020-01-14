@@ -46,6 +46,10 @@ const routes: Routes = [
     component: ProjectPreviewComponent
   },
   {
+    path: 'dashboard/project/:url',
+    component: CustomerAppComponent
+  },
+  {
     component: CustomerDashboardComponent,
     path: 'dashboard'
   },

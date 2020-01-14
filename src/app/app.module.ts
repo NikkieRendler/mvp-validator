@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
@@ -25,6 +25,7 @@ import { ProjectPreviewComponent } from './components/project-preview/project-pr
 import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 registerLocaleData(en);
@@ -57,7 +58,15 @@ registerLocaleData(en);
     ColorPickerModule,
     MatInputModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }, ProjectSetupService],
+  providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    ProjectSetupService,
+    AuthInterceptorService, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,34 +7,34 @@
                 <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
             </button>
         </div>
-        <div nz-col nzSpan="8" style="display: flex; justify-content: center;">
-            <button (click)="showModal()" nz-button>Buy ($15)</button>
+        <div *ngIf="!isUserLogged; else userLoggedTemplate" nz-col nzSpan="8"
+            style="display: flex; justify-content: center;">
+            <button (click)="showModal()" nz-button>Sign up to manage projects</button>
         </div>
+        <ng-template #userLoggedTemplate>
+            <div nz-col nzSpan="8" style="display: flex; justify-content: center;">
+                <button (click)="createProject()" nz-button>Add to dashboard</button>
+            </div>
+        </ng-template>
         <div nz-col nzSpan="8"></div>
     </div>
     <nz-modal [(nzVisible)]="modalView" [nzTitle]="registrationTitle" [nzFooter]="null" (nzOnCancel)="handleCancel()"
         (nzOnOk)="handleOk()">
         <ng-template #registrationTitle>
-            <div *ngIf="!isUserLogged" style="text-align: center;">Registration</div>
-            <div *ngIf="isUserLogged" style="text-align: center;">Verify purchase</div>
+            <div style="text-align: center;">Registration</div>
         </ng-template>
-        <div *ngIf="!isUserLogged; else userLoggedTemlate">
+        <div>
             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <span class="pop-up-title" nz-text>Sign up to manage your projects</span>
+                <span class="pop-up-title" nz-text></span>
                 <a href="https://mvp-validator.herokuapp.com/auth/google/">
-                    <button nz-button nzShape="circle" nzSize="large">
-                        <i nz-icon nzType="google" nzTheme="outline"></i>
+                    <button nz-button style="background-color: #d62d20; display: flex; align-items: center;">
+                        <i style="color: whitesmoke; margin-right: -8px;" nz-icon nzType="google-plus"
+                            nzTheme="outline"></i>
+                        <nz-divider nzType="vertical"></nz-divider>
+                        <span style="color: whitesmoke;" nz-text>Sign up</span>
                     </button>
                 </a>
             </div>
         </div>
-        <ng-template #userLoggedTemlate>
-            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <button (click)="createProject()" nz-button>
-                    Create project
-                </button>
-            </div>
-        </ng-template>
-
     </nz-modal>
 </div>

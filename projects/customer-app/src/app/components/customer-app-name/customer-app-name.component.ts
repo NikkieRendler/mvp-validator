@@ -11,7 +11,7 @@ import { STAGES } from 'src/app/components/project-setup/project-setup.component
 export class CustomerAppNameComponent implements OnInit {
 
   currentRoute: string;
-  selectedName: string = ' ';
+  selectedName: string = '';
 
   constructor(private service: ProjectSetupService, private router: Router) { }
 

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
 import { DashboardService, ProjectConfig } from 'src/app/services/dashboard.service';
 import { ProjectSetupService } from 'src/app/services/project-setup.service';
-import { forkJoin, concat, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -24,27 +22,27 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     const token = this.route.snapshot.paramMap.get('token');
     localStorage.setItem('token', token);
-    combineLatest(
-      this.projectSetupService.customerProjectTheme,
-      this.projectSetupService.customerProjectName,
-      this.projectSetupService.customerProjectTitle,
-      this.projectSetupService.customerProjectFeatures,
-      this.projectSetupService.customerProjectDescription,
-    ).subscribe(config => {
-      const createdAppConfig: ProjectConfig = {
-        theme: config[0],
-        name: config[1],
-        title: config[2],
-        features: config[3],
-        description: config[4],
-      };
-      this.dashboardService.createProject(createdAppConfig).subscribe(res => {
-        console.log(res);
-      });
+    const createdAppConfig: ProjectConfig = this.getProjectFromLocalStorage();
+    console.log("TCL: LoginComponent -> ngOnInit -> createdAppConfig", createdAppConfig);
+    this.dashboardService.createProject(createdAppConfig).subscribe(res => {
+      console.log(res);
+      if (token) {
+        localStorage.removeItem('project-preview');
+        this.router.navigateByUrl('/dashboard');
+      }
     });
-    if (token) {
-      this.router.navigateByUrl('/dashboard');
-    }
   }
+
+  getProjectFromLocalStorage(): ProjectConfig {
+    return JSON.parse(localStorage.getItem('project-preview'));
+  }
+
+  // ngOnDestroy() {
+  //   this.projectSetupService.customerProjectTheme.unsubscribe();
+  //   this.projectSetupService.customerProjectName.unsubscribe();
+  //   this.projectSetupService.customerProjectTitle.unsubscribe();
+  //   this.projectSetupService.customerProjectFeatures.unsubscribe();
+  //   this.projectSetupService.customerProjectDescription.unsubscribe();
+  // }
 
 }

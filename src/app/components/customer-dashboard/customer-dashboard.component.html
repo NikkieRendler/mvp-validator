@@ -42,8 +42,7 @@
     </div>
 -->
     <div class="secondary-navigation-item-wrapper">
-        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item"
-            [routerLink]="['/theme']">
+        <div (click)="startCreationFlow()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item">
             <i nz-icon nzType="folder-add" nzTheme="outline" style="font-size: 64px;"></i>
             <span>Add project</span>
         </div>

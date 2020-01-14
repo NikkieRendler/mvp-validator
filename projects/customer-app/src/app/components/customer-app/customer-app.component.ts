@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@ang
 import { ProjectSetupService } from 'src/app/services/project-setup.service';
 import * as Trianglify from '../../../../../../node_modules/trianglify';
 import { DashboardService, ProjectConfig } from 'src/app/services/dashboard.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer-app',
@@ -21,33 +22,51 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
 
   constructor(
     private projectSetupService: ProjectSetupService,
-    private dashboardService: DashboardService
+    private dashboardService: DashboardService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
 
   }
 
   ngOnInit() {
-    this.composedProject = this.dashboardService.composeProjectConfig();
-    const trianglify = new Trianglify();
-    const pattern = Trianglify({
-      height: window.innerHeight,
-      width: window.innerWidth,
-      x_colors: this.formatColor(this.composedProject.theme),
-      y_colors: this.formatColor(this.composedProject.theme),
-      cell_size: 40
-    });
+    if (this.router.url === '/project-preview') {
+      this.composedProject = this.dashboardService.composeProjectConfig();
+      const trianglify = new Trianglify();
+      const pattern = Trianglify({
+        height: window.innerHeight,
+        width: window.innerWidth,
+        x_colors: this.formatColor(this.composedProject.theme),
+        y_colors: this.formatColor(this.composedProject.theme),
+        cell_size: 40
+      });
 
-    this.customerWrapper.nativeElement.style.background = `url(${pattern.png()})`;
-    this.customerWrapper.nativeElement.style.backgroundSize = '100% 600px';
-    this.customerWrapper.nativeElement.style.backgroundRepeat = 'no-repeat';
+      this.customerWrapper.nativeElement.style.background = `url(${pattern.png()})`;
+      this.customerWrapper.nativeElement.style.backgroundSize = '100% 560px';
+      this.customerWrapper.nativeElement.style.backgroundRepeat = 'no-repeat';
+    } else {
+      const projectUrl = this.route.snapshot.paramMap.get('url');
+      this.dashboardService.getProjectConfig(projectUrl).subscribe(res => {
+        this.composedProject = res.landingConfigs[0];
+        this.projectSetupService.customerProjectName.next(this.composedProject.name);
+        this.projectSetupService.customerProjectDescription.next(this.composedProject.description);
+        this.projectSetupService.customerProjectTitle.next(this.composedProject.title);
+        this.projectSetupService.customerProjectFeatures.next(this.composedProject.features);
 
+        const trianglify = new Trianglify();
+        const pattern = Trianglify({
+          height: window.innerHeight,
+          width: window.innerWidth,
+          x_colors: this.formatColor(this.composedProject.theme),
+          y_colors: this.formatColor(this.composedProject.theme),
+          cell_size: 40
+        });
 
-    this.projectSetupService.customerProjectTheme.subscribe(res => {
-      this.selectedTheme = res;
-    });
-    this.projectSetupService.customerProjectDesign.subscribe(res => {
-      this.selectedDesign = res;
-    });
+        this.customerWrapper.nativeElement.style.background = `url(${pattern.png()})`;
+        this.customerWrapper.nativeElement.style.backgroundSize = '100% 560px';
+        this.customerWrapper.nativeElement.style.backgroundRepeat = 'no-repeat';
+      });
+    }
   }
 
   ngOnDestroy() {
