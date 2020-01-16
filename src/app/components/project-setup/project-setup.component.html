@@ -5,9 +5,9 @@
     <div nz-row class="project-setup-stage-wrapper">
 
         <!-- Action side -->
-        <div nz-col nzSpan="14">
+        <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="14" nzXl="14" style="margin-bottom: 40px;">
             <div nz-col
-                style="height: 70vh; text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <div style="margin-bottom: 50px">
                     <div>
                         <span nz-text class="project-setup-stage-title">
@@ -25,7 +25,7 @@
                 <!-- Color stage -->
                 <ng-container *ngIf="currentRoute === '/theme'">
                     <div nz-col nzSpan="24">
-                        <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
+                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6" class="project-setup-stage-tips">
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': firstColorScheme}"
                                 (click)="selectTheme(firstColorScheme)">
                                 <div style="height: 33%;"></div>
@@ -40,7 +40,7 @@
                             </div>
                         </nz-card>
 
-                        <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
+                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6" class="project-setup-stage-tips">
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': secondColorScheme}"
                                 (click)="selectTheme(secondColorScheme)">
                                 <div style="height: 33%;"></div>
@@ -53,7 +53,7 @@
                             </div>
                         </nz-card>
 
-                        <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
+                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6" class="project-setup-stage-tips">
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': thirdColorScheme}"
                                 (click)="selectTheme(thirdColorScheme)">
                                 <div style="height: 33%;"></div>
@@ -68,7 +68,7 @@
                             </div>
                         </nz-card>
 
-                        <nz-card nz-col nzSpan="6" class="project-setup-stage-tips">
+                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6" class="project-setup-stage-tips">
                             <div *ngIf="!customColorScheme; else customColorPicked" class="project-setup-stage-theme">
                             </div>
                             <ng-template #customColorPicked>
@@ -167,7 +167,7 @@
 
 
         <!-- Divider -->
-        <div nz-col nzSpan="2" style="height: 70vh; text-align: center;">
+        <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="2" nzXl="2" style="height: 70vh; text-align: center;">
             <nz-divider nzType="vertical" style="height: 100%; background-color: rgba(0, 0, 0, 0.3);"></nz-divider>
         </div>
 
@@ -177,7 +177,7 @@
 
 
         <!-- Notes side -->
-        <div nz-col nzSpan="8">
+        <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="8" nzXl="8">
             <!-- Design stage -->
             <!-- <ng-container *ngIf="currentRoute === '/design'">
                 <div class="project-setup-stage-tips">

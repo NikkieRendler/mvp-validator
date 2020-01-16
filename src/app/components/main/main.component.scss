@@ -1,24 +1,31 @@
-@import '../../../styles.scss';
+@import "../../../styles.scss";
 
 .main-wrapper {
-    display: flex;
-    align-items: center;
-    padding: 0 10vw;
+  display: flex;
+  align-items: center;
+  padding: 0 10vw;
 }
 
 .main-content {
-    width: 70vw;
-    padding-top: 100px;
+  width: 70vw;
+  padding-top: 100px;
 }
 
 .description {
-    line-height: 35px;
-    font-size: $main-text;
+  line-height: 35px;
+  font-size: $main-text;
 }
 
 .main-image {
-    height: 70vh;
-    background-image: url('../../../assets/images/test_image.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
+  height: 70vh;
+  background-image: url("../../../assets/images/test_image.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media screen and (max-width: 990px) {
+  .text-wrapper {
+    text-align: center;
+  }
 }

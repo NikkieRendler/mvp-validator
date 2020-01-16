@@ -1,17 +1,19 @@
-<form nz-form [formGroup]="featuresForm" style="min-height: 210px;">
-    <div formArrayName="featuresArray" *ngIf="currentRoute === '/features'; else customerAppFeatures">
+<form nz-form [formGroup]="featuresForm" style="min-height: 210px; display: flex; justify-content: center;">
+    <div nz-col nzXs="16" nzSm="16" nzMd="16" nzLg="22" nzXl="22" formArrayName="featuresArray" *ngIf="currentRoute === '/features'; else customerAppFeatures">
         <nz-form-item *ngFor="let control of featuresArray.controls; let i = index"
             style="margin-bottom: 5px; display: flex;">
             <nz-form-control [nzValidateStatus]="control.value.length === 70 ? 'warning' : null"
                 nzWarningTip="Max. symbols used. Feature should be brief">
-                <i nz-icon nzType="check-circle" nzTheme="outline" [ngStyle]="{'color': selectedTheme}"
-                    style="margin-right: 5px;"></i>
-                <input maxlength="70" (keyup)="saveFeaturesValue()" (keydown.enter)="nextStage()" nz-input
-                    class="feature-input" [formControlName]="i">
+                <div style="display: flex;">
+                    <i nz-icon nzType="check-circle" nzTheme="outline" [ngStyle]="{'color': selectedTheme}"
+                        style="margin-right: 5px;"></i>
+                    <input maxlength="70" (keyup)="saveFeaturesValue()" (keydown.enter)="nextStage()" nz-input
+                        class="feature-input" [formControlName]="i">
                     <button *ngIf="makeRemovable()" nz-button nzShape="circle" style="margin-left: 5px;"
-                    (click)="removeFeature(i)">
-                    <i nz-icon nzType="close" nzTheme="outline"></i>
-                </button>
+                        (click)="removeFeature(i)">
+                        <i nz-icon nzType="close" nzTheme="outline"></i>
+                    </button>
+                </div>
             </nz-form-control>
         </nz-form-item>
         <button *ngIf="showAddButton()" nz-button (click)="addFeature(); saveFeaturesValue()">Add feature</button>
