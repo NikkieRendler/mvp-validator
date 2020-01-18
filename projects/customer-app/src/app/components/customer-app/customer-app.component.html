@@ -1,5 +1,5 @@
 <div id="customerWrapper" #customerWrapper>
-    <div style="margin-bottom: 120px;">
+    <div class="customer-app-project-name-wrapper">
         <div nz-row>
             <div nz-col>
                 <app-customer-app-name></app-customer-app-name>
@@ -10,10 +10,10 @@
     <div nz-row>
         <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12" style="word-break: break-word;">
             <div>
-                <div>
+                <div class="customer-app-project-title-wrapper">
                     <app-customer-app-title></app-customer-app-title>
                 </div>
-                <div style="margin-bottom: 15px;">
+                <div class="customer-app-project-description-wrapper">
                     <app-customer-app-description></app-customer-app-description>
                 </div>
                 <div>
@@ -22,86 +22,91 @@
             </div>
         </div>
         <div nz-col nzLg="3" nzXl="3"></div>
-        <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="9" nzXl="9">
-            <nz-card class="form-card">
-                <nz-card-meta [nzTitle]="formTitle" nzDescription="We'll notify you about the progress">
-                </nz-card-meta>
-                <div nz-row style="display: flex; justify-content: center;">
-                    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="18" nzXl="18">
-                        <nz-input-group [nzPrefix]="userPrefix">
-                            <input class="form-input-flat" nz-input placeholder="Your name">
-                        </nz-input-group>
-                        <ng-template #userPrefix>
-                            <i [ngStyle]="{'color': formatColor(composedProject.theme)}" nz-icon nzType="user"
-                                nzTheme="outline"></i>
-                        </ng-template>
-                        <nz-input-group [nzPrefix]="emailPrefix">
-                            <input class="form-input-flat" nz-input placeholder="Your e-mail">
-                        </nz-input-group>
-                        <ng-template #emailPrefix>
-                            <i [ngStyle]="{'color': formatColor(composedProject.theme)}" nz-icon nzType="mail"
-                                nzTheme="outline"></i>
-                        </ng-template>
-                        <textarea rows="4" class="form-input-flat" nz-input
-                            placeholder="Your comment (optional)"></textarea>
-                        <ng-template #commentPrefix>
-                            <i [ngStyle]="{'color': formatColor(composedProject.theme)}" nz-icon nzType="message"
-                                nzTheme="outline"></i>
-                        </ng-template>
-                        <button [ngStyle]="{'background-color': formatColor(composedProject.theme)}"
-                            class="flat-access-button" nzSize="large" nz-button>
-                            <span nz-text>Get early access</span>
-                        </button>
+        <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
+            <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="9" nzXl="9">
+                <nz-card class="form-card">
+                    <nz-card-meta [nzTitle]="formTitle" nzDescription="We'll notify you about the progress">
+                    </nz-card-meta>
+                    <div nz-row style="display: flex; justify-content: center;">
+                        <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="18" nzXl="18">
+                            <nz-input-group [nzPrefix]="userPrefix">
+                                <input formControlName="name" class="form-input-flat" nz-input placeholder="Your name">
+                            </nz-input-group>
+                            <ng-template #userPrefix>
+                                <i [ngStyle]="{'color': formatColor(composedProject.theme)}" nz-icon nzType="user"
+                                    nzTheme="outline"></i>
+                            </ng-template>
+                            <nz-input-group [nzPrefix]="emailPrefix">
+                                <input formControlName="email" class="form-input-flat" nz-input
+                                    placeholder="Your e-mail">
+                            </nz-input-group>
+                            <ng-template #emailPrefix>
+                                <i [ngStyle]="{'color': formatColor(composedProject.theme)}" nz-icon nzType="mail"
+                                    nzTheme="outline"></i>
+                            </ng-template>
+                            <textarea formControlName="text" rows="4" class="form-input-flat" nz-input
+                                placeholder="Your comment (optional)"></textarea>
+                            <ng-template #commentPrefix>
+                                <i [ngStyle]="{'color': formatColor(composedProject.theme)}" nz-icon nzType="message"
+                                    nzTheme="outline"></i>
+                            </ng-template>
+                            <button type="submit" [ngStyle]="{'background-color': formatColor(composedProject.theme)}"
+                                class="flat-access-button" nzSize="large" nz-button>
+                                <span nz-text>Get early access</span>
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </nz-card>
-            <ng-template #formTitle>
-                <span style="margin-bottom: 20px;" nz-text class="form-title" style="white-space: normal;">Be one of the
-                    first to jump in!</span>
-            </ng-template>
+                </nz-card>
+                <ng-template #formTitle>
+                    <span style="margin-bottom: 20px;" nz-text class="form-title" style="white-space: normal;">Be one of
+                        the
+                        first to jump in!</span>
+                </ng-template>
 
-            <!-- <ng-template #materialForm>
-                    <mat-card class="form-card">
-                        <mat-card-header style="display: flex; flex-direction: column;">
-                            <mat-card-title class="form-title">Be one of the first to jump in!</mat-card-title>
-                            <mat-card-subtitle>We'll notify you about the progress</mat-card-subtitle>
-                        </mat-card-header>
-                        <mat-card-content>
-                            <div nz-row>
-                                <div nz-col nzSpan="18" nzOffset="3">
-                                    <form style="display: flex; flex-direction: column;">
-                                        <mat-form-field class="example-full-width">
-                                            <span matPrefix>
-                                                <i [ngStyle]="{'color': composedProject.theme}" class="material-icons">
-                                                    perm_identity
-                                                </i> &nbsp;
-                                            </span>
-                                            <input class="form-input-material" matInput placeholder="Your name">
-                                        </mat-form-field>
-
-                                        <mat-form-field class="example-full-width">
-                                            <span matPrefix>
-                                                <i [ngStyle]="{'color': composedProject.theme}" class="material-icons">
-                                                    mail_outline
-                                                </i> &nbsp;
-                                            </span>
-                                            <input class="form-input-material" matInput placeholder="Your e-mail">
-                                        </mat-form-field>
-
-                                        <mat-form-field class="example-full-width">
-                                            <textarea rows="7" matInput
-                                                placeholder="Your comment (optional)"></textarea>
-                                        </mat-form-field>
-
-                                        <button [ngStyle]="{'background-color': composedProject.theme}"
-                                            style="color: whitesmoke;" class="flat-access-button" mat-raised-button>Get
-                                            early access</button>
-                                    </form>
+                <!-- <ng-template #materialForm>
+                        <mat-card class="form-card">
+                            <mat-card-header style="display: flex; flex-direction: column;">
+                                <mat-card-title class="form-title">Be one of the first to jump in!</mat-card-title>
+                                <mat-card-subtitle>We'll notify you about the progress</mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content>
+                                <div nz-row>
+                                    <div nz-col nzSpan="18" nzOffset="3">
+                                        <form style="display: flex; flex-direction: column;">
+                                            <mat-form-field class="example-full-width">
+                                                <span matPrefix>
+                                                    <i [ngStyle]="{'color': composedProject.theme}" class="material-icons">
+                                                        perm_identity
+                                                    </i> &nbsp;
+                                                </span>
+                                                <input class="form-input-material" matInput placeholder="Your name">
+                                            </mat-form-field>
+    
+                                            <mat-form-field class="example-full-width">
+                                                <span matPrefix>
+                                                    <i [ngStyle]="{'color': composedProject.theme}" class="material-icons">
+                                                        mail_outline
+                                                    </i> &nbsp;
+                                                </span>
+                                                <input class="form-input-material" matInput placeholder="Your e-mail">
+                                            </mat-form-field>
+    
+                                            <mat-form-field class="example-full-width">
+                                                <textarea rows="7" matInput
+                                                    placeholder="Your comment (optional)"></textarea>
+                                            </mat-form-field>
+    
+                                            <button [ngStyle]="{'background-color': composedProject.theme}"
+                                                style="color: whitesmoke;" class="flat-access-button" mat-raised-button>Get
+                                                early access</button>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
-                        </mat-card-content>
-                    </mat-card>
-                </ng-template> -->
-        </div>
+                            </mat-card-content>
+                        </mat-card>
+                    </ng-template> -->
+            </div>
+        </form>
+
     </div>
 </div>

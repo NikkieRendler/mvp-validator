@@ -6,5 +6,26 @@
 
 .feature-input {
   font-size: $main-text;
-  width: 350px;
+}
+
+.features-form {
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.feature-icon {
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 990px) {
+  .features-form {
+    padding: 10px 0 40px;
+    min-height: auto;
+  }
+  .feature-icon {
+    font-size: 20px;
+    padding: 3px;
+  }
 }

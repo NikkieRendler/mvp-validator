@@ -4,10 +4,18 @@
   padding: 10vh 10vw 0;
 }
 
+.customer-app-project-name-wrapper {
+  margin-bottom: 120px;
+}
+
+.customer-app-project-description-wrapper {
+  margin-bottom: 15px;
+}
+
 .form-card {
   width: 100%;
   text-align: center;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, .5);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 .form-title {
@@ -52,4 +60,24 @@
 
 .sad-icon {
   background-image: url("../../../assets/images/sad_face.png");
+}
+
+@media screen and (max-width: 990px) {
+  #customerWrapper {
+    background-size: 100% 100% !important;
+  }
+  .customer-app-project-name-wrapper {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+  .customer-app-project-title-wrapper {
+    text-align: center;
+  }
+  .customer-app-project-description-wrapper {
+    margin: 0;
+    text-align: center;
+  }
+  .form-card {
+    margin-bottom: 70px;
+  }
 }

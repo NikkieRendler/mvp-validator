@@ -13,6 +13,13 @@ export interface ProjectConfig {
   url?: string;
 }
 
+export interface Feedback {
+  url: string;
+  name: string;
+  text: string;
+  email: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -56,5 +63,11 @@ export class DashboardService {
 
   deleteProject(id): Observable<any> {
     return this.http.delete(this.serverUrl + 'dashboard/' + id);
+  }
+
+  sumbitFeedback(url: string, formData: Feedback): Observable<any> {
+    return this.http.post(this.serverUrl + `dashboard/${url}/engagedUser`, {
+      engagedUserInfo: formData
+    });
   }
 }

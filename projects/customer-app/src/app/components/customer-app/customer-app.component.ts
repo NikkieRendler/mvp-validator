@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, Input, OnDestroy } from '@angular/core';
 import { ProjectSetupService } from 'src/app/services/project-setup.service';
 import * as Trianglify from '../../../../../../node_modules/trianglify';
-import { DashboardService, ProjectConfig } from 'src/app/services/dashboard.service';
+import { DashboardService, ProjectConfig, Feedback } from 'src/app/services/dashboard.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-customer-app',
@@ -20,16 +21,24 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
 
   projectToDisplay: ProjectConfig;
 
+  feedbackForm: FormGroup;
+
   constructor(
     private projectSetupService: ProjectSetupService,
     private dashboardService: DashboardService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder
   ) {
 
   }
 
   ngOnInit() {
+    this.feedbackForm = this.fb.group({
+      name: [null],
+      email: [null],
+      text: [null]
+    });
     if (this.router.url === '/project-preview') {
       this.composedProject = this.dashboardService.composeProjectConfig();
       const trianglify = new Trianglify();
@@ -83,6 +92,15 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
 
   formatColor(color) {
     return ['hsl(0, 0%, 100%)', color, color]
+  }
+
+  onSubmit() {
+    const projectUrl = this.route.snapshot.paramMap.get('url');
+    const formData: Feedback = this.feedbackForm.value;
+    console.log(this.feedbackForm.value);
+    this.dashboardService.sumbitFeedback(projectUrl, formData).subscribe(res => {
+      console.log(res);
+    })
   }
 
 
