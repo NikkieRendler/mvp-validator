@@ -29,7 +29,7 @@ export class ProjectSetupService {
 
   customerProjectDesign: BehaviorSubject<string> = new BehaviorSubject<string>('');
   customerProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>('hsl(321, 90%, 25%)');
-  customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>('Анрюха, привет');
+  customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>('Тест');
   customerProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>('Чё такой грустный?');
   customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(['Давай за нас', "Давай за всю хурму", "Да так чтоб навек"]);
   customerProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>('И да прибудет с нами сила, во имя осла и мыла и святого пуха');

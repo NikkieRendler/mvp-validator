@@ -1,0 +1,30 @@
+@import '../../../styles.scss';
+
+.project-management-wrapper {
+  padding: 10vh 10vw;
+}
+
+.secondary-navigation-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.secondary-navigation {
+  padding: 45px;
+  .secondary-navigation-item {
+    height: 145px;
+    width: 145px;
+    border: 1px solid;
+    background-color: #fff;
+  }
+  .secondary-navigation-item:hover {
+    cursor: pointer;
+    color: #fff;
+    border: 1px #fff solid;
+  }
+}
+
+.preview-bottom-actions-wrapper {
+  margin-bottom: 24px;
+}

@@ -29,6 +29,11 @@ export class CustomerDashboardComponent implements OnInit {
     this.router.navigateByUrl(`/dashboard/project/${project.url}`);
   }
 
+  manageProject(project: ProjectConfig) {
+    this.router.navigateByUrl(`/dashboard/project-management/${project.url}`);
+
+  }
+
   deleteProject(id) {
     this.dashboardService.deleteProject(id).subscribe(res => {
       console.log(res);

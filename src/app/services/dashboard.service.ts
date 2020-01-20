@@ -11,6 +11,7 @@ export interface ProjectConfig {
   features: string[];
   description: string;
   url?: string;
+  engagedUsers?: Feedback[];
 }
 
 export interface Feedback {

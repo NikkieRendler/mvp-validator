@@ -17,10 +17,6 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
   selectedTheme: string;
   selectedDesign: string;
   composedProject: ProjectConfig;
-  previewProject: ProjectConfig;
-
-  projectToDisplay: ProjectConfig;
-
   feedbackForm: FormGroup;
 
   constructor(

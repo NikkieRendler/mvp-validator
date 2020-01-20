@@ -6,6 +6,7 @@ import { CustomerAppComponent } from 'projects/customer-app/src/app/components/c
 import { ProjectPreviewComponent } from './components/project-preview/project-preview.component';
 import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProjectManagementComponent } from './components/project-management/project-management.component';
 
 
 const routes: Routes = [
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path: 'dashboard/project/:url',
     component: CustomerAppComponent
+  },
+  {
+    path: 'dashboard/project-management/:url',
+    component: ProjectManagementComponent
   },
   {
     component: CustomerDashboardComponent,

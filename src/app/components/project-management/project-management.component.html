@@ -1,0 +1,44 @@
+<nz-header style="padding: 0 10vw;" nz-row nzType="flex" nzJustify="center">
+    <h2 [routerLink]="['/main']" style="cursor: pointer;" nz-title class="app-name">Validia</h2>
+</nz-header>
+<div nz-row class="project-management-wrapper">
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="6" nzXl="6" class="secondary-navigation">
+        <div class="secondary-navigation-item-wrapper" (click)="showProjectPreview(composedProject)">
+            <div fxLayout="column" fxLayoutAlign="center center"
+                [ngStyle]="{'border-color': composedProject.theme, 'color': composedProject.theme}"
+                class="secondary-navigation-item">
+                <span><b>{{composedProject.name}}</b></span>
+            </div>
+        </div>
+    </div>
+    <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="2" nzXl="2" style="height: 70vh; text-align: center;">
+        <nz-divider nzType="vertical" style="height: 100%; background-color: rgba(0, 0, 0, 0.3);"></nz-divider>
+    </div>
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="10" nzXl="10">
+        <nz-descriptions nzTitle="Project Info" nzBordered [nzColumn]="{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }">
+            <nz-descriptions-item nzTitle="Name">
+                {{composedProject.name}}
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Color theme">{{composedProject.theme}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Title">{{composedProject.title}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Description">{{composedProject.description}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Features">
+                <span *ngFor="let feature of composedProject.features">
+                    {{feature}}
+                    <br>
+                </span>
+            </nz-descriptions-item>
+        </nz-descriptions>
+    </div>
+</div>
+<div nz-row>
+    <div nz-row class="preview-bottom-actions-wrapper">
+        <div nz-col nzSpan="8" style="display: flex; justify-content: center;">
+            <button *ngIf="isUserLogged" [routerLink]="['/dashboard']" nz-button>
+                <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
+            </button>
+        </div>
+        <div nz-col nzSpan="8"></div>
+        <div nz-col nzSpan="8"></div>
+    </div>
+</div>

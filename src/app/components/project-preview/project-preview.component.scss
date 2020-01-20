@@ -8,7 +8,8 @@
   display: flex;
   justify-content: center;
   position: fixed;
-  bottom: 0px;
+  bottom: 0;
+  left: 0;
   width: 100vw;
   background-color: rgba(265, 265, 265, 0.8);
   padding: 10px 0;
@@ -17,9 +18,6 @@
 }
 
 .preview-bottom-actions-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin-bottom: 24px;
 }
 
