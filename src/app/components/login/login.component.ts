@@ -23,14 +23,14 @@ export class LoginComponent implements OnInit {
     const token = this.route.snapshot.paramMap.get('token');
     localStorage.setItem('token', token);
     const createdAppConfig: ProjectConfig = this.getProjectFromLocalStorage();
-    console.log("TCL: LoginComponent -> ngOnInit -> createdAppConfig", createdAppConfig);
-    this.dashboardService.createProject(createdAppConfig).subscribe(res => {
-      console.log(res);
-      if (token) {
+    if (createdAppConfig && token) {
+      this.dashboardService.createProject(createdAppConfig).subscribe(res => {
         localStorage.removeItem('project-preview');
         this.router.navigateByUrl('/dashboard');
-      }
-    });
+      });
+    } else {
+      this.router.navigateByUrl('/dashboard');
+    }
   }
 
   getProjectFromLocalStorage(): ProjectConfig {

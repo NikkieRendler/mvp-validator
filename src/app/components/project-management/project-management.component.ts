@@ -12,6 +12,7 @@ export class ProjectManagementComponent implements OnInit {
   projectUrl: string;
   composedProject: ProjectConfig;
   isUserLogged: boolean;
+  isEngagementListVisible: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,6 +41,10 @@ export class ProjectManagementComponent implements OnInit {
     this.projectSetupService.customerProjectName.next('');
     this.projectSetupService.customerProjectTheme.next('');
     this.projectSetupService.customerProjectTitle.next('');
+  }
+
+  showEngagementList() {
+    this.isEngagementListVisible = !this.isEngagementListVisible;
   }
 
 }

@@ -2,7 +2,7 @@
     <h2 [routerLink]="['/main']" style="cursor: pointer;" nz-title class="app-name">Validia</h2>
 </nz-header>
 <div nz-row class="project-management-wrapper">
-    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="6" nzXl="6" class="secondary-navigation">
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="3" nzXl="3" class="secondary-navigation">
         <div class="secondary-navigation-item-wrapper" (click)="showProjectPreview(composedProject)">
             <div fxLayout="column" fxLayoutAlign="center center"
                 [ngStyle]="{'border-color': composedProject.theme, 'color': composedProject.theme}"
@@ -14,7 +14,7 @@
     <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="2" nzXl="2" style="height: 70vh; text-align: center;">
         <nz-divider nzType="vertical" style="height: 100%; background-color: rgba(0, 0, 0, 0.3);"></nz-divider>
     </div>
-    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="10" nzXl="10">
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="11" nzXl="11">
         <nz-descriptions nzTitle="Project Info" nzBordered [nzColumn]="{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }">
             <nz-descriptions-item nzTitle="Name">
                 {{composedProject.name}}
@@ -27,6 +27,28 @@
                     {{feature}}
                     <br>
                 </span>
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Engagement">
+                <div nz-row nzType="flex" nzJustify="space-between" nzAlign="middle">
+                    <div>
+                        <b>{{composedProject.engagedUsers.length}}</b> users submitted
+                    </div>
+                    <div>
+                        <button (click)="showEngagementList()" [disabled]="composedProject.engagedUsers.length === 0" nz-button nzShape="circle" nzType="link">
+                            <i nz-icon nzType="right-circle" nzTheme="outline"></i>
+                        </button>
+                    </div>
+                </div>
+            </nz-descriptions-item>
+        </nz-descriptions>
+    </div>
+    <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="1" nzXl="1"></div>
+    <div *ngIf="isEngagementListVisible" class="engagement-list" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="7" nzXl="7">
+        <nz-descriptions nzTitle="Engagement list" nzSize="small" nzBordered [nzColumn]="{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }">
+            <nz-descriptions-item *ngFor="let user of composedProject.engagedUsers" nzTitle="{{user.email}}">
+                {{user.name}}
+                <br>
+                {{user.text ? user.text : '...'}}
             </nz-descriptions-item>
         </nz-descriptions>
     </div>

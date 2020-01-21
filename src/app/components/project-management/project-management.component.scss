@@ -1,4 +1,4 @@
-@import '../../../styles.scss';
+@import "../../../styles.scss";
 
 .project-management-wrapper {
   padding: 10vh 10vw;
@@ -27,4 +27,19 @@
 
 .preview-bottom-actions-wrapper {
   margin-bottom: 24px;
+}
+
+.engagement-list {
+  animation: slidein normal 0.5s ease;
+}
+
+@keyframes slidein {
+  from {
+    opacity: .1;
+    margin-left: -70px;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
 }
