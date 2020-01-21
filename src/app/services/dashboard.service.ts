@@ -34,6 +34,10 @@ export class DashboardService {
     return this.http.post(this.serverUrl + 'dashboard', projectConfig);
   }
 
+  checkProjectExistance(projectName): Observable<any> {
+    return this.http.get(this.serverUrl + `dashboard/is-project-exists/${projectName}`);
+  }
+
   getDashboard(): Observable<any> {
     return this.http.get(this.serverUrl + 'dashboard');
   }

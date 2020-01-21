@@ -157,9 +157,16 @@ export class ProjectSetupComponent implements OnInit {
   }
 
   checkValidity() {
+    if (this.currentRoute === '/name') {
+      let shouldDisable = false;
+      this.servise.customerProjectExistance.subscribe(status => {
+        shouldDisable = status;
+      });
+      return shouldDisable;
+    }
     if (this.currentRoute === '/features') {
       this.getFeaturesSelection();
-      return this.selectedFeatures.some(value => value.length === 0 ? true : false)
+      return this.selectedFeatures.some(value => value.length === 0 ? true : false);
     }
   }
 }

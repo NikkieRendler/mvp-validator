@@ -32,7 +32,8 @@ export class ProjectManagementComponent implements OnInit {
 
   showProjectPreview(project: ProjectConfig) {
     this.clearProjectConfig();
-    this.router.navigateByUrl(`/dashboard/project/${project.url}`);
+    window.open(`/dashboard/project/${project.url}`);
+    // this.router.navigateByUrl(`/dashboard/project/${project.url}`);
   }
 
   clearProjectConfig() {
