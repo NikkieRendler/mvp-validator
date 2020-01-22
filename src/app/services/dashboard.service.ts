@@ -34,6 +34,15 @@ export class DashboardService {
     return this.http.post(this.serverUrl + 'dashboard', projectConfig);
   }
 
+  editProject(projectConfig: ProjectConfig): Observable<any> {
+    return this.http.patch(this.serverUrl + `dashboard/${projectConfig.url}`, {
+      title: projectConfig.title,
+      theme: projectConfig.theme,
+      description: projectConfig.description,
+      features: projectConfig.features
+    })
+  }
+
   checkProjectExistance(projectName): Observable<any> {
     return this.http.get(this.serverUrl + `dashboard/is-project-exists/${projectName}`);
   }

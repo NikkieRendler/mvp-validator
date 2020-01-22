@@ -15,18 +15,40 @@
         <nz-divider nzType="vertical" style="height: 100%; background-color: rgba(0, 0, 0, 0.3);"></nz-divider>
     </div>
     <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="11" nzXl="11">
-        <nz-descriptions nzTitle="Project Info" nzBordered [nzColumn]="{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }">
+        <nz-descriptions [nzTitle]="projectInfoHeader" nzBordered
+            [nzColumn]="{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }">
+            <ng-template #projectInfoHeader>
+                <div style="display: flex; align-items: center;">
+                    <div>Project info</div>
+                    <!-- <button (click)="editProject()" nz-button nzType="link" style="margin-left: 5px;">
+                        <i nz-icon nzType="form" nzTheme="outline"></i>
+                    </button> -->
+                </div>
+            </ng-template>
             <nz-descriptions-item nzTitle="Name">
                 {{composedProject.name}}
             </nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Color theme">{{composedProject.theme}}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Title">{{composedProject.title}}</nz-descriptions-item>
-            <nz-descriptions-item nzTitle="Description">{{composedProject.description}}</nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Color theme">
+                <span nz-text nzEditable [(nzContent)]="composedProject.theme" (nzContentChange)="editProject()"></span>
+                <input [formControl]="colorControl" style="height: 0; width: 0; visibility: hidden;" #colorPickerInput
+                    [(colorPicker)]="composedProject.theme" (colorPickerChange)="changeColor($event)"
+                    [cpPosition]="'bottom'" [cpOutputFormat]="'hsla'" />
+                <i style="cursor: pointer; margin-left: 10px; color: #1890ff" (click)="colorPickerInput.click()" nz-icon nzType="bg-colors"
+                    nzTheme="outline"></i>
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Title">
+                <span nz-text nzEditable (nzContentChange)="editProject()" [(nzContent)]="composedProject.title"></span>
+            </nz-descriptions-item>
+            <nz-descriptions-item nzTitle="Description">
+                <span nz-text nzEditable (nzContentChange)="editProject()"
+                    [(nzContent)]="composedProject.description"></span>
+            </nz-descriptions-item>
             <nz-descriptions-item nzTitle="Features">
-                <span *ngFor="let feature of composedProject.features">
-                    {{feature}}
+                <div *ngFor="let feature of composedProject.features; let i = index;">
+                    <span nz-text nzEditable (nzContentChange)="editProject()"
+                        [(nzContent)]="composedProject.features[i]"></span>
                     <br>
-                </span>
+                </div>
             </nz-descriptions-item>
             <nz-descriptions-item nzTitle="Engagement">
                 <div nz-row nzType="flex" nzJustify="space-between" nzAlign="middle">
@@ -34,17 +56,65 @@
                         <b>{{composedProject.engagedUsers.length}}</b> users submitted
                     </div>
                     <div>
-                        <button (click)="showEngagementList()" [disabled]="composedProject.engagedUsers.length === 0" nz-button nzShape="circle" nzType="link">
+                        <button (click)="showEngagementList()" [disabled]="composedProject.engagedUsers.length === 0"
+                            nz-button nzShape="circle" nzType="link">
                             <i nz-icon nzType="right-circle" nzTheme="outline"></i>
                         </button>
                     </div>
                 </div>
             </nz-descriptions-item>
         </nz-descriptions>
+
+        <!-- <ng-template #editingProjectTemplate>
+            <form [formGroup]="editingFormGroup">
+                <nz-descriptions [nzTitle]="projectInfoHeader" nzBordered
+                    [nzColumn]="{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }">
+                    <ng-template #projectInfoHeader>
+                        <div style="display: flex; align-items: center;">
+                            <div>Editing project info</div>
+                            <button (click)="editProject()" nz-button nzType="link" style="margin-left: 5px;">
+                                <i nz-icon nzType="form" nzTheme="outline"></i>
+                            </button>
+                        </div>
+                    </ng-template>
+                    <nz-descriptions-item nzTitle="Name">
+                        {{composedProject.name}}
+                    </nz-descriptions-item>
+                    <nz-descriptions-item nzTitle="Color theme">{{composedProject.theme}}</nz-descriptions-item>
+                    <nz-descriptions-item nzTitle="Title">
+
+                        <input nz-input formControlName="theme" [value]="composedProject.title">
+
+                    </nz-descriptions-item>
+                    <nz-descriptions-item nzTitle="Description">{{composedProject.description}}</nz-descriptions-item>
+                    <nz-descriptions-item nzTitle="Features">
+                        <span *ngFor="let feature of composedProject.features">
+                            {{feature}}
+                            <br>
+                        </span>
+                    </nz-descriptions-item>
+                    <nz-descriptions-item nzTitle="Engagement">
+                        <div nz-row nzType="flex" nzJustify="space-between" nzAlign="middle">
+                            <div>
+                                <b>{{composedProject.engagedUsers.length}}</b> users submitted
+                            </div>
+                            <div>
+                                <button (click)="showEngagementList()"
+                                    [disabled]="composedProject.engagedUsers.length === 0" nz-button nzShape="circle"
+                                    nzType="link">
+                                    <i nz-icon nzType="right-circle" nzTheme="outline"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </nz-descriptions-item>
+                </nz-descriptions>
+            </form>
+        </ng-template> -->
     </div>
     <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="1" nzXl="1"></div>
     <div *ngIf="isEngagementListVisible" class="engagement-list" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="7" nzXl="7">
-        <nz-descriptions nzTitle="Engagement list" nzSize="small" nzBordered [nzColumn]="{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }">
+        <nz-descriptions nzTitle="Engagement list" nzSize="small" nzBordered
+            [nzColumn]="{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }">
             <nz-descriptions-item *ngFor="let user of composedProject.engagedUsers" nzTitle="{{user.email}}">
                 {{user.name}}
                 <br>
