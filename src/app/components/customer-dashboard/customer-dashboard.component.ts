@@ -21,6 +21,7 @@ export class CustomerDashboardComponent implements OnInit {
   getDashboard() {
     this.dashboardService.getDashboard().subscribe(res => {
       this.dashboard = res.projects.landingConfigs;
+      console.log("TCL: CustomerDashboardComponent -> getDashboard -> this.dashboard ", this.dashboard )
     });
   }
 

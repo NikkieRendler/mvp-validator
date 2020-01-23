@@ -12,6 +12,7 @@ export interface ProjectConfig {
   description: string;
   url?: string;
   engagedUsers?: Feedback[];
+  _id?: string;
 }
 
 export interface Feedback {
@@ -35,12 +36,12 @@ export class DashboardService {
   }
 
   editProject(projectConfig: ProjectConfig): Observable<any> {
-    return this.http.patch(this.serverUrl + `dashboard/${projectConfig.url}`, {
+    return this.http.patch(this.serverUrl + `dashboard/${projectConfig._id}`, {
       title: projectConfig.title,
       theme: projectConfig.theme,
       description: projectConfig.description,
       features: projectConfig.features
-    })
+    });
   }
 
   checkProjectExistance(projectName): Observable<any> {

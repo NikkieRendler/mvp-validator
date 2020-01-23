@@ -1,6 +1,4 @@
-<nz-header style="padding: 0 10vw;" nz-row nzType="flex" nzJustify="center">
-    <h2 nz-title class="app-name">Validia</h2>
-</nz-header>
+<app-header></app-header>
 <div [@templateChange] style="width: 80vw; margin: 0px auto;">
     <div nz-row class="project-setup-stage-wrapper">
 
@@ -25,7 +23,8 @@
                 <!-- Color stage -->
                 <ng-container *ngIf="currentRoute === '/theme'">
                     <div nz-col nzSpan="24">
-                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6" class="project-setup-stage-tips">
+                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6"
+                            class="project-setup-stage-tips">
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': firstColorScheme}"
                                 (click)="selectTheme(firstColorScheme)">
                                 <div style="height: 33%;"></div>
@@ -40,7 +39,8 @@
                             </div>
                         </nz-card>
 
-                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6" class="project-setup-stage-tips">
+                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6"
+                            class="project-setup-stage-tips">
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': secondColorScheme}"
                                 (click)="selectTheme(secondColorScheme)">
                                 <div style="height: 33%;"></div>
@@ -53,7 +53,8 @@
                             </div>
                         </nz-card>
 
-                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6" class="project-setup-stage-tips">
+                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6"
+                            class="project-setup-stage-tips">
                             <div class="project-setup-stage-theme" [ngStyle]="{'background-color': thirdColorScheme}"
                                 (click)="selectTheme(thirdColorScheme)">
                                 <div style="height: 33%;"></div>
@@ -68,7 +69,8 @@
                             </div>
                         </nz-card>
 
-                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6" class="project-setup-stage-tips">
+                        <nz-card nz-col nzXs="12" nzSm="12" nzMd="12" nzLg="6" nzXl="6"
+                            class="project-setup-stage-tips">
                             <div *ngIf="!customColorScheme; else customColorPicked" class="project-setup-stage-theme">
                             </div>
                             <ng-template #customColorPicked>

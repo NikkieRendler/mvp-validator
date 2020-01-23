@@ -76,7 +76,13 @@ export class ProjectManagementComponent implements OnInit {
     this.isEngagementListVisible = !this.isEngagementListVisible;
   }
 
+  assignNewFeature(index, changedValue) {
+    this.composedProject.features[index] = changedValue;
+    this.editProject();
+  }
+
   editProject() {
+
     this.dashboardService.editProject(this.composedProject).subscribe(res => {
       console.log(res);
     });

@@ -27,6 +27,7 @@ import { LoginComponent } from './components/login/login.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ProjectManagementComponent } from './components/project-management/project-management.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 registerLocaleData(en);
@@ -44,7 +45,8 @@ registerLocaleData(en);
     ProjectPreviewComponent,
     CustomerDashboardComponent,
     LoginComponent,
-    ProjectManagementComponent
+    ProjectManagementComponent,
+    HeaderComponent
   ],
   imports: [
     FlexLayoutModule,

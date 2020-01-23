@@ -1,0 +1,24 @@
+<nz-header style="padding: 0 10vw;" nz-row nzType="flex" nzJustify="space-between" nzAlign="middle">
+    <h2 nz-title class="app-name">Validia</h2>
+    <a *ngIf="!getToken(); else loggedTemplate" href="https://mvp-validator.herokuapp.com/auth/google/">
+        <button nz-button style="background-color: #d62d20; display: flex; align-items: center;">
+            <i style="color: whitesmoke; margin-right: -8px;" nz-icon nzType="google-plus" nzTheme="outline"></i>
+            <nz-divider nzType="vertical"></nz-divider>
+            <span style="color: whitesmoke;" nz-text>Sign in</span>
+        </button>
+    </a>
+    <ng-template #loggedTemplate>
+        <nz-avatar [nzSize]="38" nz-dropdown [nzDropdownMenu]="menu" nzIcon="user" [nzSrc]="userInfo.avatar">
+        </nz-avatar>
+        <nz-dropdown-menu #menu="nzDropdownMenu">
+            <ul nz-menu>
+                <li nz-menu-item class="avatar-menu-item" [routerLink]="['/dashboard']">Dashboard</li>
+                <li nz-menu-item class="avatar-menu-item" [routerLink]="['/name']">Resources</li>
+                <li nz-menu-divider></li>
+                <li nz-menu-item style="color: #d62d20; cursor: pointer;" class="avatar-menu-item" (click)="logout()">
+                    Logout
+                </li>
+            </ul>
+        </nz-dropdown-menu>
+    </ng-template>
+</nz-header>

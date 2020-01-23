@@ -1,6 +1,4 @@
-<nz-header style="padding: 0 10vw;" nz-row nzType="flex" nzJustify="center">
-    <h2 [routerLink]="['/main']" style="cursor: pointer;" nz-title class="app-name">Validia</h2>
-</nz-header>
+<app-header></app-header>
 <div nz-row class="project-management-wrapper">
     <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="3" nzXl="3" class="secondary-navigation">
         <div class="secondary-navigation-item-wrapper" (click)="showProjectPreview(composedProject)">
@@ -9,6 +7,7 @@
                 class="secondary-navigation-item">
                 <span><b>{{composedProject.name}}</b></span>
             </div>
+            <button nz-button nzType="link" (click)="showProjectPreview(composedProject)">Live link</button>
         </div>
     </div>
     <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="2" nzXl="2" style="height: 70vh; text-align: center;">
@@ -33,8 +32,8 @@
                 <input [formControl]="colorControl" style="height: 0; width: 0; visibility: hidden;" #colorPickerInput
                     [(colorPicker)]="composedProject.theme" (colorPickerChange)="changeColor($event)"
                     [cpPosition]="'bottom'" [cpOutputFormat]="'hsla'" />
-                <i style="cursor: pointer; margin-left: 10px; color: #1890ff" (click)="colorPickerInput.click()" nz-icon nzType="bg-colors"
-                    nzTheme="outline"></i>
+                <i style="cursor: pointer; margin-left: 10px; color: #1890ff" (click)="colorPickerInput.click()" nz-icon
+                    nzType="bg-colors" nzTheme="outline"></i>
             </nz-descriptions-item>
             <nz-descriptions-item nzTitle="Title">
                 <span nz-text nzEditable (nzContentChange)="editProject()" [(nzContent)]="composedProject.title"></span>
@@ -45,7 +44,7 @@
             </nz-descriptions-item>
             <nz-descriptions-item nzTitle="Features">
                 <div *ngFor="let feature of composedProject.features; let i = index;">
-                    <span nz-text nzEditable (nzContentChange)="editProject()"
+                    <span nz-text nzEditable (nzContentChange)="assignNewFeature(i, $event)"
                         [(nzContent)]="composedProject.features[i]"></span>
                     <br>
                 </div>

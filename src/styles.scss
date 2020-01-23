@@ -5,12 +5,8 @@ $main-text: 18px;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-nz-header {
-    background-color: #1890ff;
-}
-
 .app-name {
-    color: whitesmoke;
-    margin: 0;
-    line-height: unset;
+    color: whitesmoke !important;
+    margin: 0 !important;
+    line-height: unset !important;
 }
