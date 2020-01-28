@@ -39,6 +39,7 @@ export class CustomerAppFeaturesComponent implements OnInit {
       }
     } else {
       this.service.customerProjectFeatures.subscribe(res => {
+      console.log("TCL: CustomerAppFeaturesComponent -> ngOnInit -> res", res)
         res.map(i => {
           this.addFeature();
         });
@@ -46,6 +47,7 @@ export class CustomerAppFeaturesComponent implements OnInit {
     }
 
     this.service.customerProjectFeatures.subscribe(res => {
+    console.log("TCL: CustomerAppFeaturesComponent -> ngOnInit -> res", res)
       this.featuresArray.setValue(res);
     });
   }

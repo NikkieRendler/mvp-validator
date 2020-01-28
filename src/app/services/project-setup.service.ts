@@ -28,11 +28,11 @@ export class ProjectSetupService {
   // customerProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>("Sake expires from child to child in a silver screen portation. It's californication. Dream of californication");
 
   customerProjectDesign: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  customerProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>('hsl(321, 90%, 25%)');
-  customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>('Тест');
-  customerProjectExistance: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
-  customerProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>('Чё такой грустный?');
-  customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(['Давай за нас', "Давай за всю хурму", "Да так чтоб навек"]);
-  customerProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>('И да прибудет с нами сила, во имя осла и мыла и святого пуха');
+  customerProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  customerProjectExistance: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
+  customerProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  customerProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>('');
   constructor() { }
 }
