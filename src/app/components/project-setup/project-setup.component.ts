@@ -133,7 +133,7 @@ export class ProjectSetupComponent implements OnInit {
   getFeaturesSelection() {
     this.servise.customerProjectFeatures.subscribe(res => {
       this.selectedFeatures = res;
-    })
+    });
   }
 
   selectDesign(selectedDesign) {
@@ -157,16 +157,36 @@ export class ProjectSetupComponent implements OnInit {
   }
 
   checkValidity() {
+    let shouldDisable = false;
+    if (this.currentRoute === '/theme') {
+      this.servise.customerProjectTheme.subscribe(res => {
+        res === '' ? shouldDisable = true : null;
+      });
+    }
     if (this.currentRoute === '/name') {
-      let shouldDisable = false;
       this.servise.customerProjectExistance.subscribe(status => {
         shouldDisable = status;
       });
-      return shouldDisable;
+    }
+    if (this.currentRoute === '/title') {
+      this.servise.customerProjectTitle.subscribe(res => {
+        res === '' ? shouldDisable = true : null;
+      });
+    }
+    if (this.currentRoute === '/description') {
+      this.servise.customerProjectDescription.subscribe(res => {
+        res === '' ? shouldDisable = true : null;
+      })
     }
     if (this.currentRoute === '/features') {
       this.getFeaturesSelection();
-      return this.selectedFeatures.some(value => value.length === 0 ? true : false);
+      const checkFeaturesEmpty = () => {
+        if (this.selectedFeatures.some(value => value === '' ? true : false) || this.selectedFeatures.length === 0) {
+          return true;
+        }
+      };
+      shouldDisable = checkFeaturesEmpty();
     }
+    return shouldDisable;
   }
 }

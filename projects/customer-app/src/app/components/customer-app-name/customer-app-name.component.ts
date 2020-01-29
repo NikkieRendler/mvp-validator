@@ -15,9 +15,9 @@ import { DashboardService } from 'src/app/services/dashboard.service';
 export class CustomerAppNameComponent implements OnInit {
 
   currentRoute: string;
-  selectedName: string = '';
+  selectedName: String = '';
   nameControl: FormControl = new FormControl({});
-  nameUnique: boolean;
+  nameUnique: boolean = false;
 
   constructor(
     private service: ProjectSetupService,
@@ -30,9 +30,18 @@ export class CustomerAppNameComponent implements OnInit {
     this.service.customerProjectName.subscribe(res => {
       this.selectedName = res;
     });
+    this.dashboardService.checkProjectExistance(this.selectedName).subscribe(status => {
+      this.setNameValidity(status);
+      if (status) {
+        this.nameUnique = false;
+      } else {
+        this.nameUnique = true;
+      }
+    });
     if (this.currentRoute === '/name') {
+      this.selectedName.trim() === '' ? this.setNameValidity(true) : null;
       this.nameControl.valueChanges.pipe(
-        debounceTime(250)
+        debounceTime(150)
       ).subscribe(res => this.dashboardService.checkProjectExistance(res).subscribe(status => {
         this.setNameValidity(status);
         if (status) {
@@ -48,13 +57,15 @@ export class CustomerAppNameComponent implements OnInit {
     this.service.customerProjectName.next(event.target.value);
   }
 
-  setNameValidity(status) {
-    this.service.customerProjectExistance.next(status)
+  setNameValidity(status: boolean) {
+    this.service.customerProjectExistance.next(status);
   }
 
   nextStage() {
-    const stage = STAGES.indexOf(this.router.url);
-    this.router.navigateByUrl(STAGES[stage + 1]);
+    if (this.nameUnique) {
+      const stage = STAGES.indexOf(this.router.url);
+      this.router.navigateByUrl(STAGES[stage + 1]);
+    }
   }
 
 }

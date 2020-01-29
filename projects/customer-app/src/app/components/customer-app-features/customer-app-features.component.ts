@@ -33,21 +33,11 @@ export class CustomerAppFeaturesComponent implements OnInit {
       this.selectedTheme = res;
     });
 
-    if (this.currentRoute === '/features') {
-      for (let i = 0; i < 3; i++) {
-        this.addFeature();
-      }
-    } else {
-      this.service.customerProjectFeatures.subscribe(res => {
-      console.log("TCL: CustomerAppFeaturesComponent -> ngOnInit -> res", res)
-        res.map(i => {
-          this.addFeature();
-        });
-      });
-    }
+    this.service.customerProjectFeatures.value.forEach(i => {
+      this.addFeature();
+    });
 
     this.service.customerProjectFeatures.subscribe(res => {
-    console.log("TCL: CustomerAppFeaturesComponent -> ngOnInit -> res", res)
       this.featuresArray.setValue(res);
     });
   }
@@ -80,7 +70,7 @@ export class CustomerAppFeaturesComponent implements OnInit {
   }
 
   checkValidity() {
-    return this.featuresArray.value.some(value => value.length === 0 ? true : false)
+    return this.featuresArray.value.some((value: String) => value.trim().length === 0 ? true : false);
   }
 
 }

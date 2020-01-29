@@ -9,7 +9,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./customer-app-description.component.scss"]
 })
 export class CustomerAppDescriptionComponent implements OnInit {
-  selectedDescription: string;
+  selectedDescription: String;
   currentRoute: string;
 
   constructor(private service: ProjectSetupService, private router: Router) { }
@@ -27,7 +27,9 @@ export class CustomerAppDescriptionComponent implements OnInit {
   }
 
   nextStage() {
-    const stage = STAGES.indexOf(this.router.url);
-    this.router.navigateByUrl(STAGES[stage + 1]);
+    if (this.selectedDescription.trim().length > 0) {
+      const stage = STAGES.indexOf(this.router.url);
+      this.router.navigateByUrl(STAGES[stage + 1]);
+    }
   }
 }

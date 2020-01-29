@@ -1,9 +1,10 @@
 <form *ngIf="currentRoute === '/name'; else customerAppName" nz-text class="project-name">
     <nz-form-item>
-        <nz-form-control [nzValidateStatus]="selectedName.length === 16 ? 'warning' : !nameUnique ? 'error' : null"
+        <nz-form-control
+            [nzValidateStatus]="selectedName.length === 16 ? 'warning' : !nameUnique && selectedName.length > 0 ? 'error' : null"
             nzWarningTip="Max. symbols used. Name should be short and catchy" nzErrorTip="Such project already exists">
-            <input [formControl]="nameControl" maxlength="16" nz-input (keyup.enter)="nextStage()" class="title-input" [value]="selectedName"
-                (keyup)="saveInputValue($event)" />
+            <input [formControl]="nameControl" maxlength="16" nz-input (keyup.enter)="nextStage()" class="title-input"
+                [value]="selectedName" (keyup)="saveInputValue($event)" />
         </nz-form-control>
     </nz-form-item>
 </form>

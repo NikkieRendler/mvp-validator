@@ -11,16 +11,15 @@ import { Router } from '@angular/router';
 export class CustomerAppTitleComponent implements OnInit {
 
   currentRoute: string;
-  selectedTitle: string;
+  selectedTitle: String;
 
   constructor(private service: ProjectSetupService, private router: Router) { }
 
   ngOnInit() {
     this.currentRoute = this.router.url;
-
     this.service.customerProjectTitle.subscribe(res => {
       this.selectedTitle = res;
-    })
+    });
 
   }
 
@@ -29,8 +28,10 @@ export class CustomerAppTitleComponent implements OnInit {
   }
 
   nextStage() {
-    const stage = STAGES.indexOf(this.router.url);
-    this.router.navigateByUrl(STAGES[stage + 1]);
+    if (this.selectedTitle.trim().length > 0) {
+      const stage = STAGES.indexOf(this.router.url);
+      this.router.navigateByUrl(STAGES[stage + 1]);
+    }
   }
 
 }

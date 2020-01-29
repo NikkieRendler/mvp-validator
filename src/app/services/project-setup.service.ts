@@ -23,6 +23,7 @@ export class ProjectSetupService {
   // customerProjectDesign: BehaviorSubject<string> = new BehaviorSubject<string>('flat');
   // customerProjectTheme: BehaviorSubject<string> = new BehaviorSubject<string>('hsl(321, 90%, 25%)');
   // customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>('Project name');
+  // customerProjectExistance: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   // customerProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>('We are the legion you despise');
   // customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(['Until the world cames crushing down', 'So let us stand out battleground', 'Everything that I need']);
   // customerProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>("Sake expires from child to child in a silver screen portation. It's californication. Dream of californication");
@@ -32,7 +33,7 @@ export class ProjectSetupService {
   customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>('');
   customerProjectExistance: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
   customerProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
+  customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>(['', '', '']);
   customerProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>('');
   constructor() { }
 }
