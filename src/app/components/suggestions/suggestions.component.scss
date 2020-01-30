@@ -1,0 +1,25 @@
+@import '../../../styles.scss';
+
+.suggestions-wrapper {
+  padding: 50px 10vw;
+}
+
+.resource-title {
+    font-weight: bold;
+    font-size: $heading-text;
+}
+.resource-description {
+    font-size: $main-text;
+}
+
+::ng-deep.ant-timeline-item-content {
+    position: relative;
+    top: -14px;
+    margin: 0 0 0px 30px;
+    word-break: break-word;
+}
+
+.preview-bottom-actions-wrapper {
+    margin-bottom: 24px;
+  }
+  

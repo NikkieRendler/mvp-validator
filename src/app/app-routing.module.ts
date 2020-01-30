@@ -7,6 +7,7 @@ import { ProjectPreviewComponent } from './components/project-preview/project-pr
 import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProjectManagementComponent } from './components/project-management/project-management.component';
+import { SuggestionsComponent } from './components/suggestions/suggestions.component';
 
 
 const routes: Routes = [
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     component: CustomerDashboardComponent,
     path: 'dashboard'
+  },
+  {
+    component: SuggestionsComponent,
+    path: 'suggestions'
   },
   {
     path: 'login/success/:token',

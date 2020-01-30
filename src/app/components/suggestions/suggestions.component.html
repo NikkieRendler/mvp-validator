@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="suggestions-wrapper">
+    <nz-timeline>
+        <nz-timeline-item [nzDot]="circleDot">
+            <div class="resource-title">Product Hunt</div>
+            <span class="resource-description">Create a services site 2015-09-01 Create a services site 2015-09-01 Create a services site 2015-09-01</span>
+        </nz-timeline-item>
+        <nz-timeline-item [nzDot]="circleDot">
+            <div class="resource-title">Product Hunt</div>
+            <span class="resource-description">Create a services site 2015-09-01 Create a services site 2015-09-01</span>
+        </nz-timeline-item>
+        <nz-timeline-item [nzDot]="circleDot">
+            <div class="resource-title">Product Hunt</div>
+            <span class="resource-description">Create a services site 2015-09-01 Create a services site 2015-09-01 Create a services site 2015-09-01</span>
+        </nz-timeline-item>
+        <nz-timeline-item [nzDot]="circleDot">
+            <div class="resource-title">Product Hunt</div>
+            <span class="resource-description">Create a services site 2015-09-01 Create a services site 2015-09-01 </span>
+        </nz-timeline-item>
+        <nz-timeline-item [nzDot]="circleDot">
+            <div class="resource-title">Product Hunt</div>
+            <span class="resource-description">Create a services site 2015-09-01</span>
+        </nz-timeline-item>
+        <nz-timeline-item [nzDot]="circleDot">
+            <div class="resource-title">Product Hunt</div>
+            <span class="resource-description">Create a services site 2015-09-01</span>
+        </nz-timeline-item>
+    </nz-timeline>
+    <ng-template #circleDot>
+        <i nz-icon nzType="right-circle" style="font-size: 20px;" nzTheme="outline"></i>
+    </ng-template>
+</div>
+
+<div nz-row>
+    <div nz-row class="preview-bottom-actions-wrapper">
+        <div nz-col nzSpan="8" style="display: flex; justify-content: center;">
+            <button [routerLink]="['/dashboard']" nz-button>
+                <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard
+            </button>
+        </div>
+        <div nz-col nzSpan="8"></div>
+        <div nz-col nzSpan="8"></div>
+    </div>
+</div>
