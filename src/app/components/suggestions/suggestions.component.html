@@ -1,38 +1,45 @@
 <app-header></app-header>
-<div class="suggestions-wrapper">
-    <nz-timeline>
+<div nz-row class="suggestions-wrapper">
+    <nz-timeline nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
         <nz-timeline-item [nzDot]="circleDot">
-            <div class="resource-title">Product Hunt</div>
-            <span class="resource-description">Create a services site 2015-09-01 Create a services site 2015-09-01 Create a services site 2015-09-01</span>
+            <div (click)="openLink('https://www.producthunt.com')" class="resource-block">
+                <div class="resource-title">Product Hunt</div>
+                <a class="resource-description">https://www.producthunt.com</a> <br>
+                <span class="resource-description">Доносите свою идею другим людям.</span>
+            </div>
         </nz-timeline-item>
         <nz-timeline-item [nzDot]="circleDot">
-            <div class="resource-title">Product Hunt</div>
-            <span class="resource-description">Create a services site 2015-09-01 Create a services site 2015-09-01</span>
+            <div (click)="openLink('https://www.reddit.com/r/startups')" class="resource-block">
+                <div class="resource-title">Reddit</div>
+                <a class="resource-description">https://www.reddit.com/r/startups/</a> <br>
+                <span class="resource-description">Получите быстрый фидбек от пользователей или найдите
+                    единомышленников на
+                    доске /startups</span>
+            </div>
         </nz-timeline-item>
         <nz-timeline-item [nzDot]="circleDot">
-            <div class="resource-title">Product Hunt</div>
-            <span class="resource-description">Create a services site 2015-09-01 Create a services site 2015-09-01 Create a services site 2015-09-01</span>
+            <div (click)="openLink('https://www.quora.com')" class="resource-block">
+                <div class="resource-title">Quora</div>
+                <a class="resource-description">https://www.quora.com</a> <br>
+                <span class="resource-description">Задавайте вопросы, получайте честные ответы.</span>
+            </div>
         </nz-timeline-item>
         <nz-timeline-item [nzDot]="circleDot">
-            <div class="resource-title">Product Hunt</div>
-            <span class="resource-description">Create a services site 2015-09-01 Create a services site 2015-09-01 </span>
-        </nz-timeline-item>
-        <nz-timeline-item [nzDot]="circleDot">
-            <div class="resource-title">Product Hunt</div>
-            <span class="resource-description">Create a services site 2015-09-01</span>
-        </nz-timeline-item>
-        <nz-timeline-item [nzDot]="circleDot">
-            <div class="resource-title">Product Hunt</div>
-            <span class="resource-description">Create a services site 2015-09-01</span>
+            <div>
+                <div class="resource-title">Facebook, Instagram, Twitter, LinkedIn</div>
+                <span class="resource-description">Расскажите о своих идеях у себя в социальных сетях!
+                    Друзья и знакомые - самый быстрый и честный источник мнений</span>
+            </div>
         </nz-timeline-item>
     </nz-timeline>
+    <div class="main-image" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12"></div>
     <ng-template #circleDot>
         <i nz-icon nzType="right-circle" style="font-size: 20px;" nzTheme="outline"></i>
     </ng-template>
 </div>
 
 <div nz-row>
-    <div nz-row class="preview-bottom-actions-wrapper">
+    <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" nzXl="24" class="preview-bottom-actions-wrapper">
         <div nz-col nzSpan="8" style="display: flex; justify-content: center;">
             <button [routerLink]="['/dashboard']" nz-button>
                 <i nz-icon nzType="arrow-left" nzTheme="outline"></i> Dashboard

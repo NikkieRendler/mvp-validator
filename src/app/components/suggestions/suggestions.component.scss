@@ -1,25 +1,36 @@
-@import '../../../styles.scss';
+@import "../../../styles.scss";
 
 .suggestions-wrapper {
   padding: 50px 10vw;
 }
 
+.main-image {
+  height: 70vh;
+  background-image: url("../../../assets/images/test_image.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.resource-block {
+  cursor: pointer;
+}
+
 .resource-title {
-    font-weight: bold;
-    font-size: $heading-text;
+  font-weight: bold;
+  font-size: $heading-text;
 }
 .resource-description {
-    font-size: $main-text;
+  font-size: $main-text;
 }
 
 ::ng-deep.ant-timeline-item-content {
-    position: relative;
-    top: -14px;
-    margin: 0 0 0px 30px;
-    word-break: break-word;
+  position: relative;
+  top: -14px;
+  margin: 0 0 0px 30px;
+  word-break: break-word;
 }
 
 .preview-bottom-actions-wrapper {
-    margin-bottom: 24px;
-  }
-  
+  margin-bottom: 24px;
+}

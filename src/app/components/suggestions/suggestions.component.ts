@@ -12,4 +12,8 @@ export class SuggestionsComponent implements OnInit {
   ngOnInit() {
   }
 
+  openLink(link) {
+    window.open(link);
+  }
+
 }
