@@ -10,7 +10,9 @@
             </button>
         </div>
         <div *ngIf="!isUserLogged; else userLoggedTemplate" nz-col nzSpan="8" class="preview-signup-wrapper">
-            <button (click)="showModal()" nz-button nzType="primary">Sign up to manage this project</button>
+            <button (click)="showModal()" nz-button nzType="primary">
+                <i nz-icon nzType="login" nzTheme="outline"></i> Sign up to manage this project
+            </button>
         </div>
         <ng-template #userLoggedTemplate>
             <div nz-col nzSpan="8" style="display: flex; justify-content: center;">

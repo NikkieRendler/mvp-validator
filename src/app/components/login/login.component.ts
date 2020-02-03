@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DashboardService, ProjectConfig } from 'src/app/services/dashboard.service';
 import { ProjectSetupService } from 'src/app/services/project-setup.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private dashboardService: DashboardService,
-    private projectSetupService: ProjectSetupService
+    private projectSetupService: ProjectSetupService,
+    private authService: AuthService
   ) {
 
   }
@@ -23,14 +25,21 @@ export class LoginComponent implements OnInit {
     const token = this.route.snapshot.paramMap.get('token');
     localStorage.setItem('token', token);
     const createdAppConfig: ProjectConfig = this.getProjectFromLocalStorage();
-    if (createdAppConfig && token) {
-      this.dashboardService.createProject(createdAppConfig).subscribe(res => {
-        localStorage.removeItem('project-preview');
-        this.router.navigateByUrl('/dashboard');
+    if (token) {
+      let userInfo;
+      this.authService.getUserInfo().subscribe(res => {
+        userInfo = res;
+        localStorage.setItem('userInfo', JSON.stringify(userInfo.user));
       });
-    } else {
+      if (createdAppConfig) {
+        this.dashboardService.createProject(createdAppConfig).subscribe(res => {
+          localStorage.removeItem('project-preview');
+          this.router.navigateByUrl('/dashboard');
+        });
+      }
       this.router.navigateByUrl('/dashboard');
     }
+
   }
 
   getProjectFromLocalStorage(): ProjectConfig {

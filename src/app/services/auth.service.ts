@@ -4,6 +4,14 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
+
+export interface User {
+  _id: String,
+  firstName: String,
+  lastName: String,
+  avatar: String,
+  email: String
+}
 @Injectable({
   providedIn: 'root'
 })

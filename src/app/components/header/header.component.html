@@ -1,5 +1,5 @@
 <nz-header style="padding: 0 10vw;" nz-row nzType="flex" nzJustify="space-between" nzAlign="middle">
-    <h2 nz-title class="app-name">Validia</h2>
+    <h2 [routerLink]="['/dashboard']" nz-title class="app-name">Validia</h2>
     <a *ngIf="!getToken(); else loggedTemplate" href="https://mvp-validator.herokuapp.com/auth/google/">
         <button nz-button style="background-color: #d62d20; display: flex; align-items: center;">
             <i style="color: whitesmoke; margin-right: -8px;" nz-icon nzType="google-plus" nzTheme="outline"></i>
@@ -8,17 +8,25 @@
         </button>
     </a>
     <ng-template #loggedTemplate>
-        <nz-avatar [nzSize]="38" nz-dropdown [nzDropdownMenu]="menu" nzIcon="user" [nzSrc]="userInfo.avatar">
-        </nz-avatar>
-        <nz-dropdown-menu #menu="nzDropdownMenu">
-            <ul nz-menu>
-                <li nz-menu-item class="avatar-menu-item" [routerLink]="['/dashboard']">Dashboard</li>
-                <li nz-menu-item class="avatar-menu-item" [routerLink]="['/suggestions']">Resources</li>
-                <li nz-menu-divider></li>
-                <li nz-menu-item style="color: #d62d20; cursor: pointer;" class="avatar-menu-item" (click)="logout()">
-                    Logout
-                </li>
-            </ul>
-        </nz-dropdown-menu>
+        <div nz-dropdown [nzDropdownMenu]="menu" class="avatar-wrapper">
+            <nz-avatar [nzSize]="38" nzIcon="user" [nzSrc]="userInfo.avatar">
+            </nz-avatar>
+            <span style="padding-left: 5px;" nz-text>{{userInfo.firstName}} {{userInfo.lastName}}</span>
+            <i style="padding-left: 5px;" nz-icon nzType="caret-down" nzTheme="outline"></i>
+            <nz-dropdown-menu #menu="nzDropdownMenu">
+                <ul nz-menu>
+                    <li nz-menu-item class="avatar-menu-item" [routerLink]="['/dashboard']"> <i nz-icon
+                            nzType="unordered-list" nzTheme="outline"></i> Dashboard</li>
+                    <li nz-menu-item class="avatar-menu-item" [routerLink]="['/suggestions']"><i nz-icon
+                            nzType="info-circle" nzTheme="outline"></i> Resources</li>
+                    <li nz-menu-divider></li>
+                    <li nz-menu-item style="color: #d62d20; cursor: pointer;" class="avatar-menu-item"
+                        (click)="logout()">
+                        <i nz-icon nzType="logout" nzTheme="outline"></i> Logout
+                    </li>
+                </ul>
+            </nz-dropdown-menu>
+        </div>
+
     </ng-template>
 </nz-header>

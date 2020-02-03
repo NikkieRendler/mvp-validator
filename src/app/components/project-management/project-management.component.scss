@@ -20,8 +20,6 @@
   }
   .secondary-navigation-item:hover {
     cursor: pointer;
-    color: #fff;
-    border: 1px #fff solid;
   }
 }
 
@@ -33,9 +31,18 @@
   animation: slidein normal 0.5s ease;
 }
 
+.delete-button {
+  color: #ff4d4f;
+}
+
+.delete-button:hover {
+  color: whitesmoke;
+  background-color: #ff4d4f;
+}
+
 @keyframes slidein {
   from {
-    opacity: .1;
+    opacity: 0.1;
     margin-left: -70px;
   }
   to {

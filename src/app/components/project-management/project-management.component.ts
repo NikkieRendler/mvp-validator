@@ -22,6 +22,7 @@ export class ProjectManagementComponent implements OnInit {
   colorControl: FormControl = new FormControl();
 
   testStr: string;
+  modalView: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -82,10 +83,24 @@ export class ProjectManagementComponent implements OnInit {
   }
 
   editProject() {
-
     this.dashboardService.editProject(this.composedProject).subscribe(res => {
       console.log(res);
     });
+  }
+
+  deleteProject(id) {
+    this.dashboardService.deleteProject(id).subscribe(res => {
+      console.log(res);
+      this.router.navigateByUrl('/dashboard');
+    });
+  }
+
+  toggleDeleteModal() {
+    this.modalView = !this.modalView;
+  }
+
+  handleCancel(): void {
+    this.modalView = false;
   }
 
   openColorPicker() {

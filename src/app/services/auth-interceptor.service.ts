@@ -3,6 +3,7 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { catchError } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 
 @Injectable()
@@ -28,7 +29,7 @@ export class AuthInterceptorService implements HttpInterceptor {
           this.authService.logout();
         }
       }
-      return Observable.throw(err);
+      return throwError(err)
     })
     );
   }

@@ -63,52 +63,20 @@
                 </div>
             </nz-descriptions-item>
         </nz-descriptions>
-
-        <!-- <ng-template #editingProjectTemplate>
-            <form [formGroup]="editingFormGroup">
-                <nz-descriptions [nzTitle]="projectInfoHeader" nzBordered
-                    [nzColumn]="{ xxl: 1, xl: 1, lg: 1, md: 1, sm: 1, xs: 1 }">
-                    <ng-template #projectInfoHeader>
-                        <div style="display: flex; align-items: center;">
-                            <div>Editing project info</div>
-                            <button (click)="editProject()" nz-button nzType="link" style="margin-left: 5px;">
-                                <i nz-icon nzType="form" nzTheme="outline"></i>
-                            </button>
-                        </div>
-                    </ng-template>
-                    <nz-descriptions-item nzTitle="Name">
-                        {{composedProject.name}}
-                    </nz-descriptions-item>
-                    <nz-descriptions-item nzTitle="Color theme">{{composedProject.theme}}</nz-descriptions-item>
-                    <nz-descriptions-item nzTitle="Title">
-
-                        <input nz-input formControlName="theme" [value]="composedProject.title">
-
-                    </nz-descriptions-item>
-                    <nz-descriptions-item nzTitle="Description">{{composedProject.description}}</nz-descriptions-item>
-                    <nz-descriptions-item nzTitle="Features">
-                        <span *ngFor="let feature of composedProject.features">
-                            {{feature}}
-                            <br>
-                        </span>
-                    </nz-descriptions-item>
-                    <nz-descriptions-item nzTitle="Engagement">
-                        <div nz-row nzType="flex" nzJustify="space-between" nzAlign="middle">
-                            <div>
-                                <b>{{composedProject.engagedUsers.length}}</b> users submitted
-                            </div>
-                            <div>
-                                <button (click)="showEngagementList()"
-                                    [disabled]="composedProject.engagedUsers.length === 0" nz-button nzShape="circle"
-                                    nzType="link">
-                                    <i nz-icon nzType="right-circle" nzTheme="outline"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </nz-descriptions-item>
-                </nz-descriptions>
-            </form>
-        </ng-template> -->
+        <div style="display: flex; justify-content: flex-start; padding: 10px 0;">
+            <button (click)="toggleDeleteModal()" class="delete-button" nz-button nzType="link">Delete project</button>
+        </div>
+        <nz-modal [(nzVisible)]="modalView" [nzTitle]="null" [nzFooter]="deleteFooter"
+            (nzOnCancel)="handleCancel()">
+                <div style="text-align: center">
+                    Are you sure you want to delete this project? <br> 
+                    This cannot be undone
+                </div>
+                <ng-template #deleteFooter>
+                    <button nz-button nzType="default" (click)="handleCancel()">Cancel</button>
+                    <button nz-button nzType="danger" (click)="deleteProject(composedProject._id)">Delete</button>
+                </ng-template>
+        </nz-modal>
     </div>
     <div nz-col nzXs="0" nzSm="0" nzMd="0" nzLg="1" nzXl="1"></div>
     <div *ngIf="isEngagementListVisible" class="engagement-list" nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="7" nzXl="7">
@@ -122,6 +90,8 @@
         </nz-descriptions>
     </div>
 </div>
+
+
 <div nz-row>
     <div nz-row class="preview-bottom-actions-wrapper">
         <div nz-col nzSpan="8" style="display: flex; justify-content: center;">

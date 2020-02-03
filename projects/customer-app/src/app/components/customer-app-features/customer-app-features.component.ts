@@ -26,20 +26,24 @@ export class CustomerAppFeaturesComponent implements OnInit {
 
   ngOnInit() {
     this.featuresForm = this.fb.group({
-      featuresArray: this.fb.array([])
+      featuresArray: this.fb.array([' ', ' ', ' '])
     });
     this.currentRoute = this.router.url;
     this.service.customerProjectTheme.subscribe(res => {
       this.selectedTheme = res;
     });
-
-    this.service.customerProjectFeatures.value.forEach(i => {
-      this.addFeature();
-    });
-
     this.service.customerProjectFeatures.subscribe(res => {
+      console.log(res);
+      console.log(this.featuresArray);
+      for (let i = res.length; i > this.featuresArray.value.length;) {
+        this.addFeature();
+      };
       this.featuresArray.setValue(res);
     });
+
+    // this.service.customerProjectFeatures.subscribe(res => {
+    //   this.featuresArray.setValue(res);
+    // });
   }
 
   addFeature() {
@@ -60,6 +64,7 @@ export class CustomerAppFeaturesComponent implements OnInit {
 
   saveFeaturesValue() {
     this.service.customerProjectFeatures.next(this.featuresArray.value);
+    console.log("TCL: CustomerAppFeaturesComponent -> saveFeaturesValue -> this.featuresArray.value", this.featuresArray.value)
   }
 
   nextStage() {
