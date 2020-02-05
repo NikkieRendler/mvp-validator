@@ -32,33 +32,33 @@ export class ProjectManagementComponent implements OnInit {
     private fb: FormBuilder
   ) { }
 
-  get featuresFormArray() {
-    return this.editingFormGroup.get('features') as FormArray;
-  }
+  // get featuresFormArray() {
+  //   return this.editingFormGroup.get('features') as FormArray;
+  // }
 
   ngOnInit() {
     this.projectUrl = this.route.snapshot.paramMap.get('url');
     this.isUserLogged = localStorage.getItem('token') !== null;
     this.dashboardService.getProjectConfig(this.projectUrl).subscribe(res => {
       this.composedProject = res.landingConfigs[0];
-      this.editingFormGroup = this.fb.group({
-        theme: [null],
-        title: [null],
-        description: [null],
-        features: this.fb.array([])
-      });
-      this.composedProject.features.map(i => {
-        this.addFeatureControl();
-      });
+      // this.editingFormGroup = this.fb.group({
+      //   theme: [''],
+      //   title: [''],
+      //   description: [''],
+      //   features: this.fb.array([])
+      // });
+      // this.composedProject.features.map(i => {
+      //   this.addFeatureControl();
+      // });
     });
     this.colorControl.valueChanges.pipe(
       debounceTime(200)
     ).subscribe(res => this.editProject());
   }
 
-  addFeatureControl() {
-    this.featuresFormArray.push(this.fb.control(''));
-  }
+  // addFeatureControl() {
+  //   this.featuresFormArray.push(this.fb.control(''));
+  // }
 
   showProjectPreview(project: ProjectConfig) {
     this.clearProjectConfig();
@@ -83,9 +83,10 @@ export class ProjectManagementComponent implements OnInit {
   }
 
   editProject() {
-    this.dashboardService.editProject(this.composedProject).subscribe(res => {
-      console.log(res);
+    setTimeout(() => {
+      this.dashboardService.editProject(this.composedProject).subscribe();
     });
+
   }
 
   deleteProject(id) {
@@ -109,7 +110,7 @@ export class ProjectManagementComponent implements OnInit {
   }
 
   changeColor(event) {
-    this.colorControl.setValue(event)
+    this.colorControl.setValue(event);
   }
 
 }

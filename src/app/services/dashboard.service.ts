@@ -36,12 +36,9 @@ export class DashboardService {
   }
 
   editProject(projectConfig: ProjectConfig): Observable<any> {
-    return this.http.patch(this.serverUrl + `dashboard/${projectConfig._id}`, {
-      title: projectConfig.title,
-      theme: projectConfig.theme,
-      description: projectConfig.description,
-      features: projectConfig.features
-    });
+    console.log("TCL: DashboardService -> constructor -> projectConfig", projectConfig)
+
+    return this.http.put(this.serverUrl + `dashboard/${projectConfig._id}`, projectConfig);
   }
 
   checkProjectExistance(projectName): Observable<any> {
