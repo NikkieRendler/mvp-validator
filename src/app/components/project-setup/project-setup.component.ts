@@ -8,10 +8,10 @@ import {
   transition
 } from '@angular/animations';
 import { Router } from '@angular/router';
+import { combineLatest } from 'rxjs';
 
 export const STAGES = [
   '/theme',
-  // '/design',
   '/name',
   '/title',
   '/features',
@@ -29,13 +29,13 @@ export const STAGES = [
         'in',
         style({
           opacity: 1,
-          transform: 'translateX(0)'
+          transform: 'translateY(0)'
         })
       ),
       transition('void => *', [
         style({
           opacity: 0,
-          transform: 'translateX(100px)'
+          transform: 'translateY(50px)'
         }),
         animate(200)
       ]),
@@ -44,7 +44,7 @@ export const STAGES = [
           200,
           style({
             opacity: 0,
-            transform: 'translateX(-100px)'
+            transform: 'translateY(-50px)'
           })
         )
       ])
@@ -58,8 +58,10 @@ export class ProjectSetupComponent implements OnInit {
   stageTitle: string = null;
   stageDescr: string = null;
   selectedTheme: string = null;
-  selectedFeatures: string[] = null;
+  selectedFeatures: String[] = null;
   projectTitle: string = null;
+
+  stepperPosition = 1000;
 
   firstColorScheme = 'hsla(209, 100%, 55%, 1)';
   secondColorScheme = 'hsla(40, 96%, 53%, 1)';
@@ -70,10 +72,15 @@ export class ProjectSetupComponent implements OnInit {
     this.currentRoute = this.router.url;
     this.getDesignSelection();
     this.getThemeSelection();
-    this.handleStageChange();
+    this.setStageText();
   }
 
-  handleStageChange() {
+  onIndexChange(event: number): void {
+    this.stepperPosition = event;
+    this.router.navigateByUrl(STAGES[event]);
+  }
+
+  setStageText() {
     switch (this.router.url) {
       case '/design':
         this.stageTitle = 'Choose design that suits you best';
@@ -104,6 +111,78 @@ export class ProjectSetupComponent implements OnInit {
           'Short description of idea or project to complete the picture';
         break;
     }
+  }
+
+  checkStepperStage(stepIndex) {
+    const stepToCheck = STAGES[stepIndex];
+    if (stepToCheck === this.currentRoute) {
+      return 'process';
+    } else {
+      let status;
+
+      if (stepToCheck === '/theme') {
+        this.servise.customerProjectTheme.subscribe(res => {
+          res ? status = 'finish' : status = 'wait';
+        });
+        return status;
+      }
+      if (stepToCheck === '/name') {
+        this.servise.customerProjectName.subscribe(res => {
+          res ? status = 'finish' : status = 'wait';
+        });
+        return status;
+      }
+      if (stepToCheck === '/title') {
+        this.servise.customerProjectTitle.subscribe(res => {
+          res ? status = 'finish' : status = 'wait';
+        });
+        return status;
+      }
+      if (stepToCheck === '/features') {
+        this.servise.customerProjectFeatures.subscribe(res => {
+          console.log("TCL: ProjectSetupComponent -> checkStepperStage -> res", res);
+          res.some(value => value.trim() === '' || value.trim().length === 0) || res.length === 0
+            ? status = 'wait'
+            : status = 'finish';
+        });
+        return status;
+      }
+      if (stepToCheck === '/description') {
+        this.servise.customerProjectDescription.subscribe(res => {
+          res ? status = 'finish' : status = 'wait';
+        });
+        return status;
+      }
+      if (stepToCheck === '/project-preview') {
+        this.servise.customerProjectDescription.subscribe(res => {
+          res ? status = 'finish' : status = 'wait';
+        });
+        return status;
+      }
+    }
+  }
+
+  shouldDisablePreview() {
+    let fillStatus: boolean;
+    combineLatest(
+      this.servise.customerProjectTheme,
+      this.servise.customerProjectName,
+      this.servise.customerProjectTitle,
+      this.servise.customerProjectDescription,
+      this.servise.customerProjectFeatures
+    ).subscribe(res => {
+    console.log("TCL: ProjectSetupComponent -> shouldDisablePreview -> res", res)
+      if (
+        res.some(i => {
+          i.length === 0 || i === "" || i === " "
+        }) || res[4].some(i => i.trim() === "" || i.length === 0)
+      ) {
+        fillStatus = true;
+      } else {
+        fillStatus = false;
+      }
+    });
+    return fillStatus;
   }
 
   prevStage() {
@@ -176,7 +255,7 @@ export class ProjectSetupComponent implements OnInit {
     if (this.currentRoute === '/description') {
       this.servise.customerProjectDescription.subscribe(res => {
         res === '' ? shouldDisable = true : null;
-      })
+      });
     }
     if (this.currentRoute === '/features') {
       this.getFeaturesSelection();

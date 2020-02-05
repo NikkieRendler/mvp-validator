@@ -1,92 +1,97 @@
-@import '../../../styles.scss';
+@import "../../../styles.scss";
 
 .project-setup-stage-wrapper {
-    margin-top: 50px;
+  margin-top: 50px;
+}
+
+nz-steps {
+  display: block;
+  margin-bottom: 60px;
+  box-shadow: rgb(232, 232, 232) 0px -1px 0px 0 inset;
 }
 
 .flat-design-note {
-    background-image: url('../../../assets/images/flat_design.png');
-    background-size: contain;
-    width: 200px;
-    height: 150px;
-    border: 1px solid #e8e8e8;
-    margin-bottom: 10px;
+  background-image: url("../../../assets/images/flat_design.png");
+  background-size: contain;
+  width: 200px;
+  height: 150px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 10px;
 }
 
 .material-design-note {
-    background-image: url('../../../assets/images/material_design.png');
-    background-size: contain;
-    width: 200px;
-    height: 150px;
-    border: 1px solid #e8e8e8;
-    margin-bottom: 10px;
+  background-image: url("../../../assets/images/material_design.png");
+  background-size: contain;
+  width: 200px;
+  height: 150px;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 10px;
 }
 
 .project-setup-stage-title {
-    font-size: $title-text;
-    text-align: center;
+  font-size: $title-text;
+  text-align: center;
 }
 
 .heading {
-    font-size: $heading-text;
+  font-size: $heading-text;
 }
 
 .project-setup-stage-descr {
-    font-size: $main-text;
-    text-align: center;
-    padding-top: 10px;
+  font-size: $main-text;
+  text-align: center;
+  padding-top: 10px;
 }
 
 .project-setup-stage-input {
-    font-size: $main-text;
-    margin-top: 20px;
+  font-size: $main-text;
+  margin-top: 20px;
 }
 
 .project-setup-stage-tips {
-    line-height: 30px;
-    font-size: $main-text;
+  line-height: 30px;
+  font-size: $main-text;
 }
 
 .left-displace {
-    margin-left: -9px;
+  margin-left: -9px;
 }
 
 .project-setup-stage-nav-button-section {
-    width: 80vw;
-    margin: 20px auto;
+  width: 80vw;
+  margin: 20px auto;
 }
 
 .project-setup-stage-theme {
-    height: 90px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  height: 90px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .project-setup-stage-theme-title {
-    color: whitesmoke
+  color: whitesmoke;
 }
 
 .project-setup-stage-custom-theme-non-selected {
-    height: 15vh;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  height: 15vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .project-setup-stage-theme:hover {
-    box-shadow: 0px 0px 5px #52c41a;
-    cursor: pointer;
+  box-shadow: 0px 0px 5px #52c41a;
+  cursor: pointer;
 }
 
 .selected-button {
-    background-color: rgba(82,196,26, .6); 
+  background-color: rgba(82, 196, 26, 0.6);
 }
 
 .selected-icon {
-    font-size: 20px;
-    color: rgba(82,196,26, .6) !important;
+  font-size: 20px;
+  color: rgba(82, 196, 26, 0.6) !important;
 }
-

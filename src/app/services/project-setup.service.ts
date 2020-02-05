@@ -33,7 +33,7 @@ export class ProjectSetupService {
   customerProjectName: BehaviorSubject<string> = new BehaviorSubject<string>('');
   customerProjectExistance: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
   customerProjectTitle: BehaviorSubject<string> = new BehaviorSubject<string>('');
-  customerProjectFeatures: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([' ', ' ', ' ']);
+  customerProjectFeatures: BehaviorSubject<String[]> = new BehaviorSubject<String[]>(['', '', '']);
   customerProjectDescription: BehaviorSubject<string> = new BehaviorSubject<string>('');
   constructor() { }
 }

@@ -8,7 +8,7 @@ export interface ProjectConfig {
   theme: string;
   name: string;
   title: string;
-  features: string[];
+  features: String[];
   description: string;
   url?: string;
   engagedUsers?: Feedback[];

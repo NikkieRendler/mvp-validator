@@ -49,7 +49,7 @@ export class CustomerDashboardComponent implements OnInit {
 
   clearProjectConfig() {
     this.projectSetupService.customerProjectDescription.next('');
-    this.projectSetupService.customerProjectFeatures.next([]);
+    this.projectSetupService.customerProjectFeatures.next(['', '', '']);
     this.projectSetupService.customerProjectName.next('');
     this.projectSetupService.customerProjectTheme.next('');
     this.projectSetupService.customerProjectTitle.next('');

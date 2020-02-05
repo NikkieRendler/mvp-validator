@@ -1,4 +1,13 @@
 <app-header></app-header>
+<nz-steps nzType="navigation" nzSize="small" [nzCurrent]="stepperPosition" [nzStartIndex]="0" (nzIndexChange)="onIndexChange($event)">
+    
+    <nz-step nzTitle="Theme" [nzStatus]="checkStepperStage(0)"></nz-step>
+    <nz-step nzTitle="Name" [nzStatus]="checkStepperStage(1)"></nz-step>
+    <nz-step nzTitle="Title" [nzStatus]="checkStepperStage(2)"></nz-step>
+    <nz-step nzTitle="Features" [nzStatus]="checkStepperStage(3)"></nz-step>
+    <nz-step nzTitle="Description" [nzStatus]="checkStepperStage(4)"></nz-step>
+    <nz-step nzTitle="Project preview" [nzStatus]="checkStepperStage(5)" [nzDisabled]="shouldDisablePreview()"></nz-step>
+  </nz-steps>
 <div [@templateChange] style="width: 80vw; margin: 0px auto;">
     <div nz-row class="project-setup-stage-wrapper">
 
@@ -383,10 +392,10 @@
     </div>
 
     <!-- Buttons -->
-    <div nz-row nzType="flex" nzJustify="space-between" class="project-setup-stage-nav-button-section">
+    <!-- <div nz-row nzType="flex" nzJustify="space-between" class="project-setup-stage-nav-button-section">
         <button nz-button nzType="primary" (click)="prevStage()"><i nz-icon nzType="left"
                 nzTheme="outline"></i>Prev.</button>
         <button [disabled]="checkValidity()" nz-button nzType="primary" (click)="nextStage()">Next <i nz-icon
                 nzType="right" nzTheme="outline"></i></button>
-    </div>
+    </div> -->
 </div>
