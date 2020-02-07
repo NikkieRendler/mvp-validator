@@ -37,6 +37,7 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
     });
     if (this.router.url === '/project-preview') {
       this.composedProject = this.dashboardService.composeProjectConfig();
+      console.log("TCL: CustomerAppComponent -> ngOnInit -> this.composedProject", this.composedProject)
       const trianglify = new Trianglify();
       const pattern = Trianglify({
         height: window.innerHeight,
@@ -47,7 +48,7 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
       });
 
       this.customerWrapper.nativeElement.style.background = `url(${pattern.png()})`;
-      this.customerWrapper.nativeElement.style.backgroundSize = '100% 560px';
+      this.customerWrapper.nativeElement.style.backgroundSize = '100% 100%';
       this.customerWrapper.nativeElement.style.backgroundRepeat = 'no-repeat';
     } else {
       const projectUrl = this.route.snapshot.paramMap.get('url');
@@ -68,7 +69,7 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
         });
 
         this.customerWrapper.nativeElement.style.background = `url(${pattern.png()})`;
-        this.customerWrapper.nativeElement.style.backgroundSize = '100% 560px';
+        this.customerWrapper.nativeElement.style.backgroundSize = '100vw 100vh';
         this.customerWrapper.nativeElement.style.backgroundRepeat = 'no-repeat';
       });
     }
@@ -88,6 +89,14 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
 
   formatColor(color) {
     return ['hsl(0, 0%, 100%)', color, color]
+  }
+
+  getLightColor() {
+    console.log('initial', this.composedProject.theme);
+    let lightColor = this.composedProject.theme.replace(')', ', .3)');
+    console.log('changed', lightColor);
+    
+    return lightColor;
   }
 
   onSubmit() {

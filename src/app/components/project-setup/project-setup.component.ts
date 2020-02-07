@@ -63,9 +63,9 @@ export class ProjectSetupComponent implements OnInit {
 
   stepperPosition = 1000;
 
-  firstColorScheme = 'hsla(209, 100%, 55%, 1)';
-  secondColorScheme = 'hsla(40, 96%, 53%, 1)';
-  thirdColorScheme = 'hsla(321, 90%, 25%, 1)';
+  firstColorScheme = 'hsl(209, 100%, 55%)';
+  secondColorScheme = 'hsl(40, 96%, 53%)';
+  thirdColorScheme = 'hsl(321, 90%, 25%)';
   customColorScheme: string;
 
   ngOnInit() {
@@ -171,7 +171,7 @@ export class ProjectSetupComponent implements OnInit {
       this.servise.customerProjectDescription,
       this.servise.customerProjectFeatures
     ).subscribe(res => {
-    console.log("TCL: ProjectSetupComponent -> shouldDisablePreview -> res", res)
+      console.log("TCL: ProjectSetupComponent -> shouldDisablePreview -> res", res)
       if (
         res.some(i => {
           i.length === 0 || i === "" || i === " "
@@ -237,35 +237,25 @@ export class ProjectSetupComponent implements OnInit {
 
   checkValidity() {
     let shouldDisable = false;
-    if (this.currentRoute === '/theme') {
-      this.servise.customerProjectTheme.subscribe(res => {
-        res === '' ? shouldDisable = true : null;
-      });
-    }
-    if (this.currentRoute === '/name') {
-      this.servise.customerProjectExistance.subscribe(status => {
-        shouldDisable = status;
-      });
-    }
-    if (this.currentRoute === '/title') {
-      this.servise.customerProjectTitle.subscribe(res => {
-        res === '' ? shouldDisable = true : null;
-      });
-    }
-    if (this.currentRoute === '/description') {
-      this.servise.customerProjectDescription.subscribe(res => {
-        res === '' ? shouldDisable = true : null;
-      });
-    }
-    if (this.currentRoute === '/features') {
-      this.getFeaturesSelection();
-      const checkFeaturesEmpty = () => {
-        if (this.selectedFeatures.some(value => value === '' ? true : false) || this.selectedFeatures.length === 0) {
-          return true;
-        }
-      };
-      shouldDisable = checkFeaturesEmpty();
-    }
+    this.servise.customerProjectTheme.subscribe(res => {
+      res === '' ? shouldDisable = true : null;
+    });
+    this.servise.customerProjectExistance.subscribe(status => {
+      shouldDisable = status;
+    });
+    this.servise.customerProjectTitle.subscribe(res => {
+      res === '' ? shouldDisable = true : null;
+    });
+    this.servise.customerProjectDescription.subscribe(res => {
+      res === '' ? shouldDisable = true : null;
+    });
+    this.getFeaturesSelection();
+    const checkFeaturesEmpty = () => {
+      if (this.selectedFeatures.some(value => value === '' ? true : false) || this.selectedFeatures.length === 0) {
+        return true;
+      }
+    };
+    shouldDisable = checkFeaturesEmpty();
     return shouldDisable;
   }
 }

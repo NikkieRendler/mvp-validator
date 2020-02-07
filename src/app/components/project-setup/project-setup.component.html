@@ -1,13 +1,15 @@
 <app-header></app-header>
-<nz-steps nzType="navigation" nzSize="small" [nzCurrent]="stepperPosition" [nzStartIndex]="0" (nzIndexChange)="onIndexChange($event)">
-    
+<nz-steps nzType="navigation" nzSize="small" [nzCurrent]="stepperPosition" [nzStartIndex]="0"
+    (nzIndexChange)="onIndexChange($event)">
+
     <nz-step nzTitle="Theme" [nzStatus]="checkStepperStage(0)"></nz-step>
     <nz-step nzTitle="Name" [nzStatus]="checkStepperStage(1)"></nz-step>
     <nz-step nzTitle="Title" [nzStatus]="checkStepperStage(2)"></nz-step>
     <nz-step nzTitle="Features" [nzStatus]="checkStepperStage(3)"></nz-step>
     <nz-step nzTitle="Description" [nzStatus]="checkStepperStage(4)"></nz-step>
-    <nz-step nzTitle="Project preview" [nzStatus]="checkStepperStage(5)" [nzDisabled]="shouldDisablePreview()"></nz-step>
-  </nz-steps>
+    <nz-step nzTitle="Project preview" [nzStatus]="checkStepperStage(5)" [nzDisabled]="shouldDisablePreview()">
+    </nz-step>
+</nz-steps>
 <div [@templateChange] style="width: 80vw; margin: 0px auto;">
     <div nz-row class="project-setup-stage-wrapper">
 
@@ -101,7 +103,7 @@
                                 <div style="height: 0;">
                                     <input style="height: 0; width: 0; visibility: hidden;" #colorPickerInput
                                         [(colorPicker)]="customColorScheme" [cpPosition]="'bottom'"
-                                        [cpOutputFormat]="'hsla'" />
+                                        [cpOutputFormat]="'hsl'" />
                                 </div>
                                 <i style="cursor: pointer; color: #1890ff;" (click)="colorPickerInput.click()" nz-icon
                                     nzType="bg-colors" nzTheme="outline"></i>
@@ -355,6 +357,7 @@
                 </div>
             </ng-container>
 
+            <!-- Description stage -->
             <ng-container *ngIf="currentRoute === '/description'">
                 <div class="project-setup-stage-tips">
                     <span nz-text class="heading">
@@ -362,11 +365,6 @@
                         <strong>Provide info after capturing attention</strong>
                     </span>
                     <div></div>
-                    <span nz-text nzType="secondary"><span class="left-displace">-</span>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit quam a eius perspiciatis
-                        molestias, velit atque dolor, voluptas voluptates corrupti dolorum aliquid possimus, suscipit
-                        tenetur at dolore porro totam quod?
-                    </span> <br>
                     <span nz-text nzType="secondary"><span class="left-displace">-</span> Make those features look easy
                         to understand and comprehend with the problem they solve</span>
                     <br>
@@ -376,11 +374,6 @@
                         <strong>Tell your audience what you would in real life</strong>
                     </span>
                     <div></div>
-                    <span nz-text nzType="secondary"><span class="left-displace">-</span>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quae veritatis voluptas eum
-                        voluptatibus a incidunt, aspernatur ullam earum libero modi, dignissimos consequatur, beatae
-                        debitis. Qui in quaerat est maxime?
-                    </span> <br>
                     <span nz-text nzType="secondary"><span class="left-displace">-</span>You can simply outline why you
                         are better then your competitor</span>
                     <br>
@@ -392,10 +385,14 @@
     </div>
 
     <!-- Buttons -->
-    <!-- <div nz-row nzType="flex" nzJustify="space-between" class="project-setup-stage-nav-button-section">
+    <div nz-row nzType="flex" nzJustify="space-between" class="project-setup-stage-nav-button-section">
         <button nz-button nzType="primary" (click)="prevStage()"><i nz-icon nzType="left"
                 nzTheme="outline"></i>Prev.</button>
-        <button [disabled]="checkValidity()" nz-button nzType="primary" (click)="nextStage()">Next <i nz-icon
-                nzType="right" nzTheme="outline"></i></button>
-    </div> -->
+        <button *ngIf="currentRoute !== '/description'" nz-button nzType="primary" (click)="nextStage()">Next <i nz-icon
+                nzType="right" nzTheme="outline"></i>
+        </button>
+        <button *ngIf="currentRoute === '/description'" [disabled]="checkValidity()" nz-button nzType="primary"
+            (click)="nextStage()">Next <i nz-icon nzType="right" nzTheme="outline"></i>
+        </button>
+    </div>
 </div>
