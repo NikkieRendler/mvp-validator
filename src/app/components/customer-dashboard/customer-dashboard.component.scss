@@ -41,7 +41,7 @@
   flex-direction: column; 
   justify-content: flex-start; 
   align-items: center; 
-  margin: 5px 5px 40px;
+  margin: 5px;
 }
 .secondary-navigation {
   padding: 20px 10vw;
@@ -71,4 +71,10 @@
 }
 ::ng-deep .mat-form-field-flex {
   background-color: #fff !important;
+}
+
+@media screen and (max-width: 990px) {
+  .secondary-navigation {
+    padding: 20px 5vw;
+  }
 }
