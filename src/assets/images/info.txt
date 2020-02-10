@@ -12,7 +12,7 @@ icon designer link: /tillt
         
 
 fontColor: {"hex":"#ffffff"}
-bgColor: {"hex":"#1890ff"}
+bgColor: {"hex":"#003a8c"}
 iconColor: {"hex":"#ffffff"}
 
       

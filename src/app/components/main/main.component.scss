@@ -11,15 +11,25 @@
   padding-top: 100px;
 }
 
+.main-title {
+  font-size: $main-title-text;
+}
+
 .description {
   line-height: 35px;
-  font-size: $main-text;
+  font-size: $main-text-bigger;
+}
+
+.main-action-button {
+  width: 150px;
+  height: 50px;
+  font-size: $main-text-bigger;
 }
 
 .main-image {
   height: 70vh;
   background-image: url("../../../assets/images/main_image.png");
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
