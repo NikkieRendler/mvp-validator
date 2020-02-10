@@ -140,7 +140,6 @@ export class ProjectSetupComponent implements OnInit {
       }
       if (stepToCheck === '/features') {
         this.servise.customerProjectFeatures.subscribe(res => {
-          console.log("TCL: ProjectSetupComponent -> checkStepperStage -> res", res);
           res.some(value => value.trim() === '' || value.trim().length === 0) || res.length === 0
             ? status = 'wait'
             : status = 'finish';
@@ -154,9 +153,9 @@ export class ProjectSetupComponent implements OnInit {
         return status;
       }
       if (stepToCheck === '/project-preview') {
-        this.servise.customerProjectDescription.subscribe(res => {
-          res ? status = 'finish' : status = 'wait';
-        });
+        this.checkValidity()
+          ? status = 'wait'
+          : status = 'finish';
         return status;
       }
     }
@@ -171,7 +170,7 @@ export class ProjectSetupComponent implements OnInit {
       this.servise.customerProjectDescription,
       this.servise.customerProjectFeatures
     ).subscribe(res => {
-      console.log("TCL: ProjectSetupComponent -> shouldDisablePreview -> res", res)
+      console.log("TCL: ProjectSetupComponent -> shouldDisablePreview -> res", res);
       if (
         res.some(i => {
           i.length === 0 || i === "" || i === " "
