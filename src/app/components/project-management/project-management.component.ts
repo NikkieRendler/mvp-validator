@@ -41,28 +41,15 @@ export class ProjectManagementComponent implements OnInit {
     this.isUserLogged = localStorage.getItem('token') !== null;
     this.dashboardService.getProjectConfig(this.projectUrl).subscribe(res => {
       this.composedProject = res.landingConfigs[0];
-      // this.editingFormGroup = this.fb.group({
-      //   theme: [''],
-      //   title: [''],
-      //   description: [''],
-      //   features: this.fb.array([])
-      // });
-      // this.composedProject.features.map(i => {
-      //   this.addFeatureControl();
-      // });
     });
     this.colorControl.valueChanges.pipe(
       debounceTime(200)
     ).subscribe(res => this.editProject());
   }
 
-  // addFeatureControl() {
-  //   this.featuresFormArray.push(this.fb.control(''));
-  // }
-
   showProjectPreview(project: ProjectConfig) {
     this.clearProjectConfig();
-    window.open(`/dashboard/project/${project.url}`);
+    window.open(`/project/${project.url}`);
   }
 
   clearProjectConfig() {
@@ -91,7 +78,6 @@ export class ProjectManagementComponent implements OnInit {
 
   deleteProject(id) {
     this.dashboardService.deleteProject(id).subscribe(res => {
-      console.log(res);
       this.router.navigateByUrl('/dashboard');
     });
   }
