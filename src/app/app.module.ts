@@ -29,6 +29,7 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ProjectManagementComponent } from './components/project-management/project-management.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SuggestionsComponent } from './components/suggestions/suggestions.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 registerLocaleData(en);
@@ -48,7 +49,8 @@ registerLocaleData(en);
     LoginComponent,
     ProjectManagementComponent,
     HeaderComponent,
-    SuggestionsComponent
+    SuggestionsComponent,
+    FooterComponent
   ],
   imports: [
     FlexLayoutModule,

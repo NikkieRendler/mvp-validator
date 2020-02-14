@@ -5,3 +5,10 @@ $main-text-bigger: 23px;
 $main-text: 18px;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.app-name {
+    height: 100%;
+    width: 165px;
+    cursor: pointer;
+  }
+  

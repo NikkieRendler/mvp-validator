@@ -9,7 +9,7 @@
     </div>
 </div>
 
-<div style="display: flex; flex-flow: row wrap;" class="secondary-navigation">
+<div class="secondary-navigation">
     <div class="secondary-navigation-item-wrapper" *ngFor="let project of dashboard">
         <div fxLayout="column" fxLayoutAlign="center center" class="secondary-navigation-item"
             (click)="manageProject(project)">
@@ -19,10 +19,12 @@
     </div>
 
     <div class="secondary-navigation-item-wrapper">
-        <div (click)="startCreationFlow()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="5x" class="secondary-navigation-item">
+        <div (click)="startCreationFlow()" fxLayout="column" fxLayoutAlign="center center" class="secondary-navigation-item" style="border-radius: 50%;">
             <i nz-icon nzType="folder-add" nzTheme="outline" style="font-size: 64px;"></i>
             <span>Add project</span>
         </div>
     </div>
 
 </div>
+
+<app-footer></app-footer>

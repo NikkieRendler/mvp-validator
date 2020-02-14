@@ -1,0 +1,21 @@
+@import '../../../styles.scss';
+
+nz-footer {
+    color: whitesmoke;
+    padding: 30px 10vw;
+}
+
+.footer-menu-title {
+    padding: 5px 0;
+    font-size: 20px;
+    height: 40px;
+}
+
+.footer-menu-item {
+    padding: 5px 0;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-menu-item-link {
+    width: max-content;
+}
