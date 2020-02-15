@@ -6,8 +6,18 @@
 
 nz-steps {
   display: block;
-  margin-bottom: 60px;
+  padding: 30px;
   box-shadow: rgb(232, 232, 232) 0px -1px 0px 0 inset;
+}
+
+::ng-deep.ant-steps-small .ant-steps-item-icon {
+  width: 28px;
+  height: 28px;
+  font-size: 20px;
+}
+
+::ng-deep.ant-steps-small .ant-steps-item-title {
+  font-size: 21px;
 }
 
 .flat-design-note {
