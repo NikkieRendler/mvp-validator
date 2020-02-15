@@ -13,6 +13,10 @@
 .secondary-navigation {
   padding: 45px;
   .secondary-navigation-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 145px;
     width: 145px;
     border: 1px solid;

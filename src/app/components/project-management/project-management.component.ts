@@ -11,7 +11,7 @@ import { debounceTime } from 'rxjs/operators';
   styleUrls: ['./project-management.component.scss']
 })
 export class ProjectManagementComponent implements OnInit {
-  @ViewChild('colorPickerInput', null) colorPickerInput: ElementRef;
+  @ViewChild('colorPickerInput', {static: true}) colorPickerInput: ElementRef;
 
   projectUrl: string;
   composedProject: ProjectConfig;

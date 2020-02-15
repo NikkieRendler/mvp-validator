@@ -1,8 +1,8 @@
 <app-header></app-header>
-<div fxLayout fxLayoutAlign="space-between center" class="secondary-header">
-    <div fxLayout>
+<div class="secondary-header">
+    <div style="display: flex;">
         <i nz-icon nzType="home" nzTheme="outline" class="secondary-header-icon"></i>
-        <div fxLayout="column">
+        <div style="display: flex; flex-direction: column;">
             <span class="secondary-header-secondary-text">Dashboard features</span>
             <h2 class="secondary-header-title">Projects</h2>
         </div>
@@ -11,15 +11,14 @@
 
 <div class="secondary-navigation">
     <div class="secondary-navigation-item-wrapper" *ngFor="let project of dashboard">
-        <div fxLayout="column" fxLayoutAlign="center center" class="secondary-navigation-item"
-            (click)="manageProject(project)">
+        <div class="secondary-navigation-item" (click)="manageProject(project)">
             <i nz-icon nzType="folder" nzTheme="outline" style="font-size: 64px;"></i>
             <span>{{project.name}}</span>
         </div>
     </div>
 
     <div class="secondary-navigation-item-wrapper">
-        <div (click)="startCreationFlow()" fxLayout="column" fxLayoutAlign="center center" class="secondary-navigation-item" style="border-radius: 50%;">
+        <div (click)="startCreationFlow()" class="secondary-navigation-item" style="border-radius: 50%;">
             <i nz-icon nzType="folder-add" nzTheme="outline" style="font-size: 64px;"></i>
             <span>Add project</span>
         </div>

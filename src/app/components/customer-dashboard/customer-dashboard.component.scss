@@ -9,6 +9,9 @@
 }
 
 .secondary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: #fff;
   border-bottom: 1px solid #dee2e6;
   padding: 20px 10vw;
@@ -51,6 +54,10 @@
   padding: 20px 10vw;
   min-height: 600px;
   .secondary-navigation-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 145px;
     width: 145px;
     border: 1px #003a8c solid;

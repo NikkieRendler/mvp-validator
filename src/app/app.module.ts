@@ -24,7 +24,6 @@ import { MatInputModule } from '@angular/material/input';
 import { ProjectPreviewComponent } from './components/project-preview/project-preview.component';
 import { CustomerDashboardComponent } from './components/customer-dashboard/customer-dashboard.component';
 import { LoginComponent } from './components/login/login.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { ProjectManagementComponent } from './components/project-management/project-management.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -53,7 +52,6 @@ registerLocaleData(en);
     FooterComponent
   ],
   imports: [
-    FlexLayoutModule,
     BrowserModule,
     AppRoutingModule,
     NgZorroAntdModule,

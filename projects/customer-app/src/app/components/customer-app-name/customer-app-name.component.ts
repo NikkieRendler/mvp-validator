@@ -16,7 +16,7 @@ export class CustomerAppNameComponent implements OnInit {
 
   currentRoute: string;
   selectedName: String = '';
-  nameControl: FormControl = new FormControl({});
+  nameControl: FormControl = new FormControl('');
   nameUnique: boolean = false;
 
   constructor(
@@ -28,7 +28,9 @@ export class CustomerAppNameComponent implements OnInit {
   ngOnInit() {
     this.currentRoute = this.router.url;
     this.service.customerProjectName.subscribe(res => {
+      console.log("TCL: CustomerAppNameComponent -> ngOnInit -> res", res)
       this.selectedName = res;
+      this.nameControl.setValue(res);
     });
     this.dashboardService.checkProjectExistance(this.selectedName).subscribe(status => {
       this.setNameValidity(status);

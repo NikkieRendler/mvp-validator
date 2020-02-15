@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CustomerAppComponent implements OnInit, OnDestroy {
 
-  @ViewChild('customerWrapper', null) customerWrapper: ElementRef;
+  @ViewChild('customerWrapper', {static: true}) customerWrapper: ElementRef;
 
   selectedTheme: string;
   selectedDesign: string;
