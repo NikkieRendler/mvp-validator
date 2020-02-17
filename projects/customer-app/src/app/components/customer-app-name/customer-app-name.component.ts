@@ -28,7 +28,6 @@ export class CustomerAppNameComponent implements OnInit {
   ngOnInit() {
     this.currentRoute = this.router.url;
     this.service.customerProjectName.subscribe(res => {
-      console.log("TCL: CustomerAppNameComponent -> ngOnInit -> res", res)
       this.selectedName = res;
       this.nameControl.setValue(res);
     });
