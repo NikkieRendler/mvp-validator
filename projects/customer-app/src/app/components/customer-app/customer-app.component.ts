@@ -4,6 +4,7 @@ import * as Trianglify from '../../../../../../node_modules/trianglify';
 import { DashboardService, ProjectConfig, Feedback } from 'src/app/services/dashboard.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
   selector: 'app-customer-app',
@@ -12,7 +13,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class CustomerAppComponent implements OnInit, OnDestroy {
 
-  @ViewChild('customerWrapper', {static: true}) customerWrapper: ElementRef;
+  @ViewChild('customerWrapper', { static: true }) customerWrapper: ElementRef;
 
   selectedTheme: string;
   selectedDesign: string;
@@ -24,7 +25,8 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
     private dashboardService: DashboardService,
     private route: ActivatedRoute,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private message: NzMessageService
   ) {
 
   }
@@ -37,7 +39,6 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
     });
     if (this.router.url === '/project-preview') {
       this.composedProject = this.dashboardService.composeProjectConfig();
-      console.log("TCL: CustomerAppComponent -> ngOnInit -> this.composedProject", this.composedProject)
       const trianglify = new Trianglify();
       const pattern = Trianglify({
         height: window.innerHeight,
@@ -92,20 +93,20 @@ export class CustomerAppComponent implements OnInit, OnDestroy {
   }
 
   getLightColor() {
-    console.log('initial', this.composedProject.theme);
-    let lightColor = this.composedProject.theme.replace(')', ', .3)');
-    console.log('changed', lightColor);
-    
+    const lightColor = this.composedProject.theme.replace(')', ', .3)');
+
     return lightColor;
   }
 
   onSubmit() {
     const projectUrl = this.route.snapshot.paramMap.get('url');
     const formData: Feedback = this.feedbackForm.value;
-    console.log(this.feedbackForm.value);
     this.dashboardService.sumbitFeedback(projectUrl, formData).subscribe(res => {
-      console.log(res);
-    })
+      if (res) {
+        this.feedbackForm.reset();
+        this.message.success("Thanks for your submission! We'll notify you on launch", { nzDuration: 5000 });
+      }
+    });
   }
 
 

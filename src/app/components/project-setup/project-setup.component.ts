@@ -9,6 +9,8 @@ import {
 } from '@angular/animations';
 import { Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 export const STAGES = [
   '/theme',
@@ -60,6 +62,7 @@ export class ProjectSetupComponent implements OnInit {
   selectedTheme: string = null;
   selectedFeatures: String[] = null;
   projectTitle: string = null;
+  customColorControl: FormControl = new FormControl();
 
   stepperPosition = 1000;
 
@@ -73,6 +76,9 @@ export class ProjectSetupComponent implements OnInit {
     this.getDesignSelection();
     this.getThemeSelection();
     this.setStageText();
+    this.customColorControl.valueChanges.pipe(
+      debounceTime(200)
+    ).subscribe(res => this.selectTheme(this.customColorScheme));
   }
 
   onIndexChange(event: number): void {
@@ -170,7 +176,6 @@ export class ProjectSetupComponent implements OnInit {
       this.servise.customerProjectDescription,
       this.servise.customerProjectFeatures
     ).subscribe(res => {
-      console.log("TCL: ProjectSetupComponent -> shouldDisablePreview -> res", res);
       if (
         res.some(i => {
           i.length === 0 || i === "" || i === " "
@@ -225,9 +230,13 @@ export class ProjectSetupComponent implements OnInit {
   selectTheme(theme) {
     this.servise.customerProjectTheme.next(theme);
     this.getThemeSelection();
-    setTimeout(() => {
-      this.nextStage();
-    }, 300);
+    // setTimeout(() => {
+    //   this.nextStage();
+    // }, 300);
+  }
+
+  setCustomColor(customColor) {
+    this.customColorControl.setValue(customColor);
   }
 
   selectName(title) {

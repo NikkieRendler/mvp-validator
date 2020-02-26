@@ -21,7 +21,6 @@ export class CustomerDashboardComponent implements OnInit {
   getDashboard() {
     this.dashboardService.getDashboard().subscribe(res => {
       this.dashboard = res.projects.landingConfigs;
-      console.log("TCL: CustomerDashboardComponent -> getDashboard -> this.dashboard ", this.dashboard )
     });
   }
 
@@ -37,7 +36,6 @@ export class CustomerDashboardComponent implements OnInit {
 
   deleteProject(id) {
     this.dashboardService.deleteProject(id).subscribe(res => {
-      console.log(res);
       this.getDashboard();
     });
   }

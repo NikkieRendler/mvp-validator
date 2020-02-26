@@ -33,11 +33,9 @@ export class CustomerAppFeaturesComponent implements OnInit {
       this.selectedTheme = res;
     });
     this.service.customerProjectFeatures.subscribe(res => {
-      console.log(res);
-      console.log(this.featuresArray);
       for (let i = res.length; i > this.featuresArray.value.length;) {
         this.addFeature();
-      };
+      }
       this.featuresArray.setValue(res);
     });
 
@@ -64,7 +62,6 @@ export class CustomerAppFeaturesComponent implements OnInit {
 
   saveFeaturesValue() {
     this.service.customerProjectFeatures.next(this.featuresArray.value);
-    console.log("TCL: CustomerAppFeaturesComponent -> saveFeaturesValue -> this.featuresArray.value", this.featuresArray.value)
   }
 
   nextStage() {

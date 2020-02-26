@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, combineLatest, BehaviorSubject } from 'rxjs';
+import { Observable, combineLatest } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ProjectSetupService } from './project-setup.service';
+import { InterceptorSkipHeader } from './auth-interceptor.service';
 
 export interface ProjectConfig {
   theme: string;
@@ -22,6 +23,8 @@ export interface Feedback {
   email: string;
 }
 
+const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,13 +39,11 @@ export class DashboardService {
   }
 
   editProject(projectConfig: ProjectConfig): Observable<any> {
-    console.log("TCL: DashboardService -> constructor -> projectConfig", projectConfig)
-
     return this.http.put(this.serverUrl + `dashboard/${projectConfig._id}`, projectConfig);
   }
 
   checkProjectExistance(projectName): Observable<any> {
-    return this.http.get(this.serverUrl + `dashboard/is-project-exists/${projectName}`);
+    return this.http.get(this.serverUrl + `dashboard/is-project-exists/${projectName}`, { headers });
   }
 
   getDashboard(): Observable<any> {
@@ -50,7 +51,7 @@ export class DashboardService {
   }
 
   getProjectConfig(projectUrl): Observable<any> {
-    return this.http.get(this.serverUrl + `dashboard/project/${projectUrl}`);
+    return this.http.get(this.serverUrl + `dashboard/project/${projectUrl}`, { headers });
   }
 
   composeProjectConfig(): ProjectConfig {
