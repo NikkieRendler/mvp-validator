@@ -16,4 +16,5 @@ app.use(vhost('test.mvp-validator-frontend.herokuapp.com', app2));
 // Start the app by listening on the default Heroku port
 app.listen(process.env.PORT || 3000, function () {
     console.log('Server started');
+    console.log('test');
 });
