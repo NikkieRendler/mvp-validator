@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
 
 })
 export class AppComponent {
-
+    ngOnInit() {
+        console.log('Subdomain from client: ' + window.location.host.split('.')[0]);
+    }
 }

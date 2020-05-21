@@ -20,11 +20,13 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    console.log('OOO YA YEBU');
     this.currentRoute = this.router.url;
     const token = this.authService.getToken();
     if (token && token.length > 0) {
       this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
     }
+    
   }
 
   getToken() {
@@ -35,5 +37,7 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  
 
 }
