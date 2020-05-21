@@ -2,7 +2,6 @@
 const express = require('express');
 const path = require('path');
 const vhost = require('vhost');
-
 const app = express();
 const app2 = express();
 
@@ -15,4 +14,6 @@ app.get('*', function (req, res) {
 });
 app.use(vhost('test.mvp-validator-frontend.herokuapp.com/', app2));
 // Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000, function () {
+    console.log('Server started');
+});

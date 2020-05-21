@@ -4,6 +4,7 @@ import { Observable, combineLatest } from 'rxjs';
 import { AuthService } from './auth.service';
 import { ProjectSetupService } from './project-setup.service';
 import { InterceptorSkipHeader } from './auth-interceptor.service';
+import { environment } from 'src/environments/environment';
 
 export interface ProjectConfig {
   theme: string;
@@ -30,7 +31,7 @@ const headers = new HttpHeaders().set(InterceptorSkipHeader, '');
 })
 export class DashboardService {
 
-  serverUrl = 'https://mvp-validator.herokuapp.com/';
+  serverUrl = environment.serverUrl;
   header = new HttpHeaders();
   constructor(private http: HttpClient, private authSrvice: AuthService, private projectSetupService: ProjectSetupService) { }
 
