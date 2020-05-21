@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    console.log('Subdomain from client: ' + window.location.host.split('.')[0]);
     this.currentRoute = this.router.url;
     const token = this.authService.getToken();
     if (token && token.length > 0) {

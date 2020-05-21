@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  serverUrl: 'https://mvp-validator.herokuapp.com/'
+  serverUrl: 'https://mvp-validator-backend.bimbam.now.sh/'
 
 };
 
